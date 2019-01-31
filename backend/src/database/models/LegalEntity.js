@@ -13,6 +13,8 @@ class LegalEntity extends Model {
             required: [],
             properties: {
                 id: { type: 'integer' },
+                name: { type: 'string' },
+                type: { type: 'integer' },
                 registration_id: { type: 'string' },
                 tax_id: { type: 'string' },
                 is_service_provider: { type: 'boolean' },
@@ -44,11 +46,11 @@ class LegalEntity extends Model {
                     to: 'contracts.service_provider_id'
                 }
             },
-            official_address: {
-                relation: Model.HasOneRelation,
+            permanent_residence: {
+                relation: Model.BelongsToOneRelation,
                 modelClass: Address,
                 join: {
-                    from: 'legal_entities.official_address_id',
+                    from: 'legal_entities.permanent_residence_id',
                     to: 'addresses.id'
                 }
             }

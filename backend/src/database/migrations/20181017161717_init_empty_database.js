@@ -7,7 +7,7 @@ exports.up = async _knex => {
         _table.string('last_name');
         _table.boolean('is_service_provider');
         _table.integer('id_document_id').references('id').inTable('id_documents');
-        _table.integer('official_address_id').references('id').inTable('addresses');
+        _table.integer('permanent_residence_id').references('id').inTable('addresses');
         _table.timestamps();
     });
 
@@ -22,10 +22,12 @@ exports.up = async _knex => {
 
     await _knex.schema.createTable('legal_entities', _table => {
         _table.increments('id').primary();
+        _table.string('name');
+        _table.integer('type');
         _table.string('registration_id');
         _table.string('tax_id');
         _table.boolean('is_service_provider');
-        _table.integer('official_address_id').references('id').inTable('addresses');
+        _table.integer('permanent_residence_id').references('id').inTable('addresses');
         _table.timestamps();
         _table.unique('tax_id');
     });

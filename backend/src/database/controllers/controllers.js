@@ -23,8 +23,7 @@ const LegalEntity = require('../models/LegalEntity');
 
 const CONTROLLERS = {
     contracts: new Contracts({
-        Contract: Contract,
-        NaturalPeople: NaturalPeople
+        Contract: Contract
     })
 };
 

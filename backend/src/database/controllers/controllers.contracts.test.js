@@ -30,21 +30,32 @@ describe('Contracts controller', () => {
             const _result = await controller.addNewContract({
                 documents_holder_name: 'Gabriel',
                 client: {
+                    name: 'Foo',
+                    type: 1,
                     registration_id: 'abcdef',
                     tax_id: 'abcdef',
                     is_service_provider: false,
-                    official_address: {
+                    permanent_residence: {
                         postcode: '1035'
+                    }
+                },
+                client_signatory: {
+                    first_name: 'Foo',
+                    last_name: 'Bar',
+                    permanent_residence: {
+                        postcode: '1099'
                     }
                 },
                 service_provider: {
                     registration_id: 'ghijkl',
                     tax_id: 'ghijkl',
                     is_service_provider: true
+                },
+                service_provider_signatory: {
+                    first_name: 'Bar',
+                    last_name: 'Foo'
                 }
             });
-
-            console.log(_result)
 
             expect(true).toBeTruthy();
         });

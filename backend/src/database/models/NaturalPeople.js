@@ -26,23 +26,31 @@ class NatualPeople extends Model {
 
     static get relationMappings () {
         const Address = require('./Address');
-        const IdDocument = require('./IdDocument');
+        const Contract = require('./Contract');
 
         return {
-            id_document: {
-                relation: Model.HasOneRelation,
-                modelClass: IdDocument,
+            contract_client_signatory: {
+                relation: Model.HasManyRelation,
+                modelClass: Contract,
                 join: {
-                    from: 'natural_people.id_document_id',
-                    to: 'addresses.id'
+                    from: 'natural_people.id',
+                    to: 'contracts.client_signatory_id'
                 }
             },
-            official_address: {
-                relation: Model.HasOneRelation,
+            contract_service_provider_signatory: {
+                relation: Model.HasManyRelation,
+                modelClass: Contract,
+                join: {
+                    from: 'natural_people.id',
+                    to: 'contracts.service_provider_signatory_id'
+                }
+            },
+            permanent_residence: {
+                relation: Model.BelongsToOneRelation,
                 modelClass: Address,
                 join: {
-                    from: 'natural_people.official_address_id',
-                    to: 'id_documents.id'
+                    from: 'natural_people.permanent_residence_id',
+                    to: 'addresses.id'
                 }
             }
         };

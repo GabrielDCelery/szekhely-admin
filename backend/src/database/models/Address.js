@@ -26,14 +26,23 @@ class Address extends Model {
 
     static get relationMappings () {
         const LegalEntity = require('./LegalEntity');
+        const NaturalPeople = require('./NaturalPeople');
 
         return {
-            official_legal_entity_address: {
-                relation: Model.BelongsToOneRelation,
+            legal_entity_permanent_residence: {
+                relation: Model.HasManyRelation,
                 modelClass: LegalEntity,
                 join: {
-                    from: 'legal_entities.official_address_id',
-                    to: 'addresses.id'
+                    from: 'addresses.id',
+                    to: 'legal_entities.permanent_residence_id'
+                }
+            },
+            natural_people_permanent_residence: {
+                relation: Model.HasManyRelation,
+                modelClass: NaturalPeople,
+                join: {
+                    from: 'addresses.id',
+                    to: 'natural_people.permanent_residence_id'
                 }
             }
         };
