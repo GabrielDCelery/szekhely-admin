@@ -54,6 +54,7 @@ exports.up = async _knex => {
         _table.string('address_line_1');
         _table.string('address_line_2');
         _table.timestamps();
+        _table.unique(['postcode', 'country', 'city', 'address_line_1', 'address_line_2'])
     });
 
     await _knex.schema.createTable('invoices', _table => {

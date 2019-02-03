@@ -23,7 +23,7 @@ const createTestName = () => {
 };
 
 describe('Contracts controller', () => {
-    const controller = controllers.get('contracts');
+    const controller = controllers.get('contract');
 
     describe('addNewContract ()', () => {
         test('adds a new contract', async () => {

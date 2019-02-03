@@ -11,19 +11,30 @@ Model.knex(knex);
 
 // Controllers
 
-const Contracts = require('./Contracts');
+const ControllerContract = require('./Contract');
+const ControllerAddress = require('./Address');
 
 // Models
 
-const Contract = require('../models/Contract');
+const ModelContract = require('../models/Contract');
 const NaturalPeople = require('../models/NaturalPeople');
 const LegalEntity = require('../models/LegalEntity');
+const ModelAddress = require('../models/Address');
 
 // Controller Initialization
 
+const controllerAddress = new ControllerAddress({
+    Address: ModelAddress
+});
+
+const controllerContract = new ControllerContract({
+    Contract: ModelContract
+});
+
 const CONTROLLERS = {
-    contracts: new Contracts({
-        Contract: Contract
+    contract: new ControllerContract({
+        Contract: ModelContract,
+        Address: ModelAddress
     })
 };
 
