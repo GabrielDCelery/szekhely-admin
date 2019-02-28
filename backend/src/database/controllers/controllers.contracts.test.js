@@ -27,7 +27,7 @@ describe('Contracts controller', () => {
 
     describe('addNewContract ()', () => {
         test('adds a new contract', async () => {
-            const _result = await controller.addNewContract({
+            const _graph = {
                 documents_holder_name: 'Gabriel',
                 client: {
                     name: 'Foo',
@@ -55,7 +55,12 @@ describe('Contracts controller', () => {
                     first_name: 'Bar',
                     last_name: 'Foo'
                 }
-            });
+            };
+
+
+            const _result = await controller.addNewContract(_graph);
+
+            console.log(Object.keys(_result))
 
             expect(true).toBeTruthy();
         });
