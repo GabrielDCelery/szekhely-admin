@@ -1,17 +1,5 @@
 .Navbar {
-    width: 6vw;
+    width: 8vw;
     min-height: 100vh;
     background-color: #4e73df;
-}
-
-.Navbar .nav-item .nav-link {
-    font-weight: bold;
-    font-size: 14px;
-    text-align: center;
-    color: rgba(255,255,255,.8);
-}
-
-.Navbar .nav-item .nav-link:hover,
-.Navbar .nav-item .nav-link:active {
-    color: rgba(255,255,255, 1);
 }

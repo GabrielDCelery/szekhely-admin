@@ -1,6 +1,8 @@
 import React from 'react';
 import './Navbar.css';
 import NavbarDivider from './NavbarDivider';
+import NavbarItem from './NavbarItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Navbar extends React.Component {
 	constructor(props) {
@@ -17,29 +19,32 @@ export default class Navbar extends React.Component {
 		});
 	}
 	render() {
+		const navbarItems = [{
+			label: 'Dasboard',
+			icon: 'tachometer-alt'
+		}, {
+			label: 'Companies',
+			icon: 'building'
+		}, {
+			label: 'Mailing',
+			icon: 'envelope-square'
+		}, {
+			label: 'Invoices',
+			icon: 'file-invoice'
+		}, {
+			label: 'Statistics',
+			icon: 'chart-line'
+		}];
+
+		const renderedNavbarItems = navbarItems.map((listItem, index) => (
+			<NavbarItem key={'nav-item-' + index} label={listItem.label} icon={listItem.icon} />
+		));
+
 		return (
 			<React.Fragment>
-				<div className="Navbar">
-					<ul className="nav flex-column bg-gradient-primary">
-						<li className="nav-item">
-							<a className="nav-link active" href="#">Dashboard</a>
-						</li>
-						<NavbarDivider />
-						<li className="nav-item">
-							<a className="nav-link active" href="#">Companies</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="#">Mailing</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="#">Invoices</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link" href="#">Statistics</a>
-						</li>
-						<NavbarDivider />
+					<ul className="Navbar nav flex-column bg-gradient-primary">
+						{renderedNavbarItems}
 					</ul>
-				</div>
 			</React.Fragment>
 		);
 	}
