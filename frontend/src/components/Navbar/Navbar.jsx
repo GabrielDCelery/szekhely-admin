@@ -36,8 +36,8 @@ export default class Navbar extends React.Component {
 			icon: 'chart-line'
 		}];
 
-		const renderedNavbarItems = navbarItems.map((listItem, index) => (
-			<NavbarItem key={'nav-item-' + index} label={listItem.label} icon={listItem.icon} />
+		const renderedNavbarItems = navbarItems.map((navbarItem, index) => (
+			<NavbarItem key={'nav-item-' + index} label={navbarItem.label} icon={navbarItem.icon} />
 		));
 
 		return (
