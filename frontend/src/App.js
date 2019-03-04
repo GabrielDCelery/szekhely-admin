@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './lib';
 import './App.css';
-import Navbar from './components/Navbar';
+import { Navbar } from './components/Navbar';
 import Dashboard from './pages/Dashboard';
 import Contracts from './pages/Contracts';
 import Mailing from './pages/Mailing';

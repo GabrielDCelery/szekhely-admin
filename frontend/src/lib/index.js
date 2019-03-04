@@ -1,2 +1,2 @@
-import './bootstrap';
-import './fontawesome';
+export * from './bootstrap';
+export * from './fontawesome';

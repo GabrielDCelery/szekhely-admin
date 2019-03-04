@@ -2,7 +2,7 @@ import React from 'react';
 import './Navbar.css';
 import NavbarItem from './NavbarItem';
 
-export default class Navbar extends React.Component {
+export class Navbar extends React.Component {
 	render() {
 		const navbarItems = [{
 			label: 'Dasboard',
