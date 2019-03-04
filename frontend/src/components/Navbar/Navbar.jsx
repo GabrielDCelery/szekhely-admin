@@ -1,43 +1,37 @@
 import React from 'react';
 import './Navbar.css';
-import NavbarDivider from './NavbarDivider';
 import NavbarItem from './NavbarItem';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default class Navbar extends React.Component {
-	constructor(props) {
-		super(props);
-
-		this.toggle = this.toggle.bind(this);
-		this.state = {
-			isOpen: false
-		};
-	}
-	toggle() {
-		this.setState({
-			isOpen: !this.state.isOpen
-		});
-	}
 	render() {
 		const navbarItems = [{
 			label: 'Dasboard',
-			icon: 'tachometer-alt'
+			icon: 'tachometer-alt',
+			path: '/dashboard'
 		}, {
-			label: 'Companies',
-			icon: 'building'
+			label: 'Contracts',
+			icon: 'file-contract',
+			path: '/contracts'
 		}, {
 			label: 'Mailing',
-			icon: 'envelope-square'
+			icon: 'envelope-square',
+			path: '/mailing'
 		}, {
 			label: 'Invoices',
-			icon: 'file-invoice'
+			icon: 'file-invoice',
+			path: '/invoices'
 		}, {
 			label: 'Statistics',
-			icon: 'chart-line'
+			icon: 'chart-line',
+			path: '/statistics'
+		}, {
+			label: 'Settings',
+			icon: 'cog',
+			path: '/settings'
 		}];
 
 		const renderedNavbarItems = navbarItems.map((navbarItem, index) => (
-			<NavbarItem key={'nav-item-' + index} label={navbarItem.label} icon={navbarItem.icon} />
+			<NavbarItem key={'nav-item-' + index} label={navbarItem.label} icon={navbarItem.icon} path={navbarItem.path}/>
 		));
 
 		return (

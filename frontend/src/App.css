@@ -2,6 +2,14 @@ body {
   font-size: 0.8em;
 }
 
+.w-10 {
+  width: 10%;
+}
+
+.w-90 {
+  width: 90%;
+}
+
 .App {
   text-align: center;
 }
