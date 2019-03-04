@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-//import Companies from './pages/Companies';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import './lib';
 
 class App extends Component {
   render() {
