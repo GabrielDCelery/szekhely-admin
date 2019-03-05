@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Contracts extends React.Component {
+export class Contracts extends React.Component {
 	render() {
 		return (
 			<React.Fragment>

@@ -1,0 +1,31 @@
+export const routerDefaultState = [{
+  label: 'Dasboard',
+  icon: 'tachometer-alt',
+  path: '/dashboard',
+  page: 'Dashboard'
+}, {
+  label: 'Contracts',
+  icon: 'file-contract',
+  path: '/contracts',
+  page: 'Contracts'
+}, {
+  label: 'Mailing',
+  icon: 'envelope-square',
+  path: '/mailing',
+  page: 'Mailing'
+}, {
+  label: 'Invoices',
+  icon: 'file-invoice',
+  path: '/invoices',
+  page: 'Invoices'
+}, {
+  label: 'Statistics',
+  icon: 'chart-line',
+  path: '/statistics',
+  page: 'Statistics'
+}, {
+  label: 'Settings',
+  icon: 'cog',
+  path: '/settings',
+  page: 'Settings'
+}];

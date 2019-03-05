@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route/*, Link*/ } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './lib';
 import './App.css';
 import { Navbar } from './components/Navbar';
-import Dashboard from './pages/Dashboard';
-import Contracts from './pages/Contracts';
-import Mailing from './pages/Mailing';
-import Invoices from './pages/Invoices';
-import Statistics from './pages/Statistics';
-import Settings from './pages/Settings';
+import {
+  Dashboard,
+  Contracts,
+  Mailing,
+  Invoices,
+  Statistics,
+  Settings
+} from './pages';
 
-const Routes = {
+const Pages = {
   Dashboard,
   Contracts,
   Mailing,
@@ -21,40 +24,8 @@ const Routes = {
 
 class App extends Component {
   render() {
-    const pageConfigs = [{
-      label: 'Dasboard',
-      icon: 'tachometer-alt',
-      path: '/dashboard',
-      page: 'Dashboard'
-    }, {
-      label: 'Contracts',
-      icon: 'file-contract',
-      path: '/contracts',
-      page: 'Contracts'
-    }, {
-      label: 'Mailing',
-      icon: 'envelope-square',
-      path: '/mailing',
-      page: 'Mailing'
-    }, {
-      label: 'Invoices',
-      icon: 'file-invoice',
-      path: '/invoices',
-      page: 'Invoices'
-    }, {
-      label: 'Statistics',
-      icon: 'chart-line',
-      path: '/statistics',
-      page: 'Statistics'
-    }, {
-      label: 'Settings',
-      icon: 'cog',
-      path: '/settings',
-      page: 'Settings'
-    }];
-
-    const renderedPages = pageConfigs.map((pageConfig, index) => (
-      <Route key={'page-' + index} path={pageConfig.path} component={Routes[pageConfig.page]} />
+    const renderedPages = this.props.routerConfigs.map((routerConfig, index) => (
+      <Route key={'page-' + index} path={routerConfig.path} component={Pages[routerConfig.page]} />
     ));
 
     return (
@@ -62,7 +33,7 @@ class App extends Component {
         <React.Fragment>
           <div className="d-flex flex-row">
             <div className="w-10">
-              <Navbar pageConfigs={pageConfigs} />
+              <Navbar />
             </div>
             <div className="w-90">
               {renderedPages}
@@ -74,4 +45,12 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    routerConfigs: state.router
+  }
+}
+
+const connected = connect(mapStateToProps)(App);
+
+export { connected as App };

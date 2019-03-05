@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class Invoices extends React.Component {
+export class Invoices extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
