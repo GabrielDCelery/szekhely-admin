@@ -1,9 +1,9 @@
 .NavbarItemCollapsible .nav-child-item-container {
-  display: none;
+  display: block;
 }
 
-.NavbarItemCollapsible .nav-child-item-container.show {
-  display: block;
+.NavbarItemCollapsible .nav-child-item-container.hide {
+  display: none;
 }
 
 .NavbarItemCollapsible .nav-child-item {
