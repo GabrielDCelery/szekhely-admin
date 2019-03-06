@@ -1,15 +1,19 @@
 import React from 'react';
-import './NavbarItem.css';
-import NavbarDivider from './NavbarDivider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
-export default class NavbarItem extends React.Component {
+export default class NavbarItemSimple extends React.Component {
 	render() {
 		return (
 			<React.Fragment>
-				<li className="NavbarItem nav-item">
-					<Link to={this.props.path || '/'} className="nav-link">
+				<li className="NavbarItem NavbarItemSimple nav-item">
+					<Link
+						to={this.props.path}
+						className="nav-link"
+						onClick={() => {
+							this.props.toggleActive(this.props.id)
+						}}
+					>
 						<div>
 							<FontAwesomeIcon icon={this.props.icon} />
 						</div>
@@ -17,8 +21,8 @@ export default class NavbarItem extends React.Component {
 							{this.props.label}
 						</div>
 					</Link>
+					<hr />
 				</li>
-				<NavbarDivider />
 			</React.Fragment>
 		);
 	}

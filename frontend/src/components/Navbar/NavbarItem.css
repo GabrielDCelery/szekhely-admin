@@ -1,6 +1,5 @@
 .NavbarItem.nav-item .nav-link {
     font-weight: bold;
-    font-size: 14px;
     text-align: center;
     color: #fff;
     opacity: 0.8;
@@ -10,4 +9,9 @@
 .NavbarItem.nav-item .nav-link.active {
     color: #fff;
     opacity: 1;
+}
+
+.NavbarItem hr {
+    border-top: 1px solid rgba(255,255,255,.15);
+    margin: 0 1rem 0rem;
 }

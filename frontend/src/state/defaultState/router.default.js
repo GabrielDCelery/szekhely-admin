@@ -7,12 +7,26 @@ export const routerDefaultState = [{
   label: 'Contracts',
   icon: 'file-contract',
   path: '/contracts',
-  page: 'Contracts'
+  page: 'Contracts',
+  children: [{
+    label: 'Search',
+    path: '/contracts/search'
+  }, {
+    label: 'Add New',
+    path: '/contracts/addnew'
+  }]
 }, {
   label: 'Mailing',
   icon: 'envelope-square',
   path: '/mailing',
-  page: 'Mailing'
+  page: 'Mailing',
+  children: [{
+    label: 'Search',
+    path: '/contracts/search'
+  }, {
+    label: 'Add New',
+    path: '/contracts/addnew'
+  }]
 }, {
   label: 'Invoices',
   icon: 'file-invoice',

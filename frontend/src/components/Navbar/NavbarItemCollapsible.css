@@ -1,0 +1,26 @@
+.NavbarItemCollapsible .nav-child-item-container {
+  display: none;
+}
+
+.NavbarItemCollapsible .nav-child-item-container.show {
+  display: block;
+}
+
+.NavbarItemCollapsible .nav-child-item {
+  padding: .5rem 1rem;
+  margin: 0 .5rem;
+  display: block;
+  color: #3a3b45;
+  text-decoration: none;
+  border-radius: .35rem;
+  white-space: nowrap;
+}
+
+.NavbarItemCollapsible .nav-child-item:hover {
+  background-color: #eee;
+}
+
+.NavbarItemCollapsible .nav-child-item.active {
+  color: #4e73df;
+  font-weight: bold;
+}
