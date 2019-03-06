@@ -12,6 +12,6 @@
 }
 
 .NavbarItem hr {
-    border-top: 1px solid rgba(255,255,255,.15);
+    border-top: 2px solid rgba(255,255,255,.15);
     margin: 0 1rem 0rem;
 }

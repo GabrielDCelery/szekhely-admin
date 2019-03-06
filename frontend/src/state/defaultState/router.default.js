@@ -16,14 +16,19 @@ export const routerDefaultState = [{
     path: '/contracts/addnew'
   }]
 }, {
-  label: 'Documents',
+  label: 'Mails',
+  icon: 'envelope',
+  path: '/mails',
+  page: 'Contracts',
+}, {
+  label: 'Inspections',
   icon: 'file-contract',
   path: '/documents',
   page: 'Contracts',
 }, {
-  label: 'Mailing',
-  icon: 'envelope-square',
-  path: '/mailing',
+  label: 'Messages',
+  icon: 'at',
+  path: '/messages',
   page: 'Mailing',
   children: [{
     label: 'Search',
