@@ -17,7 +17,7 @@ export default class NavbarItemCollapsible extends Component {
 						}}
 					>
 						<div>
-							<FontAwesomeIcon icon={this.props.icon} />
+							<FontAwesomeIcon className="fas fa-2x" icon={this.props.icon} />
 						</div>
 						<div>
 							{this.props.label}

@@ -5,7 +5,7 @@ export const routerDefaultState = [{
   page: 'Dashboard'
 }, {
   label: 'Contracts',
-  icon: 'file-contract',
+  icon: 'file-signature',
   path: '/contracts',
   page: 'Contracts',
   children: [{
@@ -15,6 +15,11 @@ export const routerDefaultState = [{
     label: 'Add New',
     path: '/contracts/addnew'
   }]
+}, {
+  label: 'Documents',
+  icon: 'file-contract',
+  path: '/documents',
+  page: 'Contracts',
 }, {
   label: 'Mailing',
   icon: 'envelope-square',
@@ -29,7 +34,7 @@ export const routerDefaultState = [{
   }]
 }, {
   label: 'Invoices',
-  icon: 'file-invoice',
+  icon: 'file-invoice-dollar',
   path: '/invoices',
   page: 'Invoices'
 }, {

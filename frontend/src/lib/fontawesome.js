@@ -3,17 +3,19 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { 
     faTachometerAlt,
     faEnvelopeSquare,
-    faFileInvoice,
     faChartLine,
     faFileContract,
-    faCog
+    faCog,
+    faFileSignature,
+    faFileInvoiceDollar
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
     faTachometerAlt,
     faEnvelopeSquare,
-    faFileInvoice,
     faChartLine,
     faFileContract,
-    faCog
+    faCog,
+    faFileSignature,
+    faFileInvoiceDollar
 );
