@@ -12,18 +12,18 @@ const initialState = user ? {
   user: user
 } : {};
 
-export default function authentication(state = initialState, action) {
-  switch (action.type) {
+export default function authentication(state = initialState, { type, payload }) {
+  switch (type) {
     case LOGIN_REQUEST:
       return {
         loggingIn: true,
-        user: action.user
+        user: payload
       };
 
     case LOGIN_SUCCESS:
       return {
         loggedIn: true,
-        user: action.user
+        user: payload
       };
 
     case LOGIN_FAILURE:

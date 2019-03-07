@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 class Authentication {
   getUser() {
     return JSON.parse(localStorage.getItem('user'));
@@ -13,8 +15,18 @@ class Authentication {
     return {};
   }
 
-  login(_username, _password) {
+  async login(_username, _password) {
+    const _config = {
+      method: 'POST',
+      url: `${process.env.REACT_APP_BACKEND_API_URL}/authentication/login`,
+      responseType: 'json',
+      data: {
+        username: _username,
+        password: _password
+      }
+    };
 
+    const _response = await axios(_config);
   }
 
   logout() {
