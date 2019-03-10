@@ -7,4 +7,4 @@ class Authorization {
   }
 }
 
-export const authorization = new Authorization();
+export default new Authorization();
