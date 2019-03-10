@@ -4,7 +4,7 @@ import {
   LOGIN_FAILURE
 } from '../constants';
 
-import { authentication as authenticationService } from '../../services';
+import authenticationService from '../../services/rbac/authentication';
 
 const user = authenticationService.getUser();
 const initialState = user ? {

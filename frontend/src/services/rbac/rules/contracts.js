@@ -1,0 +1,1 @@
+export const STATIC_RULE_CONTRACTS_PAGE_VISIT = 'contracts-page:visit';

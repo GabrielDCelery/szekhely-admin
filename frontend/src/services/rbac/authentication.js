@@ -1,6 +1,10 @@
 import axios from 'axios';
 
 class Authentication {
+  isAuthenticated () {
+    
+  }
+
   getUser() {
     return JSON.parse(localStorage.getItem('user'));
   }
@@ -34,4 +38,4 @@ class Authentication {
   }
 }
 
-export const authentication = new Authentication();
+export default new Authentication();
