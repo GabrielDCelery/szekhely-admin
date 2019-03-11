@@ -7,12 +7,9 @@ import {
 import { authentication as authenticationService } from 'services';
 
 const user = authenticationService.getUser();
-const initialState = user ? {
-  loggedIn: true,
-  user: user
-} : {
-  loggedIn: false,
+const initialState = user ? { user: user } : {
   user: {
+    loggedIn: false,
     rules: []
   }
 };
@@ -21,14 +18,18 @@ export default function authentication(state = initialState, { type, payload }) 
   switch (type) {
     case LOGIN_REQUEST:
       return {
-        loggingIn: true,
-        user: payload
+        user: {
+          loggingIn: true,
+          rules: []
+        }
       };
 
     case LOGIN_SUCCESS:
       return {
-        loggedIn: true,
-        user: payload
+        user: {
+          loggedIn: true,
+          rules: payload
+        }
       };
 
     case LOGIN_FAILURE:

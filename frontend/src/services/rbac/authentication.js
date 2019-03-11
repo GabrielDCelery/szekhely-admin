@@ -6,7 +6,7 @@ class Authentication {
   }
 
   getUser() {
-    localStorage.setItem('user', JSON.stringify({ rules: ['contracts-page:visit', 'dashboard-page:visit']}))
+    localStorage.setItem('user', JSON.stringify({ loggedIn: true, rules: ['contracts-page:visit', 'dashboard-page:visit']}))
     return JSON.parse(localStorage.getItem('user'));
   }
 
