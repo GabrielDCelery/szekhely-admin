@@ -10,7 +10,12 @@ const user = authenticationService.getUser();
 const initialState = user ? {
   loggedIn: true,
   user: user
-} : {};
+} : {
+  loggedIn: false,
+  user: {
+    rules: []
+  }
+};
 
 export default function authentication(state = initialState, { type, payload }) {
   switch (type) {
