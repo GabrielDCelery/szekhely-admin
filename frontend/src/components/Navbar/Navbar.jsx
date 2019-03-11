@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { AuthorizedComponent } from 'components';
+
 import {
 	STATIC_RBAC_RULE_DASHBOARD_PAGE_VISIT,
-	STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT
+	STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT,
+	STATIC_RBAC_RULE_CONTRACTS_ACTION_SEARCH,
+	STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
 } from 'services';
+
 import './Navbar.css';
 import './NavbarItem.css';
 
@@ -24,10 +27,12 @@ const NAVBAR_ITEMS = [{
 	rbacRule: STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT,
 	children: [{
 		label: 'Search',
-		path: '/contracts/search'
+		path: '/contracts/search',
+		rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_SEARCH
 	}, {
 		label: 'Add New',
-		path: '/contracts/addnew'
+		path: '/contracts/addnew',
+		rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
 	}]
 }, {
 	label: 'Mails',
@@ -72,6 +77,7 @@ function NavbarItem(props) {
 	if (props.children) {
 		return (
 			<NavbarItemCollapsible
+				rbacRule={props.rbacRule}
 				id={props.id}
 				icon={props.icon}
 				label={props.label}
@@ -79,12 +85,14 @@ function NavbarItem(props) {
 				children={props.children}
 				bIsActive={props.bIsActive}
 				toggleActive={props.toggleActive}
+
 			/>
 		)
 	}
 
 	return (
 		<NavbarItemSimple
+			rbacRule={props.rbacRule}
 			id={props.id}
 			icon={props.icon}
 			label={props.label}
@@ -110,21 +118,16 @@ export class Navbar extends Component {
 		return (
 			<ul className="Navbar nav flex-column bg-gradient-primary">
 				{NAVBAR_ITEMS.map((navbarItem, index) => (
-					<AuthorizedComponent
+					<NavbarItem
 						key={'nav-item-' + index}
 						rbacRule={navbarItem.rbacRule}
-						renderAuthorizedComponent={() => (
-							<NavbarItem
-								id={index}
-								label={navbarItem.label}
-								icon={navbarItem.icon}
-								path={navbarItem.path}
-								children={navbarItem.children}
-								toggleActive={this.toggleActive}
-								bIsActive={this.state.activeIndex === index}
-							/>
-						)}
-						renderUnAuthorizedComponent={() => { }}
+						id={index}
+						label={navbarItem.label}
+						icon={navbarItem.icon}
+						path={navbarItem.path}
+						children={navbarItem.children}
+						toggleActive={this.toggleActive}
+						bIsActive={this.state.activeIndex === index}
 					/>
 				))}
 			</ul>
