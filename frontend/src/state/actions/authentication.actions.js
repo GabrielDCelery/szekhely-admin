@@ -3,7 +3,7 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE
 } from '../constants';
-import { authentication as authenticationService } from '../../services';
+import { authentication as authenticationService } from 'services';
 
 export async function login(_username, _password) {
   return async dispatch => {

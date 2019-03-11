@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
-export default class NavbarItemSimple extends React.Component {
+export default class NavbarItemSimple extends Component {
 	render() {
 		return (
 			<React.Fragment>

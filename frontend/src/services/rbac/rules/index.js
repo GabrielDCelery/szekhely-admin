@@ -1,2 +1,2 @@
-export * from './dashboard';
 export * from './contracts';
+export * from './dashboard';

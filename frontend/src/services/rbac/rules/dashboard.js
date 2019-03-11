@@ -1,1 +1,1 @@
-export const STATIC_RULE_DASHBOARD_PAGE_VISIT = 'dashboard-page:visit';
+export const STATIC_RBAC_RULE_DASHBOARD_PAGE_VISIT = 'dashboard-page:visit';

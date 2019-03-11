@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route/*, Link*/ } from 'react-router-dom';
 import { connect } from 'react-redux';
 import './lib';
 import './App.css';
-import { Navbar } from './components/Navbar';
+import { Navbar } from 'components';
 import {
   Dashboard,
   Contracts,
@@ -11,7 +11,7 @@ import {
   Invoices,
   Statistics,
   Settings
-} from './pages';
+} from 'pages';
 
 const Pages = {
   Dashboard,
