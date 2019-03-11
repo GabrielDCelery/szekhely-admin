@@ -1,10 +1,11 @@
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  USE_CACHED_LOGIN_DETAILS
 } from '../constants';
 import { authentication as authenticationService } from 'services';
-
+/*
 export async function login(_username, _password) {
   return async dispatch => {
     dispatch({
@@ -24,6 +25,21 @@ export async function login(_username, _password) {
     return dispatch({
       type: LOGIN_FAILURE,
       payload: null
+    });
+  };
+}
+*/
+export function useStoredLoginDetails() {
+  return dispatch => {
+    const cachedUser = authenticationService.getStoredLoginDetails();
+
+    if (!cachedUser) {
+      return;
+    }
+
+    dispatch({
+      type: USE_CACHED_LOGIN_DETAILS,
+      payload: cachedUser
     });
   };
 }

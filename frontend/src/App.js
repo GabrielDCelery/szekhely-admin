@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route/*, Link*/ } from 'react-router-dom';
 import './lib';
 import './App.css';
 import { Navbar } from 'components';
+import { useStoredLoginDetails } from 'state/actions';
 import {
   Dashboard,
   Contracts,
@@ -47,7 +49,11 @@ const ROUTER_CONFIGS = [{
   page: 'Settings'
 }];
 
-export class App extends Component {
+class App extends Component {
+  componentDidMount() {
+    return this.props.onUseStoredLoginDetails();
+  }
+
   render() {
     const renderedPages = ROUTER_CONFIGS.map((routerConfig, index) => (
       <Route key={'page-' + index} path={routerConfig.path} component={Pages[routerConfig.page]} />
@@ -69,3 +75,15 @@ export class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+  return state;
+}
+
+const mapActionsToProps = {
+  onUseStoredLoginDetails: useStoredLoginDetails
+}
+
+const connected = connect(mapStateToProps, mapActionsToProps)(App);
+
+export { connected as App };

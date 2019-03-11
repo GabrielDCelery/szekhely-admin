@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import { AuthorizedComponent } from 'components';
 
 export default class NavbarItemSimple extends Component {
 	render() {

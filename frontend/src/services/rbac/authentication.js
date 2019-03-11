@@ -1,17 +1,17 @@
 import axios from 'axios';
 
 class Authentication {
-  isAuthenticated () {
-    
+  isAuthenticated() {
+
   }
 
-  getUser() {
-    localStorage.setItem('user', JSON.stringify({ loggedIn: true, rules: ['contracts-page:visit', 'dashboard-page:visit']}))
+  getStoredLoginDetails() {
+    localStorage.setItem('user', JSON.stringify({ loggedIn: true, rules: ['contracts-page:visit', 'dashboard-page:visit'] }))
     return JSON.parse(localStorage.getItem('user'));
   }
 
   createAuthHeader() {
-    const _user = this.getUser();
+    const _user = this.getStoredLoginDetails();
 
     if (_user && _user.token) {
       return { 'Authorization': `Bearer ${_user.token}` };

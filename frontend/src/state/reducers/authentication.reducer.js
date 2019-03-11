@@ -1,13 +1,11 @@
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  USE_CACHED_LOGIN_DETAILS
 } from '../constants';
 
-import { authentication as authenticationService } from 'services';
-
-const user = authenticationService.getUser();
-const initialState = user ? { user: user } : {
+const initialState = {
   user: {
     loggedIn: false,
     rules: []
@@ -16,6 +14,10 @@ const initialState = user ? { user: user } : {
 
 export default function authentication(state = initialState, { type, payload }) {
   switch (type) {
+    case USE_CACHED_LOGIN_DETAILS:
+      return {
+        user: payload
+      };
     case LOGIN_REQUEST:
       return {
         user: {
