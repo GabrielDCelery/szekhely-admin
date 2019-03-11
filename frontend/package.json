@@ -20,9 +20,9 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "mock-backend": "node ./mock-backend",
+    "dev-mock-backend": "node ./dev/mock-backend",
     "start": "cross-env REACT_APP_BACKEND_API_URL='http://localhost:3001' react-scripts start",
-    "dev": "npm run mock-backend | npm run start",
+    "dev": "npm run dev-mock-backend | npm run start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
