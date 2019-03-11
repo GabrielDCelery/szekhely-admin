@@ -1,12 +1,7 @@
 import axios from 'axios';
 
 class Authentication {
-  isAuthenticated() {
-
-  }
-
   getStoredLoginCredentials() {
-    localStorage.setItem('user', JSON.stringify({ loggedIn: true, rules: ['contracts-page:visit', 'dashboard-page:visit'] }))
     return JSON.parse(localStorage.getItem('user'));
   }
 

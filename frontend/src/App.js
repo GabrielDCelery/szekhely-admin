@@ -1,3 +1,4 @@
+import _ from 'lodash-core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route/*, Link*/ } from 'react-router-dom';
@@ -51,6 +52,7 @@ const ROUTER_CONFIGS = [{
 
 class App extends Component {
   componentDidMount() {
+    localStorage.setItem('user', JSON.stringify({ isLoggedIn: true, rules: ['contracts-page:visit', 'dashboard-page:visit'] }))
     return this.props.onUseStoredLoginCredentials();
   }
 
@@ -77,7 +79,9 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return state;
+  return {
+    isUserLoggedIn: _.get(state, ['authentication', 'user', 'isLoggedIn'], false)
+  }
 }
 
 const mapActionsToProps = {

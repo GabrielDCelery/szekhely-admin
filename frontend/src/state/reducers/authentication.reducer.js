@@ -7,7 +7,7 @@ import {
 
 const initialState = {
   user: {
-    loggedIn: false,
+    isLoggedIn: false,
     rules: []
   }
 };
@@ -29,7 +29,7 @@ export default function authentication(state = initialState, { type, payload }) 
     case LOGIN_SUCCESS:
       return {
         user: {
-          loggedIn: true,
+          isLoggedIn: true,
           rules: payload
         }
       };
