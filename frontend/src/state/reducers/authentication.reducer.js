@@ -2,7 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  USE_CACHED_LOGIN_DETAILS
+  USE_STORED_LOGIN_CREDENTIALS
 } from '../constants';
 
 const initialState = {
@@ -14,7 +14,7 @@ const initialState = {
 
 export default function authentication(state = initialState, { type, payload }) {
   switch (type) {
-    case USE_CACHED_LOGIN_DETAILS:
+    case USE_STORED_LOGIN_CREDENTIALS:
       return {
         user: payload
       };

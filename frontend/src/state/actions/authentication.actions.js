@@ -2,7 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  USE_CACHED_LOGIN_DETAILS
+  USE_STORED_LOGIN_CREDENTIALS
 } from '../constants';
 import { authentication as authenticationService } from 'services';
 /*
@@ -29,16 +29,16 @@ export async function login(_username, _password) {
   };
 }
 */
-export function useStoredLoginDetails() {
+export function useStoredLoginCredentials() {
   return dispatch => {
-    const cachedUser = authenticationService.getStoredLoginDetails();
+    const cachedUser = authenticationService.getStoredLoginCredentials();
 
     if (!cachedUser) {
       return;
     }
 
     dispatch({
-      type: USE_CACHED_LOGIN_DETAILS,
+      type: USE_STORED_LOGIN_CREDENTIALS,
       payload: cachedUser
     });
   };

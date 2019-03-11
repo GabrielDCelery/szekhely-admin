@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route/*, Link*/ } from 'react-router-dom';
 import './lib';
 import './App.css';
 import { Navbar } from 'components';
-import { useStoredLoginDetails } from 'state/actions';
+import { useStoredLoginCredentials } from 'state/actions';
 import {
   Dashboard,
   Contracts,
@@ -51,7 +51,7 @@ const ROUTER_CONFIGS = [{
 
 class App extends Component {
   componentDidMount() {
-    return this.props.onUseStoredLoginDetails();
+    return this.props.onUseStoredLoginCredentials();
   }
 
   render() {
@@ -81,7 +81,7 @@ const mapStateToProps = state => {
 }
 
 const mapActionsToProps = {
-  onUseStoredLoginDetails: useStoredLoginDetails
+  onUseStoredLoginCredentials: useStoredLoginCredentials
 }
 
 const connected = connect(mapStateToProps, mapActionsToProps)(App);

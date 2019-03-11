@@ -5,13 +5,13 @@ class Authentication {
 
   }
 
-  getStoredLoginDetails() {
+  getStoredLoginCredentials() {
     localStorage.setItem('user', JSON.stringify({ loggedIn: true, rules: ['contracts-page:visit', 'dashboard-page:visit'] }))
     return JSON.parse(localStorage.getItem('user'));
   }
 
   createAuthHeader() {
-    const _user = this.getStoredLoginDetails();
+    const _user = this.getStoredLoginCredentials();
 
     if (_user && _user.token) {
       return { 'Authorization': `Bearer ${_user.token}` };
