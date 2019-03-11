@@ -48,7 +48,7 @@ const ROUTER_CONFIGS = [{
   page: 'Settings'
 }];
 
-class App extends Component {
+export class App extends Component {
   render() {
     const renderedPages = ROUTER_CONFIGS.map((routerConfig, index) => (
       <Route key={'page-' + index} path={routerConfig.path} component={Pages[routerConfig.page]} />
@@ -70,13 +70,3 @@ class App extends Component {
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    routerConfigs: state.router
-  }
-}
-
-const connected = connect(mapStateToProps)(App);
-
-export { connected as App };

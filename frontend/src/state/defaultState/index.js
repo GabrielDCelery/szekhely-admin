@@ -1,7 +1,3 @@
-import { routerDefaultState } from './router.default';
-
-const combinedDefaultState =  {
-  router: routerDefaultState
-};
+const combinedDefaultState =  {};
 
 export default combinedDefaultState;
