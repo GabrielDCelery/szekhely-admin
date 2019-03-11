@@ -29,15 +29,16 @@ export default class NavbarItemCollapsible extends Component {
 						<div className={"bg-white py-2 m-2 rounded nav-child-item-container " + (this.props.bIsActive ? '' : 'hide')}>
 							{this.props.children.map((child, index) => (
 								<AuthorizedComponent
+									key={index}
 									rbacRule={child.rbacRule}
 									renderAuthorizedComponent={() => (
-										<Link key={index} to={child.path} className="nav-child-item">
+										<Link to={child.path} className="nav-child-item">
 											{child.label}
 										</Link>
 									)}
-									renderUnAuthorizedComponent = {() => {}}
+									renderUnAuthorizedComponent={() => { }}
 								/>
-						))}
+							))}
 						</div>
 						<hr />
 					</li>

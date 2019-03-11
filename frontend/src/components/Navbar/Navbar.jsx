@@ -8,12 +8,10 @@ import {
 } from 'services';
 
 import './Navbar.css';
-import './NavbarItem.css';
 
-import NavbarItemCollapsible from './NavbarItemCollapsible';
-import NavbarItemSimple from './NavbarItemSimple';
+import { NavbarItem } from './NavbarItem'
 
-const NAVBAR_ITEMS = [{
+const NAVBAR_ITEM_CONFIGS = [{
 	label: 'Dashboard',
 	icon: 'tachometer-alt',
 	path: '/dashboard',
@@ -73,36 +71,6 @@ const NAVBAR_ITEMS = [{
 	page: 'Settings'
 }];
 
-function NavbarItem(props) {
-	if (props.children) {
-		return (
-			<NavbarItemCollapsible
-				rbacRule={props.rbacRule}
-				id={props.id}
-				icon={props.icon}
-				label={props.label}
-				path={props.path}
-				children={props.children}
-				bIsActive={props.bIsActive}
-				toggleActive={props.toggleActive}
-
-			/>
-		)
-	}
-
-	return (
-		<NavbarItemSimple
-			rbacRule={props.rbacRule}
-			id={props.id}
-			icon={props.icon}
-			label={props.label}
-			path={props.path}
-			bIsActive={props.bIsActive}
-			toggleActive={props.toggleActive}
-		/>
-	)
-}
-
 export class Navbar extends Component {
 	constructor(props) {
 		super(props);
@@ -117,15 +85,15 @@ export class Navbar extends Component {
 	render() {
 		return (
 			<ul className="Navbar nav flex-column bg-gradient-primary">
-				{NAVBAR_ITEMS.map((navbarItem, index) => (
+				{NAVBAR_ITEM_CONFIGS.map((navbarItemConfig, index) => (
 					<NavbarItem
 						key={'nav-item-' + index}
-						rbacRule={navbarItem.rbacRule}
+						rbacRule={navbarItemConfig.rbacRule}
 						id={index}
-						label={navbarItem.label}
-						icon={navbarItem.icon}
-						path={navbarItem.path}
-						children={navbarItem.children}
+						label={navbarItemConfig.label}
+						icon={navbarItemConfig.icon}
+						path={navbarItemConfig.path}
+						children={navbarItemConfig.children}
 						toggleActive={this.toggleActive}
 						bIsActive={this.state.activeIndex === index}
 					/>
