@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { AuthorizedComponent } from 'components';
 
 import {
 	STATIC_RBAC_RULE_DASHBOARD_PAGE_VISIT,
@@ -78,16 +79,21 @@ export class Navbar extends Component {
 		return (
 			<ul className="Navbar nav flex-column bg-gradient-primary">
 				{NAVBAR_ITEM_CONFIGS.map((navbarItemConfig, index) => (
-					<NavbarItem
-						key={'nav-item-' + index}
+					<AuthorizedComponent
+						key={'navbar-item-' + index}
 						rbacRule={navbarItemConfig.rbacRule}
-						id={index}
-						label={navbarItemConfig.label}
-						icon={navbarItemConfig.icon}
-						path={navbarItemConfig.path}
-						children={navbarItemConfig.children}
-						toggleActive={this.toggleActive}
-						bIsActive={this.state.activeIndex === index}
+						renderAuthorizedComponent={() => (
+							<NavbarItem
+								id={index}
+								label={navbarItemConfig.label}
+								icon={navbarItemConfig.icon}
+								path={navbarItemConfig.path}
+								children={navbarItemConfig.children}
+								toggleActive={this.toggleActive}
+								bIsActive={this.state.activeIndex === index}
+							/>
+						)}
+						renderUnAuthorizedComponent={() => { }}
 					/>
 				))}
 			</ul>

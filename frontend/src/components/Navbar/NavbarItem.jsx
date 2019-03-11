@@ -9,7 +9,6 @@ export function NavbarItem(props) {
   if (props.children) {
     return (
       <NavbarItemCollapsible
-        rbacRule={props.rbacRule}
         id={props.id}
         icon={props.icon}
         label={props.label}
@@ -23,7 +22,6 @@ export function NavbarItem(props) {
 
   return (
     <NavbarItemSimple
-      rbacRule={props.rbacRule}
       id={props.id}
       icon={props.icon}
       label={props.label}
