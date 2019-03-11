@@ -15,13 +15,11 @@ const NAVBAR_ITEM_CONFIGS = [{
 	label: 'Dashboard',
 	icon: 'tachometer-alt',
 	path: '/dashboard',
-	page: 'Dashboard',
 	rbacRule: STATIC_RBAC_RULE_DASHBOARD_PAGE_VISIT
 }, {
 	label: 'Contracts',
 	icon: 'file-signature',
 	path: '/contracts',
-	page: 'Contracts',
 	rbacRule: STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT,
 	children: [{
 		label: 'Search',
@@ -35,18 +33,15 @@ const NAVBAR_ITEM_CONFIGS = [{
 }, {
 	label: 'Mails',
 	icon: 'envelope',
-	path: '/mails',
-	page: 'Contracts',
+	path: '/mails'
 }, {
 	label: 'Inspections',
 	icon: 'file-contract',
-	path: '/documents',
-	page: 'Contracts',
+	path: '/documents'
 }, {
 	label: 'Messages',
 	icon: 'at',
 	path: '/messages',
-	page: 'Mailing',
 	children: [{
 		label: 'Search',
 		path: '/contracts/search'
@@ -57,18 +52,15 @@ const NAVBAR_ITEM_CONFIGS = [{
 }, {
 	label: 'Invoices',
 	icon: 'file-invoice-dollar',
-	path: '/invoices',
-	page: 'Invoices'
+	path: '/invoices'
 }, {
 	label: 'Statistics',
 	icon: 'chart-line',
-	path: '/statistics',
-	page: 'Statistics'
+	path: '/statistics'
 }, {
 	label: 'Settings',
 	icon: 'cog',
-	path: '/settings',
-	page: 'Settings'
+	path: '/settings'
 }];
 
 export class Navbar extends Component {

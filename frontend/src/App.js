@@ -22,9 +22,35 @@ const Pages = {
   Settings
 }
 
+const ROUTER_CONFIGS = [{
+  path: '/dashboard',
+  page: 'Dashboard'
+}, {
+  path: '/contracts',
+  page: 'Contracts'
+}, {
+  path: '/mails',
+  page: 'Contracts',
+}, {
+  path: '/documents',
+  page: 'Contracts',
+}, {
+  path: '/messages',
+  page: 'Mailing'
+}, {
+  path: '/invoices',
+  page: 'Invoices'
+}, {
+  path: '/statistics',
+  page: 'Statistics'
+}, {
+  path: '/settings',
+  page: 'Settings'
+}];
+
 class App extends Component {
   render() {
-    const renderedPages = this.props.routerConfigs.map((routerConfig, index) => (
+    const renderedPages = ROUTER_CONFIGS.map((routerConfig, index) => (
       <Route key={'page-' + index} path={routerConfig.path} component={Pages[routerConfig.page]} />
     ));
 
