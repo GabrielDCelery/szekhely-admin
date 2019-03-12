@@ -50,12 +50,7 @@ const ROUTER_CONFIGS = [{
   page: 'Settings'
 }];
 
-class App extends Component {
-  componentDidMount() {
-    localStorage.setItem('user', JSON.stringify({ isLoggedIn: true, rules: ['contracts-page:visit', 'dashboard-page:visit'] }))
-    return this.props.onUseStoredLoginCredentials();
-  }
-
+export class App extends Component {
   render() {
     const renderedPages = ROUTER_CONFIGS.map((routerConfig, index) => (
       <Route key={'page-' + index} path={routerConfig.path} component={Pages[routerConfig.page]} />
@@ -77,17 +72,3 @@ class App extends Component {
     );
   }
 }
-
-const mapStateToProps = state => {
-  return {
-    isUserLoggedIn: _.get(state, ['authentication', 'user', 'isLoggedIn'], false)
-  }
-}
-
-const mapActionsToProps = {
-  onUseStoredLoginCredentials: useStoredLoginCredentials
-}
-
-const connected = connect(mapStateToProps, mapActionsToProps)(App);
-
-export { connected as App };
