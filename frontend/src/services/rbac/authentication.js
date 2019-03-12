@@ -26,7 +26,7 @@ class Authentication {
       }
     };
 
-    const _response = await axios(_config);
+    return axios(_config);
   }
 
   logout() {

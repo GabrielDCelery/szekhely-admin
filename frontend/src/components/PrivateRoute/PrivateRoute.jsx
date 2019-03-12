@@ -6,9 +6,12 @@ import { connect } from 'react-redux';
 class PrivateRoute extends Component {
   render() {
     return (
-      <React.Fragment>
-        <Route path={this.props.to} component={this.props.Component} />
-      </React.Fragment>
+      <Route
+        path={this.props.path}
+        render={() => (
+          this.props.isUserLoggedIn ? (<this.props.Component />) : (<Redirect to={this.props.redirectTo} />)
+        )}
+      />
     );
   }
 }
@@ -22,5 +25,3 @@ const mapStateToProps = state => {
 const connected = connect(mapStateToProps)(PrivateRoute);
 
 export { connected as PrivateRoute };
-
-/*{this.props.isUserLoggedIn === true ? <this.props.Component /> : <Redirect to={this.props.redirectTo} />}*/

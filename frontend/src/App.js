@@ -1,11 +1,8 @@
-import _ from 'lodash-core';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { BrowserRouter as Router, Route/*, Link*/ } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch/*, Link*/ } from 'react-router-dom';
 import './lib';
 import './App.css';
-import { Navbar } from 'components';
-import { useStoredLoginCredentials } from 'state/actions';
+import { Navbar, PrivateRoute } from 'components';
 import {
   Dashboard,
   Contracts,
@@ -50,10 +47,12 @@ const ROUTER_CONFIGS = [{
   page: 'Settings'
 }];
 
+localStorage.setItem('user', JSON.stringify({"isLoggedIn":true,"rules":["contracts-page:visit","dashboard-page:visit"]}))
+
 export class App extends Component {
   render() {
     const renderedPages = ROUTER_CONFIGS.map((routerConfig, index) => (
-      <Route key={'page-' + index} path={routerConfig.path} component={Pages[routerConfig.page]} />
+      <PrivateRoute key={'page-' + index} path={routerConfig.path} Component={Pages[routerConfig.page]} redirectTo='/login' />
     ));
 
     return (
@@ -64,7 +63,9 @@ export class App extends Component {
               <Navbar />
             </div>
             <div className="w-90">
-              {renderedPages}
+              <Switch>
+                {renderedPages}
+              </Switch>
             </div>
           </div>
         </React.Fragment>
