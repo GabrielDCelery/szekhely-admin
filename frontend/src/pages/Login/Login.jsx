@@ -28,7 +28,7 @@ class Login extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 
-		return this.props.onLogin(this.state.loginEmail, this.state.loginPassword);
+		return this.props.onLogin(this.state.loginEmail, this.state.loginPassword, this.props.history);
 	}
 
 	render() {
@@ -63,6 +63,7 @@ class Login extends Component {
 														id="loginPassword"
 														placeholder="Password"
 														onChange={this.handleChange}
+														autoComplete="on"
 													/>
 												</div>
 											</div>
@@ -84,7 +85,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-  return state;
+	return state;
 }
 
 const mapActionsToProps = {

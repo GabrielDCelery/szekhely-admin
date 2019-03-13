@@ -48,8 +48,6 @@ const ROUTER_CONFIGS = [{
   page: 'Settings'
 }];
 
-localStorage.setItem('user', JSON.stringify({ "isLoggedIn": true, "rules": ["contracts-page:visit", "dashboard-page:visit"] }))
-
 export class App extends Component {
   render() {
     return (
