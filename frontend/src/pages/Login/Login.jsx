@@ -29,7 +29,7 @@ class Login extends Component {
 		event.preventDefault();
 
 		return this.props.onLogin(this.state.loginEmail, this.state.loginPassword, () => {
-			return this.props.history.push('/')
+			return this.props.history.push('/');
 		});
 	}
 
