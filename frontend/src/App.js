@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch/*, Link*/ } from 'react-router-dom';
 import './lib';
 import './App.css';
-import { Navbar, PrivateRoute } from 'components';
+import { PrivateRoute } from 'components';
 import {
   Dashboard,
   Contracts,
   Mailing,
   Invoices,
   Statistics,
-  Settings
+  Settings,
+  Login
 } from 'pages';
 
 const Pages = {
@@ -47,27 +48,24 @@ const ROUTER_CONFIGS = [{
   page: 'Settings'
 }];
 
-localStorage.setItem('user', JSON.stringify({"isLoggedIn":true,"rules":["contracts-page:visit","dashboard-page:visit"]}))
+localStorage.setItem('user', JSON.stringify({ "isLoggedIn": true, "rules": ["contracts-page:visit", "dashboard-page:visit"] }))
 
 export class App extends Component {
   render() {
-    const renderedPages = ROUTER_CONFIGS.map((routerConfig, index) => (
-      <PrivateRoute key={'page-' + index} path={routerConfig.path} Component={Pages[routerConfig.page]} redirectTo='/login' />
-    ));
-
     return (
       <Router>
         <React.Fragment>
-          <div className="d-flex flex-row">
-            <div className="w-10">
-              <Navbar />
-            </div>
-            <div className="w-90">
-              <Switch>
-                {renderedPages}
-              </Switch>
-            </div>
-          </div>
+          <Switch>
+            <Route path="/login" component={Login} />
+            {ROUTER_CONFIGS.map((routerConfig, index) => (
+              <PrivateRoute
+                key={'page-' + index}
+                path={routerConfig.path}
+                Component={Pages[routerConfig.page]}
+                redirectTo='/login'
+              />
+            ))}
+          </Switch>
         </React.Fragment>
       </Router>
     );
