@@ -5,7 +5,7 @@ import {
 } from '../constants';
 import { authentication as authenticationService } from 'services';
 
-export function login(_email, _password, _browserHistory) {
+export function login(_email, _password, _successCallback) {
   return async dispatch => {
     dispatch({
       type: LOGIN_REQUEST,
@@ -20,7 +20,7 @@ export function login(_email, _password, _browserHistory) {
         payload: _result.payload
       });
 
-      return _browserHistory.push('/');
+      return _successCallback();
     }
 
     return dispatch({
