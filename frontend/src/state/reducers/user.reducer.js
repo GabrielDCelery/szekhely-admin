@@ -1,41 +1,37 @@
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE,
-  USE_STORED_LOGIN_CREDENTIALS
+  LOGIN_FAILURE
 } from '../constants';
 
 const initialState = {
-  user: {
-    isLoggedIn: false,
-    rules: []
-  }
+  email: null,
+  isLoggingIn: false,
+  isLoggedIn: false,
+  rules: [],
+  jwt: null
 };
 
 export default function authentication(state = initialState, { type, payload }) {
   switch (type) {
-    case USE_STORED_LOGIN_CREDENTIALS:
-      return {
-        user: payload
-      };
     case LOGIN_REQUEST:
       return {
-        user: {
-          loggingIn: true,
-          rules: []
-        }
+        ...state,
+        ...{ isLoggingIn: true }
       };
 
     case LOGIN_SUCCESS:
       return {
-        user: {
-          isLoggedIn: true,
-          rules: payload
-        }
+        ...state,
+        ...payload,
+        ...{ isLoggingIn: false, isLoggedIn: true }
       };
 
     case LOGIN_FAILURE:
-      return {};
+      return {
+        ...state,
+        ...{ isLoggingIn: false }
+      };
 
     default:
       return state

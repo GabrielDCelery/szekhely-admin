@@ -9,7 +9,8 @@ import {
     faFileSignature,
     faFileInvoiceDollar,
     faEnvelope,
-    faAt
+    faAt,
+    faUserCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -21,5 +22,6 @@ library.add(
     faFileSignature,
     faFileInvoiceDollar,
     faEnvelope,
-    faAt
+    faAt,
+    faUserCircle
 );

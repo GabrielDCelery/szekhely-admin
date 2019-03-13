@@ -1,7 +1,7 @@
-import authentication from './authentication.default';
+import user from './user.default';
 
 const combinedDefaultState =  {
-  authentication: authentication
+  user: user
 };
 
 export default combinedDefaultState;

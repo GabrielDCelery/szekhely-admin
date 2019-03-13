@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch/*, Link*/ } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect/*, Link*/ } from 'react-router-dom';
 import './lib';
 import './App.css';
 import { PrivateRoute } from 'components';
@@ -56,6 +56,7 @@ export class App extends Component {
       <Router>
         <React.Fragment>
           <Switch>
+            <Redirect exact from='/' to='/dashboard' />
             <Route path="/login" component={Login} />
             {ROUTER_CONFIGS.map((routerConfig, index) => (
               <PrivateRoute

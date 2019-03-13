@@ -18,7 +18,7 @@ class PrivateRoute extends Component {
 
 const mapStateToProps = state => {
   return {
-    isUserLoggedIn: _.get(state, ['authentication', 'user', 'isLoggedIn'], false)
+    isUserLoggedIn: _.get(state, ['user', 'isLoggedIn'], false)
   }
 }
 

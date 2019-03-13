@@ -18,7 +18,7 @@ class AuthorizedComponent extends Component {
 
 const mapStateToProps = state => {
   return {
-    userAuthorizedRules: _.get(state, ['authentication', 'user', 'rules'], [])
+    userAuthorizedRules: _.get(state, ['user', 'rules'], [])
   }
 }
 

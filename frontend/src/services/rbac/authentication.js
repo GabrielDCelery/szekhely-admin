@@ -15,7 +15,8 @@ class Authentication {
     return {};
   }
 
-  async login(_username, _password) {
+  async login(_email, _password) {
+    /*
     const _config = {
       method: 'POST',
       url: `${process.env.REACT_APP_BACKEND_API_URL}/authentication/login`,
@@ -27,6 +28,19 @@ class Authentication {
     };
 
     return axios(_config);
+    */
+
+    return Promise.resolve()
+      .then(() => {
+        return {
+          success: true,
+          payload: {
+            email: _email,
+            rules: ['contracts-page:visit', 'dashboard-page:visit'],
+            jwt: null
+          }
+        }
+      });
   }
 
   logout() {
