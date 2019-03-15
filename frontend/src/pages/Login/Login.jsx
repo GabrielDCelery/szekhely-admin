@@ -1,9 +1,11 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import './Login.css';
 import { login } from 'state/actions';
 import { withRouter } from 'react-router';
+import { AjaxProcessButton } from 'components';
 
 class Login extends Component {
 	constructor(props) {
@@ -70,7 +72,12 @@ class Login extends Component {
 													/>
 												</div>
 											</div>
-											<button type="submit" className="btn btn-block btn-primary">Login</button>
+											<AjaxProcessButton
+												type="submit"
+												className="btn btn-block btn-primary"
+												bIsProcessing={this.props.isUserLoggingIn}
+												label='Login'
+											/>
 											<hr />
 											<div className="text-center">
 												<a href="">Forgot password?</a>
@@ -88,7 +95,9 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-	return state;
+	return {
+		isUserLoggingIn: _.get(state, ['user', 'isLoggingIn'], false)
+	}
 }
 
 const mapActionsToProps = {

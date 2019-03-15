@@ -10,7 +10,8 @@ import {
     faFileInvoiceDollar,
     faEnvelope,
     faAt,
-    faUserCircle
+    faUserCircle,
+    faSpinner
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -23,5 +24,6 @@ library.add(
     faFileInvoiceDollar,
     faEnvelope,
     faAt,
-    faUserCircle
+    faUserCircle,
+    faSpinner
 );
