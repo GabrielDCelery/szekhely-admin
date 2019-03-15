@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import './Login.css';
 import { login } from 'state/actions';
+import { withRouter } from 'react-router';
 
 class Login extends Component {
 	constructor(props) {
@@ -94,6 +95,6 @@ const mapActionsToProps = {
 	onLogin: login
 };
 
-const connected = connect(mapStateToProps, mapActionsToProps)(Login);
+const connected = withRouter(connect(mapStateToProps, mapActionsToProps)(Login));
 
 export { connected as Login };
