@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-class PrivateRoute extends Component {
+class AuthenticationRoute extends Component {
   render() {
     return (
       <Route
         path={this.props.path}
         render={() => (
-          this.props.isUserLoggedIn ? (<this.props.Component />) : (<Redirect to={this.props.redirectUnauthorizedUserTo} />)
+          this.props.isUserLoggedIn ? (<Redirect to={this.props.redirectAuthenticatedUserTo} />) : (<this.props.Component />)
         )}
       />
     );
@@ -22,6 +22,6 @@ const mapStateToProps = state => {
   }
 }
 
-const connected = connect(mapStateToProps)(PrivateRoute);
+const connected = connect(mapStateToProps)(AuthenticationRoute);
 
-export { connected as PrivateRoute };
+export { connected as AuthenticationRoute };

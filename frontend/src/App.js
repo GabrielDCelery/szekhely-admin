@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect/*, Link*/ } from 'react-router-dom';
 import './lib';
 import './App.css';
-import { PrivateRoute } from 'components';
+import { AuthenticationRoute, PrivateRoute } from 'components';
 import {
   Dashboard,
   Contracts,
@@ -55,13 +55,17 @@ export class App extends Component {
         <React.Fragment>
           <Switch>
             <Redirect exact from='/' to='/dashboard' />
-            <Route path="/login" component={Login} />
+            <AuthenticationRoute
+              path='/login'
+              Component={Login}
+              redirectAuthenticatedUserTo='/'
+            />
             {ROUTER_CONFIGS.map((routerConfig, index) => (
               <PrivateRoute
                 key={'page-' + index}
                 path={routerConfig.path}
                 Component={Pages[routerConfig.page]}
-                redirectTo='/login'
+                redirectUnauthorizedUserTo='/login'
               />
             ))}
           </Switch>
