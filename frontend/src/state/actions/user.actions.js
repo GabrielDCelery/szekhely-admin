@@ -7,25 +7,17 @@ import { authentication as authenticationService } from 'services';
 
 export function login(_email, _password, _successCallback) {
   return async dispatch => {
-    dispatch({
-      type: LOGIN_REQUEST,
-      payload: null
-    });
+    dispatch({ type: LOGIN_REQUEST, payload: null });
 
     const _result = await authenticationService.login(_email, _password);
 
-    if (_result.success === true) {
-      dispatch({
-        type: LOGIN_SUCCESS,
-        payload: _result.payload
-      });
-
-      return _successCallback();
+    if (!_result.success) {
+      return dispatch({ type: LOGIN_FAILURE, payload: null });
     }
 
-    return dispatch({
-      type: LOGIN_FAILURE,
-      payload: null
-    });
+    authenticationService.setStoredLoginCredentials(_result.payload);
+    dispatch({ type: LOGIN_SUCCESS, payload: _result.payload });
+
+    return _successCallback();
   };
 }
