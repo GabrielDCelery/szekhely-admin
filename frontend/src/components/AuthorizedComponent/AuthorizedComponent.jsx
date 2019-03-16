@@ -5,7 +5,7 @@ import { authorization as authorizationService } from 'services';
 
 class AuthorizedComponent extends Component {
   render() {
-    const bIsAuthorized = authorizationService.isAuthorized(this.props.userAuthorizedRules, this.props.rbacRule);
+    const bIsAuthorized = _.isNil(this.props.rbacRule) || authorizationService.isAuthorized(this.props.userAuthorizedRules, this.props.rbacRule);
     const renderedComponent = bIsAuthorized === true ? this.props.renderAuthorizedComponent() : this.props.renderUnAuthorizedComponent();
 
     return (

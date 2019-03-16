@@ -5,7 +5,9 @@ import {
 	STATIC_RBAC_RULE_DASHBOARD_PAGE_VISIT,
 	STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT,
 	STATIC_RBAC_RULE_CONTRACTS_ACTION_SEARCH,
-	STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
+	STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW,
+	STATIC_RBAC_RULE_MAILS_PAGE_VISIT,
+	STATIC_RBAC_RULE_INSPECTIONS_PAGE_VISIT
 } from 'services';
 
 import './Navbar.css';
@@ -13,6 +15,20 @@ import './Navbar.css';
 import { NavbarItem } from './NavbarItem'
 
 const NAVBAR_ITEM_CONFIGS = [{
+	label: 'User',
+	icon: 'user-circle',
+	path: '',
+	rbacRule: null,
+	children: [{
+		label: 'Settings',
+		path: '/settings',
+		rbacRule: null
+	}, {
+		label: 'Logout',
+		path: '/logout',
+		rbacRule: null
+	}]
+}, {
 	label: 'Dashboard',
 	icon: 'tachometer-alt',
 	path: '/dashboard',
@@ -34,11 +50,13 @@ const NAVBAR_ITEM_CONFIGS = [{
 }, {
 	label: 'Mails',
 	icon: 'envelope',
-	path: '/mails'
+	path: '/mails',
+	rbacRule: STATIC_RBAC_RULE_MAILS_PAGE_VISIT
 }, {
 	label: 'Inspections',
 	icon: 'file-contract',
-	path: '/documents'
+	path: '/documents',
+	rbacRule: STATIC_RBAC_RULE_INSPECTIONS_PAGE_VISIT
 }, {
 	label: 'Messages',
 	icon: 'at',
@@ -58,10 +76,6 @@ const NAVBAR_ITEM_CONFIGS = [{
 	label: 'Statistics',
 	icon: 'chart-line',
 	path: '/statistics'
-}, {
-	label: 'Settings',
-	icon: 'cog',
-	path: '/settings'
 }];
 
 export class Navbar extends Component {

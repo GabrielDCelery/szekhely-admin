@@ -5,3 +5,4 @@ export * from './Mailing';
 export * from './Settings';
 export * from './Statistics';
 export * from './Login';
+export * from './Logout';

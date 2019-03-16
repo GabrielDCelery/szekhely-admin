@@ -1,7 +1,8 @@
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  LOGOUT
 } from '../constants';
 
 const initialState = {
@@ -32,6 +33,11 @@ export default function authentication(state = initialState, { type, payload }) 
         ...state,
         ...{ isLoggingIn: false }
       };
+
+    case LOGOUT:
+      return {
+        ...{ initialState }
+      }
 
     default:
       return state

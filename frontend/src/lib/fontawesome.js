@@ -11,7 +11,8 @@ import {
     faEnvelope,
     faAt,
     faUserCircle,
-    faSpinner
+    faSpinner,
+    faSignOutAlt
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -25,5 +26,6 @@ library.add(
     faEnvelope,
     faAt,
     faUserCircle,
-    faSpinner
+    faSpinner,
+    faSignOutAlt
 );

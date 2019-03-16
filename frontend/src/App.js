@@ -10,7 +10,8 @@ import {
   Invoices,
   Statistics,
   Settings,
-  Login
+  Login,
+  Logout
 } from 'pages';
 
 const Pages = {
@@ -19,7 +20,9 @@ const Pages = {
   Mailing,
   Invoices,
   Statistics,
-  Settings
+  Settings,
+  Login,
+  Logout
 }
 
 const ROUTER_CONFIGS = [{
@@ -46,6 +49,9 @@ const ROUTER_CONFIGS = [{
 }, {
   path: '/settings',
   page: 'Settings'
+}, {
+  path: '/logout',
+  page: 'Logout'
 }];
 
 export class App extends Component {

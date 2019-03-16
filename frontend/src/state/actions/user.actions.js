@@ -1,7 +1,8 @@
 import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
-  LOGIN_FAILURE
+  LOGIN_FAILURE,
+  LOGOUT
 } from '../constants';
 import { authentication as authenticationService } from 'services';
 
@@ -20,4 +21,13 @@ export function login(_email, _password, _successCallback) {
 
     return _successCallback();
   };
+}
+
+export function logout(_successCallback) {
+  return dispatch => {
+    authenticationService.logout();
+    dispatch({ type: LOGOUT, payload: null });
+
+    return _successCallback();
+  }
 }
