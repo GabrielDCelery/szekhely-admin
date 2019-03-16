@@ -9,6 +9,7 @@ const initialState = {
   email: null,
   isLoggingIn: false,
   isLoggedIn: false,
+  hasLoginFailed: false,
   rules: [],
   jwt: null
 };
@@ -18,20 +19,20 @@ export default function authentication(state = initialState, { type, payload }) 
     case LOGIN_REQUEST:
       return {
         ...state,
-        ...{ isLoggingIn: true }
+        ...{ isLoggingIn: true, hasLoginFailed: false }
       };
 
     case LOGIN_SUCCESS:
       return {
         ...state,
         ...payload,
-        ...{ isLoggingIn: false, isLoggedIn: true }
+        ...{ isLoggingIn: false, isLoggedIn: true, hasLoginFailed: false }
       };
 
     case LOGIN_FAILURE:
       return {
         ...state,
-        ...{ isLoggingIn: false }
+        ...{ isLoggingIn: false, hasLoginFailed: true }
       };
 
     case LOGOUT:

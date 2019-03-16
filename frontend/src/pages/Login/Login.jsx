@@ -43,7 +43,7 @@ class Login extends Component {
 				{this.props.isUserLoggedIn ? (<Redirect to='/' />) : (
 					<React.Fragment>
 						<div className="Login d-flex justify-content-center align-items-center w-100">
-							<div className="card bg-light">
+							<div className="card bg-light w-25">
 								<div className="card-header text-center">
 									<FontAwesomeIcon className="fas fa-8x" icon='user-circle' />
 								</div>
@@ -71,10 +71,15 @@ class Login extends Component {
 																id="loginPassword"
 																placeholder="Password"
 																onChange={this.handleChange}
-																autoComplete="on"
+																autoComplete="on	"
 															/>
 														</div>
 													</div>
+													{this.props.hasUserLoginFailed ? (
+														<div className="alert alert-danger">
+															Sorry, but this email and password combination does not appear to be in our database!
+														</div>
+													) : null}
 													<AjaxProcessButton
 														type="submit"
 														className="btn btn-block btn-primary"
@@ -101,7 +106,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
 	return {
-		isUserLoggingIn: _.get(state, ['user', 'isLoggingIn'], false)
+		isUserLoggingIn: _.get(state, ['user', 'isLoggingIn'], false),
+		hasUserLoginFailed: _.get(state, ['user', 'hasLoginFailed'], false)
 	}
 }
 

@@ -31,7 +31,7 @@ const authenticate = (_email, _password) => {
 }
 
 router.post('/login', async (_req, _res) => {
-  await timeout(2000);
+  await timeout(1000);
 
   return _res.send(authenticate(_req['body']['email'], _req['body']['password']));
 });

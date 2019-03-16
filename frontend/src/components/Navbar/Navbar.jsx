@@ -34,17 +34,17 @@ const NAVBAR_ITEM_CONFIGS = [{
 	path: '/dashboard',
 	rbacRule: STATIC_RBAC_RULE_DASHBOARD_PAGE_VISIT
 }, {
-	label: 'Contracts',
-	icon: 'file-signature',
-	path: '/contracts',
+	label: 'Companies',
+	icon: 'building',
+	path: '/companies',
 	rbacRule: STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT,
 	children: [{
-		label: 'Search',
-		path: '/contracts/search',
+		label: 'Contracts',
+		path: '/comapnies/contracts',
 		rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_SEARCH
 	}, {
-		label: 'Add New',
-		path: '/contracts/addnew',
+		label: 'Mails',
+		path: '/comapnies/mails',
 		rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
 	}]
 }, {
