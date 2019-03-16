@@ -56,20 +56,22 @@ export class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <AuthenticatedComponent Component={Navbar} />
-          <Switch>
-            <Redirect exact from='/' to='/dashboard' />
-            <Route path='/login' component={Login}/>
-            <Route path='/logout' component={Logout} />
-            {ROUTER_CONFIGS.map((routerConfig, index) => (
-              <AuthenticatedRoute
-                key={'page-' + index}
-                path={routerConfig.path}
-                Component={Pages[routerConfig.page]}
-                redirectUnauthorizedUserTo='/login'
-              />
-            ))}
-          </Switch>
+          <div className="d-flex">
+            <AuthenticatedComponent Component={Navbar} />
+            <Switch>
+              <Redirect exact from='/' to='/dashboard' />
+              <Route path='/login' component={Login} />
+              <Route path='/logout' component={Logout} />
+              {ROUTER_CONFIGS.map((routerConfig, index) => (
+                <AuthenticatedRoute
+                  key={'page-' + index}
+                  path={routerConfig.path}
+                  Component={Pages[routerConfig.page]}
+                  redirectUnauthorizedUserTo='/login'
+                />
+              ))}
+            </Switch>
+          </div>
         </React.Fragment>
       </Router>
     );

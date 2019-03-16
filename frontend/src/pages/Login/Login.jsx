@@ -42,7 +42,7 @@ class Login extends Component {
 			<React.Fragment>
 				{this.props.isUserLoggedIn ? (<Redirect to='/' />) : (
 					<React.Fragment>
-						<div className="Login d-flex justify-content-center align-items-center">
+						<div className="Login d-flex justify-content-center align-items-center w-100">
 							<div className="card bg-light">
 								<div className="card-header text-center">
 									<FontAwesomeIcon className="fas fa-8x" icon='user-circle' />
