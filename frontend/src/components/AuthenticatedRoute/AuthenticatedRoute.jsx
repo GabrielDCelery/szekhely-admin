@@ -3,13 +3,13 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-class AuthenticationRoute extends Component {
+class AuthenticatedRoute extends Component {
   render() {
     return (
       <Route
         path={this.props.path}
         render={() => (
-          this.props.isUserLoggedIn ? (<Redirect to={this.props.redirectAuthenticatedUserTo} />) : (<this.props.Component />)
+          this.props.isUserLoggedIn ? (<this.props.Component />) : (<Redirect to={this.props.redirectUnauthorizedUserTo} />)
         )}
       />
     );
@@ -22,6 +22,6 @@ const mapStateToProps = state => {
   }
 }
 
-const connected = connect(mapStateToProps)(AuthenticationRoute);
+const connected = connect(mapStateToProps)(AuthenticatedRoute);
 
-export { connected as AuthenticationRoute };
+export { connected as AuthenticatedRoute };

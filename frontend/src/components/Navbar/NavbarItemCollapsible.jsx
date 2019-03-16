@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { AuthorizedComponent } from 'components';
-
 import './NavbarItemCollapsible.css';
 
 export default class NavbarItemCollapsible extends Component {
@@ -13,7 +12,7 @@ export default class NavbarItemCollapsible extends Component {
 					href='#'
 					className="nav-link"
 					onClick={() => {
-						this.props.toggleActive(this.props.bIsActive === true ? null : this.props.id);
+						this.props.toggleActive(this.props.id);
 					}}
 				>
 					<div>
@@ -23,20 +22,22 @@ export default class NavbarItemCollapsible extends Component {
 						{this.props.label}
 					</div>
 				</a>
-				<div className={"bg-white py-2 m-2 rounded nav-child-item-container " + (this.props.bIsActive ? '' : 'hide')}>
-					{this.props.children.map((child, index) => (
-						<AuthorizedComponent
-							key={index}
-							rbacRule={child.rbacRule}
-							renderAuthorizedComponent={() => (
-								<Link to={child.path} className="nav-child-item">
-									{child.label}
-								</Link>
-							)}
-							renderUnAuthorizedComponent={() => { }}
-						/>
-					))}
-				</div>
+				{this.props.bIsActive ? (
+					<div className="bg-white py-2 m-2 rounded nav-child-item-container">
+						{this.props.children.map((child, index) => (
+							<AuthorizedComponent
+								key={index}
+								rbacRule={child.rbacRule}
+								renderAuthorizedComponent={() => (
+									<Link to={child.path} className="nav-child-item">
+										{child.label}
+									</Link>
+								)}
+								renderUnAuthorizedComponent={() => { }}
+							/>
+						))}
+					</div>
+				) : null}
 				<hr />
 			</li>
 		);

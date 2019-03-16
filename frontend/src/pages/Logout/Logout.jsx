@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import { logout } from 'state/actions';
 import { connect } from 'react-redux';

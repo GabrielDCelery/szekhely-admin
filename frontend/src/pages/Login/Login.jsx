@@ -6,6 +6,7 @@ import './Login.css';
 import { login } from 'state/actions';
 import { withRouter } from 'react-router';
 import { AjaxProcessButton } from 'components';
+import { Route, Redirect } from 'react-router-dom';
 
 class Login extends Component {
 	constructor(props) {
@@ -39,56 +40,60 @@ class Login extends Component {
 	render() {
 		return (
 			<React.Fragment>
-				<div className="Login d-flex justify-content-center align-items-center">
-					<div className="card bg-light">
-						<div className="card-header text-center">
-							<FontAwesomeIcon className="fas fa-8x" icon='user-circle' />
-						</div>
-						<div className="card-body">
-							<div className="container rounded">
-								<div className="row justify-content-center">
-									<div className="col">
-										<form onSubmit={this.handleSubmit}>
-											<div className="form-group row">
-												<div className="col">
-													<input
-														type="email"
-														className="form-control"
-														id="loginEmail"
-														placeholder="Enter email"
-														onChange={this.handleChange}
+				{this.props.isUserLoggedIn ? (<Redirect to='/' />) : (
+					<React.Fragment>
+						<div className="Login d-flex justify-content-center align-items-center">
+							<div className="card bg-light">
+								<div className="card-header text-center">
+									<FontAwesomeIcon className="fas fa-8x" icon='user-circle' />
+								</div>
+								<div className="card-body">
+									<div className="container rounded">
+										<div className="row justify-content-center">
+											<div className="col">
+												<form onSubmit={this.handleSubmit}>
+													<div className="form-group row">
+														<div className="col">
+															<input
+																type="email"
+																className="form-control"
+																id="loginEmail"
+																placeholder="Enter email"
+																onChange={this.handleChange}
+															/>
+														</div>
+													</div>
+													<div className="form-group row">
+														<div className="col">
+															<input
+																type="password"
+																className="form-control"
+																id="loginPassword"
+																placeholder="Password"
+																onChange={this.handleChange}
+																autoComplete="on"
+															/>
+														</div>
+													</div>
+													<AjaxProcessButton
+														type="submit"
+														className="btn btn-block btn-primary"
+														bIsProcessing={this.props.isUserLoggingIn}
+														label='Login'
 													/>
-												</div>
+													<hr />
+													<div className="text-center">
+														<a href="">Forgot password?</a>
+													</div>
+												</form>
 											</div>
-											<div className="form-group row">
-												<div className="col">
-													<input
-														type="password"
-														className="form-control"
-														id="loginPassword"
-														placeholder="Password"
-														onChange={this.handleChange}
-														autoComplete="on"
-													/>
-												</div>
-											</div>
-											<AjaxProcessButton
-												type="submit"
-												className="btn btn-block btn-primary"
-												bIsProcessing={this.props.isUserLoggingIn}
-												label='Login'
-											/>
-											<hr />
-											<div className="text-center">
-												<a href="">Forgot password?</a>
-											</div>
-										</form>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
+					</React.Fragment>
+				)}
 			</React.Fragment>
 		);
 	}

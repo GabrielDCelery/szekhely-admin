@@ -91,26 +91,28 @@ export class Navbar extends Component {
 
 	render() {
 		return (
-			<ul className="Navbar nav flex-column bg-gradient-primary">
-				{NAVBAR_ITEM_CONFIGS.map((navbarItemConfig, index) => (
-					<AuthorizedComponent
-						key={'navbar-item-' + index}
-						rbacRule={navbarItemConfig.rbacRule}
-						renderAuthorizedComponent={() => (
-							<NavbarItem
-								id={index}
-								label={navbarItemConfig.label}
-								icon={navbarItemConfig.icon}
-								path={navbarItemConfig.path}
-								children={navbarItemConfig.children}
-								toggleActive={this.toggleActive}
-								bIsActive={this.state.activeIndex === index}
-							/>
-						)}
-						renderUnAuthorizedComponent={() => { }}
-					/>
-				))}
-			</ul>
+			<div className="w-10">
+				<ul className="Navbar nav flex-column bg-gradient-primary">
+					{NAVBAR_ITEM_CONFIGS.map((navbarItemConfig, index) => (
+						<AuthorizedComponent
+							key={'navbar-item-' + index}
+							rbacRule={navbarItemConfig.rbacRule}
+							renderAuthorizedComponent={() => (
+								<NavbarItem
+									id={index}
+									label={navbarItemConfig.label}
+									icon={navbarItemConfig.icon}
+									path={navbarItemConfig.path}
+									children={navbarItemConfig.children}
+									toggleActive={this.toggleActive}
+									bIsActive={this.state.activeIndex === index}
+								/>
+							)}
+							renderUnAuthorizedComponent={() => { }}
+						/>
+					))}
+				</ul>
+			</div>
 		);
 	}
 }

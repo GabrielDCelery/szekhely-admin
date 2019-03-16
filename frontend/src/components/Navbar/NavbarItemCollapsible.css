@@ -1,11 +1,3 @@
-.NavbarItemCollapsible .nav-child-item-container {
-  display: block;
-}
-
-.NavbarItemCollapsible .nav-child-item-container.hide {
-  display: none;
-}
-
 .NavbarItemCollapsible .nav-child-item {
   padding: .5rem 1rem;
   margin: 0 .5rem;

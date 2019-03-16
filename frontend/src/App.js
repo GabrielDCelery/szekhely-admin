@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect/*, Link*/ } from 'react-router-dom';
 import './lib';
 import './App.css';
-import { AuthenticationRoute, PrivateRoute } from 'components';
+import { AuthenticatedComponent, AuthenticatedRoute, Navbar } from 'components';
 import {
   Dashboard,
   Contracts,
@@ -49,9 +49,6 @@ const ROUTER_CONFIGS = [{
 }, {
   path: '/settings',
   page: 'Settings'
-}, {
-  path: '/logout',
-  page: 'Logout'
 }];
 
 export class App extends Component {
@@ -59,15 +56,13 @@ export class App extends Component {
     return (
       <Router>
         <React.Fragment>
+          <AuthenticatedComponent Component={Navbar} />
           <Switch>
             <Redirect exact from='/' to='/dashboard' />
-            <AuthenticationRoute
-              path='/login'
-              Component={Login}
-              redirectAuthenticatedUserTo='/'
-            />
+            <Route path='/login' component={Login}/>
+            <Route path='/logout' component={Logout} />
             {ROUTER_CONFIGS.map((routerConfig, index) => (
-              <PrivateRoute
+              <AuthenticatedRoute
                 key={'page-' + index}
                 path={routerConfig.path}
                 Component={Pages[routerConfig.page]}

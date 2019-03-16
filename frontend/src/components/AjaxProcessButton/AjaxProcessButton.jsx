@@ -1,4 +1,3 @@
-import _ from 'lodash-core';
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
