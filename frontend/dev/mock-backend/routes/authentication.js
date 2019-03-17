@@ -13,6 +13,7 @@ const authenticate = (_email, _password) => {
         email: _email,
         rules: [
           'contracts-page:visit',
+          'contracts-action:addnew',
           'dashboard-page:visit',
           'mails-page:visit',
           'inspections-page:visit'

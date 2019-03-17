@@ -3,7 +3,8 @@ import {
   STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT,
   STATIC_RBAC_RULE_MAILS_PAGE_VISIT,
   STATIC_RBAC_RULE_INSPECTIONS_PAGE_VISIT,
-  STATIC_RBAC_RULE_INVOICES_PAGE_VISIT
+  STATIC_RBAC_RULE_INVOICES_PAGE_VISIT,
+  STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
 } from 'services';
 
 export default {
@@ -36,6 +37,10 @@ export default {
     path: '/companies',
     component: 'Companies',
     children: [{
+      label: 'Add New',
+      path: '/companies/addew',
+      rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
+    }, {
       label: 'Contracts',
       path: '/companies/contracts',
       rbacRule: STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT
