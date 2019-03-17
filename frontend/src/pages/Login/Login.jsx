@@ -6,7 +6,7 @@ import './Login.css';
 import { login } from 'state/actions';
 import { withRouter } from 'react-router';
 import { AjaxProcessButton } from 'components';
-import { Route, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class Login extends Component {
 	constructor(props) {

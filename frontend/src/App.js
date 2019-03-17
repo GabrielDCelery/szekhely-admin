@@ -13,6 +13,7 @@ import {
   Login,
   Logout
 } from 'pages';
+import {router} from 'services';
 
 const Pages = {
   Dashboard,
@@ -25,31 +26,7 @@ const Pages = {
   Logout
 }
 
-const ROUTER_CONFIGS = [{
-  path: '/dashboard',
-  page: 'Dashboard'
-}, {
-  path: '/contracts',
-  page: 'Contracts'
-}, {
-  path: '/mails',
-  page: 'Contracts',
-}, {
-  path: '/documents',
-  page: 'Contracts',
-}, {
-  path: '/messages',
-  page: 'Mailing'
-}, {
-  path: '/invoices',
-  page: 'Invoices'
-}, {
-  path: '/statistics',
-  page: 'Statistics'
-}, {
-  path: '/settings',
-  page: 'Settings'
-}];
+const ROUTER_CONFIG = router.createRoutesConfig();
 
 export class App extends Component {
   render() {
@@ -62,11 +39,11 @@ export class App extends Component {
               <Redirect exact from='/' to='/dashboard' />
               <Route path='/login' component={Login} />
               <Route path='/logout' component={Logout} />
-              {ROUTER_CONFIGS.map((routerConfig, index) => (
+              {ROUTER_CONFIG.map((routerConfig, index) => (
                 <AuthenticatedRoute
                   key={'page-' + index}
                   path={routerConfig.path}
-                  Component={Pages[routerConfig.page]}
+                  Component={Pages[routerConfig.component]}
                   redirectUnauthorizedUserTo='/login'
                 />
               ))}
