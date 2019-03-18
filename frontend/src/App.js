@@ -35,13 +35,13 @@ export class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <Redirect exact from='/' to='/dashboard' />
           <Route path='/logout' component={Logout} />
           <Route path='/login' component={Login} />
           <MainLayout
             Navbar={<AuthenticatedComponent Component={Navbar} />}
             Content={
               <Switch>
+                <Redirect exact from='/' to='/dashboard' />
                 {ROUTER_CONFIG.map((routerConfig, index) => (
                   <AuthenticatedRoute
                     key={'page-' + index}
