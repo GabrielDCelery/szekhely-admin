@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect/*, Link*/ } from 'react-router-dom';
 import './lib';
 import './App.css';
-import { AuthenticatedComponent, AuthenticatedRoute, Navbar } from 'components';
+import { AuthenticatedComponent, AuthenticatedRoute, Navbar, MainLayout } from 'components';
 import {
   Dashboard,
   Contracts,
@@ -11,9 +11,10 @@ import {
   Statistics,
   Settings,
   Login,
-  Logout
+  Logout,
+  AddNew
 } from 'pages';
-import {router} from 'services';
+import { router } from 'services';
 
 const Pages = {
   Dashboard,
@@ -23,7 +24,8 @@ const Pages = {
   Statistics,
   Settings,
   Login,
-  Logout
+  Logout,
+  AddNew
 }
 
 const ROUTER_CONFIG = router.createRoutesConfig();
@@ -33,22 +35,24 @@ export class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <div className="d-flex">
-            <AuthenticatedComponent Component={Navbar} />
-            <Switch>
-              <Redirect exact from='/' to='/dashboard' />
-              <Route path='/login' component={Login} />
-              <Route path='/logout' component={Logout} />
-              {ROUTER_CONFIG.map((routerConfig, index) => (
-                <AuthenticatedRoute
-                  key={'page-' + index}
-                  path={routerConfig.path}
-                  Component={Pages[routerConfig.component]}
-                  redirectUnauthorizedUserTo='/login'
-                />
-              ))}
-            </Switch>
-          </div>
+          <Redirect exact from='/' to='/dashboard' />
+          <Route path='/logout' component={Logout} />
+          <Route path='/login' component={Login} />
+          <MainLayout
+            Navbar={<AuthenticatedComponent Component={Navbar} />}
+            Content={
+              <Switch>
+                {ROUTER_CONFIG.map((routerConfig, index) => (
+                  <AuthenticatedRoute
+                    key={'page-' + index}
+                    path={routerConfig.path}
+                    Component={Pages[routerConfig.component]}
+                    redirectUnauthorizedUserTo='/login'
+                  />
+                ))}
+              </Switch>
+            }
+          />
         </React.Fragment>
       </Router>
     );

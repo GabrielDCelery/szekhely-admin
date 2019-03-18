@@ -34,11 +34,12 @@ export default {
   companies: {
     label: 'Companies',
     icon: 'building',
-    path: '/companies',
+    path: null,
     component: 'Companies',
     children: [{
       label: 'Add New',
       path: '/companies/addew',
+      component: 'AddNew',
       rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
     }, {
       label: 'Contracts',

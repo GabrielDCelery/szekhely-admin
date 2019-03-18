@@ -16,6 +16,19 @@ class Router {
     return _array.reduce((_acc, _val) => Array.isArray(_val) ? _acc.concat(this.flattenDeep(_val)) : _acc.concat(_val), []);
   }
 
+  _normalizeAndFlattenRoutes (_routes, _final) {
+    return _routes.forEach(_route => {
+      _final.push({
+        path: _route['path'],
+        component: _route['component']
+      });
+
+      if (_route['children']) {
+        return this._normalizeAndFlattenRoutes(_route['children'], _final);
+      }
+    });
+  }
+
   setNavbarOrder(_navbarOrder) {
     this.navbarOrder = _navbarOrder || DEFAULT_NAVBAR_ORDER;
 
@@ -23,14 +36,12 @@ class Router {
   }
 
   createRoutesConfig(_routerMap = routerMap) {
-    return this._flattenDeep(
-      this.navbarOrder.map(_elem => {
-        return {
-          path: _routerMap[_elem]['path'],
-          component: _routerMap[_elem]['component']
-        }
-      })
-    ).filter(_route => {
+    const _final = [];
+    const _routes = this.navbarOrder.map(_elem => _routerMap[_elem]);
+    
+    this._normalizeAndFlattenRoutes(_routes, _final);
+
+    return _final.filter(_route => {
       return !_.isNil(_route['path']) && !_.isNil(_route['component'])
     });
   }
