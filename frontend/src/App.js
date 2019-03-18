@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch, Redirect/*, Link*/ } from 'react-router-dom';
 import './lib';
-import './App.css';
 import { AuthenticatedComponent, AuthenticatedRoute, Navbar, MainLayout } from 'components';
 import {
   Dashboard,

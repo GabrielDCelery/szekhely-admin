@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { AuthorizedComponent } from 'components';
-import './NavbarItemCollapsible.css';
+import './NavbarItemCollapsible.scss';
 
 export default class NavbarItemCollapsible extends Component {
 	render() {

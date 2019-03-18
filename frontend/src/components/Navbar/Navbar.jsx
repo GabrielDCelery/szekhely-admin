@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AuthorizedComponent } from 'components';
 import { router } from 'services';
-import './Navbar.css';
+import './Navbar.scss';
 import { NavbarItem } from './NavbarItem';
 
 const NAVBAR_CONFIG = router.createNavBarConfig();

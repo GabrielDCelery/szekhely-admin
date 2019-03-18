@@ -1,6 +1,8 @@
+@import 'styles/shared.scss';
+
 .Navbar {
     /*width: 8vw;*/
     min-height: 100vh;
-    background-color: #4e73df;
+    background-color: $secondary-color;
     font-size: 14px;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './NavbarItem.css';
+import './NavbarItem.scss';
 
 import NavbarItemCollapsible from './NavbarItemCollapsible';
 import NavbarItemSimple from './NavbarItemSimple';
