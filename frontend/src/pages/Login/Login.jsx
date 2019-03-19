@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
-import './Login.css';
+import './Login.scss';
 import { login } from 'state/actions';
 import { withRouter } from 'react-router';
 import { AjaxProcessButton } from 'components';

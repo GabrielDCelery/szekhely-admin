@@ -19,7 +19,7 @@ export class Navbar extends Component {
 
 	render() {
 		return (
-			<ul className="Navbar nav flex-column bg-gradient-primary">
+			<ul className="Navbar nav flex-column bg-gradient-primary shadow">
 				{NAVBAR_CONFIG.map((navbarItemConfig, index) => (
 					<AuthorizedComponent
 						key={'navbar-item-' + index}
