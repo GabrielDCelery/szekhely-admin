@@ -13,12 +13,8 @@ export default class NavbarItemSimple extends Component {
 						this.props.toggleActive(this.props.id)
 					}}
 				>
-					<div>
-						<FontAwesomeIcon className="fas fa-2x" icon={this.props.icon} />
-					</div>
-					<div>
-						{this.props.label}
-					</div>
+					<FontAwesomeIcon className="fas fa-2x" icon={this.props.icon} />
+					<span className="p-2">{this.props.label}</span>
 				</Link>
 				<hr />
 			</li>

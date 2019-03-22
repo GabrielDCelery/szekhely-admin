@@ -15,15 +15,11 @@ export default class NavbarItemCollapsible extends Component {
 						this.props.toggleActive(this.props.id);
 					}}
 				>
-					<div>
-						<FontAwesomeIcon className="fas fa-2x" icon={this.props.icon} />
-					</div>
-					<div>
-						{this.props.label}
-					</div>
+					<FontAwesomeIcon className="fas fa-2x" icon={this.props.icon} />
+					<span className="p-2">{this.props.label}</span>
 				</a>
 				{this.props.bIsActive ? (
-					<div className="bg-white py-2 m-2 rounded nav-child-item-container">
+					<div className="bg-white py-2">
 						{this.props.children.map((child, index) => (
 							<AuthorizedComponent
 								key={index}

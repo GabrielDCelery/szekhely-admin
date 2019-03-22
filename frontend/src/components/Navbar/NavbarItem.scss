@@ -1,17 +1,24 @@
 .NavbarItem.nav-item .nav-link {
-    font-weight: bold;
-    text-align: center;
-    color: #fff;
-    opacity: 0.8;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+  opacity: 0.8;
 }
 
 .NavbarItem.nav-item .nav-link:hover,
 .NavbarItem.nav-item .nav-link.active {
-    color: #fff;
-    opacity: 1;
+  color: #fff;
+  opacity: 1;
 }
 
 .NavbarItem hr {
-    border-top: 2px solid rgba(255,255,255,.15);
-    margin: 0 1rem 0rem;
+  border-top: 2px solid rgba(255, 255, 255, .15);
+  margin: 0 1rem 0rem;
+}
+
+.NavbarItem .nav-link {
+  display: inline-flex;
+  /* make element size relative to content */
+  align-items: center;
+  /* vertical alignment of items */
 }
