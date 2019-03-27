@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
-export default class NavbarItemSimple extends Component {
+export class NavbarItemSimple extends Component {
 	render() {
 		return (
 			<li className="NavbarItem NavbarItemSimple nav-item">

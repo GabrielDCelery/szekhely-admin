@@ -12,15 +12,15 @@ export default {
     path: null,
     component: null,
     icon: 'user-circle',
-    label: 'User',
+    label: 'user',
     rbacRule: null,
     children: [{
-      label: 'Settings',
+      label: 'settings',
       path: '/user/settings',
       component: 'Settings',
       rbacRule: null
     }, {
-      label: 'Logout',
+      label: 'logout',
       path: '/logout',
       rbacRule: null
     }]
@@ -29,33 +29,33 @@ export default {
     path: '/dashboard',
     component: 'Dashboard',
     icon: 'tachometer-alt',
-    label: 'Dasboard',
+    label: 'dashboard',
     rbacRule: STATIC_RBAC_RULE_DASHBOARD_PAGE_VISIT
   },
   companies: {
-    label: 'Companies',
-    icon: 'building',
     path: null,
     component: 'Companies',
+    icon: 'building',
+    label: 'companies',
     children: [{
-      label: 'Add New',
+      label: 'addNew',
       path: '/companies/addew',
       component: 'AddNew',
       rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
     }, {
-      label: 'Contracts',
+      label: 'contracts',
       path: '/companies/contracts',
       rbacRule: STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT
     }, {
-      label: 'Mails',
+      label: 'mails',
       path: '/companies/mails',
       rbacRule: STATIC_RBAC_RULE_MAILS_PAGE_VISIT
     }, {
-      label: 'Inspections',
+      label: 'inspections',
       path: '/companies/inspections',
       rbacRule: STATIC_RBAC_RULE_INSPECTIONS_PAGE_VISIT
     }, {
-      label: 'Invoices',
+      label: 'invoices',
       path: '/companies/invoices',
       rbacRule: STATIC_RBAC_RULE_INVOICES_PAGE_VISIT
     }]

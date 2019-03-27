@@ -2,8 +2,8 @@ import React from 'react';
 
 import './NavbarItem.scss';
 
-import NavbarItemCollapsible from './NavbarItemCollapsible';
-import NavbarItemSimple from './NavbarItemSimple';
+import { NavbarItemCollapsible } from './NavbarItemCollapsible';
+import { NavbarItemSimple } from './NavbarItemSimple';
 
 export function NavbarItem(props) {
   if (props.children) {

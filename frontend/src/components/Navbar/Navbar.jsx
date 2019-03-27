@@ -3,10 +3,12 @@ import { AuthorizedComponent } from 'components';
 import { router } from 'services';
 import './Navbar.scss';
 import { NavbarItem } from './NavbarItem';
+import { connect } from 'react-redux';
+import { labels } from 'state/selectors';
 
 const NAVBAR_CONFIG = router.createNavBarConfig();
 
-export class Navbar extends Component {
+class Navbar extends Component {
 	constructor(props) {
 		super(props);
 		this.state = { activeIndex: 0 };
@@ -27,7 +29,7 @@ export class Navbar extends Component {
 						renderAuthorizedComponent={() => (
 							<NavbarItem
 								id={index}
-								label={navbarItemConfig.label}
+								label={this.props.labels[navbarItemConfig.label]}
 								icon={navbarItemConfig.icon}
 								path={navbarItemConfig.path}
 								children={navbarItemConfig.children}
@@ -42,3 +44,14 @@ export class Navbar extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+
+	return {
+		labels: labels(state)
+	}
+}
+
+const connected = connect(mapStateToProps)(Navbar);
+
+export { connected as Navbar };

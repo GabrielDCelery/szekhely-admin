@@ -3,8 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { AuthorizedComponent } from 'components';
 import './NavbarItemCollapsible.scss';
+import { connect } from 'react-redux';
+import { labels } from 'state/selectors';
 
-export default class NavbarItemCollapsible extends Component {
+class NavbarItemCollapsible extends Component {
 	render() {
 		return (
 			<li className="NavbarItem NavbarItemCollapsible nav-item">
@@ -26,7 +28,7 @@ export default class NavbarItemCollapsible extends Component {
 								rbacRule={child.rbacRule}
 								renderAuthorizedComponent={() => (
 									<Link to={child.path} className="nav-child-item">
-										{child.label}
+										{this.props.labels[child.label]}
 									</Link>
 								)}
 								renderUnAuthorizedComponent={() => { }}
@@ -39,3 +41,14 @@ export default class NavbarItemCollapsible extends Component {
 		);
 	}
 }
+
+const mapStateToProps = state => {
+
+	return {
+		labels: labels(state)
+	}
+}
+
+const connected = connect(mapStateToProps)(NavbarItemCollapsible);
+
+export { connected as NavbarItemCollapsible };
