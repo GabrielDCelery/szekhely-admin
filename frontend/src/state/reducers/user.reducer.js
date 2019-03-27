@@ -18,7 +18,7 @@ const initialState = {
   jwt: null
 };
 
-export default function user(state = JSON.parse(JSON.stringify(initialState)), { type, payload }) {
+export default function user(state = initialState, { type, payload }) {
   switch (type) {
     case LOGIN_REQUEST:
       return {
@@ -43,7 +43,6 @@ export default function user(state = JSON.parse(JSON.stringify(initialState)), {
       return JSON.parse(JSON.stringify(initialState));
 
     case CHANGE_USER_SETTINGS:
-    console.log('CHANGE_USER_SETTINGS')
       return {
         ...state,
         ...payload
