@@ -14,7 +14,7 @@ class AuthenticatedComponent extends Component {
 
 const mapStateToProps = state => {
   return {
-    isUserLoggedIn: isUserLoggedIn
+    isUserLoggedIn: isUserLoggedIn(state)
   }
 }
 
