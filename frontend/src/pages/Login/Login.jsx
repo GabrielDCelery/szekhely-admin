@@ -32,7 +32,7 @@ class Login extends Component {
 	handleSubmit(event) {
 		event.preventDefault();
 
-		return this.props.onLogin(this.state.loginEmail, this.state.loginPassword, () => {
+		return this.props.login(this.state.loginEmail, this.state.loginPassword, () => {
 			return this.props.history.push('/');
 		});
 	}
@@ -112,7 +112,7 @@ const mapStateToProps = state => {
 }
 
 const mapActionsToProps = {
-	onLogin: login
+	login: login
 };
 
 const connected = withRouter(connect(mapStateToProps, mapActionsToProps)(Login));

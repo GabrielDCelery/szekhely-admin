@@ -2,7 +2,8 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  LOGOUT
+  LOGOUT,
+  CHANGE_USER_SETTINGS
 } from '../constants';
 
 const initialState = {
@@ -11,10 +12,13 @@ const initialState = {
   isLoggedIn: false,
   hasLoginFailed: false,
   rules: [],
+  settings: {
+    language: 'EN'
+  },
   jwt: null
 };
 
-export default function authentication(state = initialState, { type, payload }) {
+export default function user(state = initialState, { type, payload }) {
   switch (type) {
     case LOGIN_REQUEST:
       return {
@@ -40,6 +44,11 @@ export default function authentication(state = initialState, { type, payload }) 
         ...{ initialState }
       }
 
+    case CHANGE_USER_SETTINGS:
+      return {
+        ...state,
+        ...payload
+      }
     default:
       return state
   }

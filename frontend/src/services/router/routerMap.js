@@ -17,6 +17,7 @@ export default {
     children: [{
       label: 'Settings',
       path: '/user/settings',
+      component: 'Settings',
       rbacRule: null
     }, {
       label: 'Logout',

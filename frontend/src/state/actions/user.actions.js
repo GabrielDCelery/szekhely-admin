@@ -2,7 +2,8 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  LOGOUT
+  LOGOUT,
+  CHANGE_USER_SETTINGS
 } from '../constants';
 import { authentication as authenticationService } from 'services';
 
@@ -30,4 +31,10 @@ export function logout(_successCallback) {
 
     return _successCallback();
   }
+}
+
+export function changeUserSettings (_newSettings) {
+  return async dispatch => {
+    dispatch({ type: CHANGE_USER_SETTINGS, payload: { settings: _newSettings } });
+  };
 }

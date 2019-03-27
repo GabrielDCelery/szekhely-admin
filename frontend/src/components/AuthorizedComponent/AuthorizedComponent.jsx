@@ -1,4 +1,3 @@
-import _ from 'lodash-core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { isUserAuthorized } from 'state/selectors';
