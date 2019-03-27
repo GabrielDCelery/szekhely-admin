@@ -48,6 +48,6 @@ export default function user(state = initialState, { type, payload }) {
         ...payload
       }
     default:
-      return state
+      return state;
   }
 }

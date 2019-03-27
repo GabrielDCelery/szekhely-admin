@@ -32,7 +32,7 @@ class Settings extends Component {
 										onChange={this.changeLanguage}
 									>
 										<option value="EN">{this.props.labels.languageEnglish}</option>
-										<option value="HU">{this.props.labels.languageHungarian}</option>
+										<option value="HUN">{this.props.labels.languageHungarian}</option>
 									</select>
 								</div>
 							</form>
