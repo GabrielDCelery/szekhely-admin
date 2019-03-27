@@ -6,7 +6,7 @@ class Authentication {
   }
 
   getStoredLoginCredentials() {
-    return JSON.parse(localStorage.getItem('user')) || {};
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   createAuthHeader() {
