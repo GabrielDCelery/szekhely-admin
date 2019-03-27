@@ -40,9 +40,7 @@ export default function user(state = initialState, { type, payload }) {
       };
 
     case LOGOUT:
-      return {
-        ...{ initialState }
-      }
+      return initialState;
 
     case CHANGE_USER_SETTINGS:
       return {
