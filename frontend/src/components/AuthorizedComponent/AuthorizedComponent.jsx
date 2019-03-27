@@ -1,12 +1,11 @@
 import _ from 'lodash-core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authorization as authorizationService } from 'services';
+import { isUserAuthorized } from 'state/selectors';
 
 class AuthorizedComponent extends Component {
   render() {
-    const bIsAuthorized = _.isNil(this.props.rbacRule) || authorizationService.isAuthorized(this.props.userAuthorizedRules, this.props.rbacRule);
-    const renderedComponent = bIsAuthorized === true ? this.props.renderAuthorizedComponent() : this.props.renderUnAuthorizedComponent();
+    const renderedComponent = this.props.isUserAuthorized === true ? this.props.renderAuthorizedComponent() : this.props.renderUnAuthorizedComponent();
 
     return (
       <React.Fragment>
@@ -16,9 +15,9 @@ class AuthorizedComponent extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   return {
-    userAuthorizedRules: _.get(state, ['user', 'rules'], [])
+    isUserAuthorized: isUserAuthorized(state, props)
   }
 }
 

@@ -10,7 +10,7 @@ class AddNew extends Component {
 						<div className="col-md-9">
 							<div className="card shadow-sm">
 								<div className="card-header text-center text-light bg-dark">
-									<h5>Add New Contract</h5>
+									<h5>Client Company Details</h5>
 								</div>
 								<div className="card-body">
 									<form>
@@ -45,7 +45,7 @@ class AddNew extends Component {
 							</div>
 						</div>
 						<div className="col-md-3">
-							<button type="button" className="btn btn-primary btn-lg btn-block">Client Details</button>
+							<button type="button" className="btn btn-primary btn-lg btn-block">Client Company Details</button>
 							<button type="button" className="btn btn-secondary btn-lg btn-block">Client Signatory Details</button>
 						</div>
 					</div>

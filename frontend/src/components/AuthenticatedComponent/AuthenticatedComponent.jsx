@@ -1,6 +1,6 @@
-import _ from 'lodash-core';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { isUserLoggedIn } from 'state/selectors';
 
 class AuthenticatedComponent extends Component {
   render() {
@@ -14,7 +14,7 @@ class AuthenticatedComponent extends Component {
 
 const mapStateToProps = state => {
   return {
-    isUserLoggedIn: _.get(state, ['user', 'isLoggedIn'], false)
+    isUserLoggedIn: isUserLoggedIn
   }
 }
 

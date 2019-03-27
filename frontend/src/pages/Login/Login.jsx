@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
@@ -7,6 +6,7 @@ import { login } from 'state/actions';
 import { withRouter } from 'react-router';
 import { AjaxProcessButton } from 'components';
 import { Redirect } from 'react-router-dom';
+import { isUserLoggingIn, hasUserLoginFailed } from 'state/selectors';
 
 class Login extends Component {
 	constructor(props) {
@@ -106,8 +106,8 @@ class Login extends Component {
 
 const mapStateToProps = state => {
 	return {
-		isUserLoggingIn: _.get(state, ['user', 'isLoggingIn'], false),
-		hasUserLoginFailed: _.get(state, ['user', 'hasLoginFailed'], false)
+		isUserLoggingIn: isUserLoggingIn(state),
+		hasUserLoginFailed: hasUserLoginFailed(state)
 	}
 }
 
