@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { AuthorizedComponent } from 'components';
 import './NavbarItemCollapsible.scss';
 import { connect } from 'react-redux';
-import { labels } from 'state/selectors';
+import { capitalizedLabels } from 'state/selectors';
 
 class NavbarItemCollapsible extends Component {
 	render() {
@@ -18,7 +18,7 @@ class NavbarItemCollapsible extends Component {
 					}}
 				>
 					<FontAwesomeIcon className="fas fa-2x" icon={this.props.icon} />
-					<span className="p-2">{this.props.label}</span>
+					<span className="p-2">{this.props.capitalizedLabels[this.props.label]}</span>
 				</a>
 				{this.props.bIsActive ? (
 					<div className="bg-white py-2">
@@ -28,7 +28,7 @@ class NavbarItemCollapsible extends Component {
 								rbacRule={child.rbacRule}
 								renderAuthorizedComponent={() => (
 									<Link to={child.path} className="nav-child-item">
-										{this.props.labels[child.label]}
+										{this.props.capitalizedLabels[child.label]}
 									</Link>
 								)}
 								renderUnAuthorizedComponent={() => { }}
@@ -43,9 +43,8 @@ class NavbarItemCollapsible extends Component {
 }
 
 const mapStateToProps = state => {
-
 	return {
-		labels: labels(state)
+		capitalizedLabels: capitalizedLabels(state)
 	}
 }
 

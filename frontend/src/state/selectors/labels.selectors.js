@@ -14,3 +14,9 @@ export const labels = createSelector(
     return _labels[_userLanguageSetting];
   }
 )
+
+export const capitalizedLabels = createSelector(
+  [getUserLanguageSetting, getLabels], (_userLanguageSetting, _labels) => {
+    return _.mapValues(_labels[_userLanguageSetting], _.capitalize);
+  }
+)

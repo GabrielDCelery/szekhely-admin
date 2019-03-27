@@ -9,7 +9,7 @@ class Settings extends Component {
 		this.changeLanguage = this.changeLanguage.bind(this);
 	}
 
-	changeLanguage (event) {
+	changeLanguage(event) {
 		this.props.changeUserSettings({
 			...this.props.userSettings,
 			...{ language: event.target.value }
@@ -20,20 +20,24 @@ class Settings extends Component {
 		return (
 			<React.Fragment>
 				<div className="container">
-					<form>
-						<div className="form-group row">
-							<label htmlFor="language" className="col-sm-2">{this.props.labels.language}</label>
-							<select
-								className="form-control col-sm-10"
-								id="language"
-								value={this.props.userSettings.language}
-								onChange={this.changeLanguage} 
-							>
-								<option value="EN">{this.props.labels.languageEnglish}</option>
-								<option value="HU">{this.props.labels.languageHungarian}</option>
-							</select>
+					<div className="card">
+						<div class="card-body">
+							<form>
+								<div className="form-group row">
+									<label htmlFor="language" className="col-sm-2">{this.props.labels.language}</label>
+									<select
+										className="form-control col-sm-10"
+										id="language"
+										value={this.props.userSettings.language}
+										onChange={this.changeLanguage}
+									>
+										<option value="EN">{this.props.labels.languageEnglish}</option>
+										<option value="HU">{this.props.labels.languageHungarian}</option>
+									</select>
+								</div>
+							</form>
 						</div>
-					</form>
+					</div>
 				</div>
 			</React.Fragment>
 		);
