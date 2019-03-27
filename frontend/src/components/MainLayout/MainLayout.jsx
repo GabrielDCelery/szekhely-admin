@@ -6,10 +6,10 @@ export class MainLayout extends Component {
       <React.Fragment>
         <div className="container-fluid">
           <div className="row">
-            <div className="col-md-1 p-0">
+            <div className="col-md-2 p-0">
               {this.props.Navbar}
             </div>
-            <div className="col-md-11 p-3">
+            <div className="col-md-10 p-3">
               {this.props.Content}
             </div>
           </div>

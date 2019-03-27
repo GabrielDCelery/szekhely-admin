@@ -21,7 +21,7 @@ class Settings extends Component {
 			<React.Fragment>
 				<div className="container">
 					<div className="card">
-						<div class="card-body">
+						<div className="card-body">
 							<form>
 								<div className="form-group row">
 									<label htmlFor="language" className="col-sm-2">{this.props.labels.language}</label>

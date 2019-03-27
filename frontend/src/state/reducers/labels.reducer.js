@@ -1,3 +1,3 @@
-export default function language(state = {}, { type, payload }) {
+export default function labels(state = {}, { type, payload }) {
   return state
 }

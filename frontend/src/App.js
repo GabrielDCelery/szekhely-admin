@@ -34,8 +34,8 @@ export class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <Route path='/logout' component={Logout} />
-          <Route path='/login' component={Login} />
+          <Route exact path='/logout' component={Logout} />
+          <Route exact path='/login' component={Login} />
           <MainLayout
             Navbar={<AuthenticatedComponent Component={Navbar} />}
             Content={
