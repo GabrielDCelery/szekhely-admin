@@ -13,7 +13,8 @@ import {
   Logout,
   AddNew
 } from 'pages';
-import { router } from 'services';
+import { connect } from 'react-redux';
+import { routerConfig, navbarItemConfigs } from './state/selectors';
 
 const Pages = {
   Dashboard,
@@ -27,9 +28,7 @@ const Pages = {
   AddNew
 }
 
-const ROUTER_CONFIG = router.createRoutesConfig();
-
-export class App extends Component {
+class App extends Component {
   render() {
     return (
       <Router>
@@ -37,11 +36,11 @@ export class App extends Component {
           <Route exact path='/logout' component={Logout} />
           <Route exact path='/login' component={Login} />
           <MainLayout
-            Navbar={<AuthenticatedComponent Component={Navbar} />}
+            Navbar={<AuthenticatedComponent Component={() => (<Navbar navbarItemConfigs={this.props.navbarItemConfigs}/>)} />}
             Content={
               <Switch>
                 <Redirect exact from='/' to='/dashboard' />
-                {ROUTER_CONFIG.map((routerConfig, index) => (
+                {this.props.routerConfig.map((routerConfig, index) => (
                   <AuthenticatedRoute
                     key={'page-' + index}
                     path={routerConfig.path}
@@ -57,3 +56,14 @@ export class App extends Component {
     );
   }
 }
+
+const mapStateToProps = state => {
+	return {
+    routerConfig: routerConfig(state),
+    navbarItemConfigs: navbarItemConfigs(state)
+  }
+}
+
+const connected = connect(mapStateToProps)(App);
+
+export { connected as App };

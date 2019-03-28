@@ -3,10 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { AuthorizedComponent } from 'components';
 import './NavbarItemCollapsible.scss';
-import { connect } from 'react-redux';
-import { capitalizedLabels } from 'state/selectors';
 
-class NavbarItemCollapsible extends Component {
+export class NavbarItemCollapsible extends Component {
 	render() {
 		return (
 			<li className="NavbarItem NavbarItemCollapsible nav-item">
@@ -18,7 +16,7 @@ class NavbarItemCollapsible extends Component {
 					}}
 				>
 					<FontAwesomeIcon className="fas fa-2x" icon={this.props.icon} />
-					<span className="p-2">{this.props.capitalizedLabels[this.props.label]}</span>
+					<span className="p-2">{this.props.label}</span>
 				</a>
 				{this.props.bIsActive ? (
 					<div className="bg-white py-2">
@@ -28,7 +26,7 @@ class NavbarItemCollapsible extends Component {
 								rbacRule={child.rbacRule}
 								renderAuthorizedComponent={() => (
 									<Link to={child.path} className="nav-child-item">
-										{this.props.capitalizedLabels[child.label]}
+										{child.label}
 									</Link>
 								)}
 								renderUnAuthorizedComponent={() => { }}
@@ -41,13 +39,3 @@ class NavbarItemCollapsible extends Component {
 		);
 	}
 }
-
-const mapStateToProps = state => {
-	return {
-		capitalizedLabels: capitalizedLabels(state)
-	}
-}
-
-const connected = connect(mapStateToProps)(NavbarItemCollapsible);
-
-export { connected as NavbarItemCollapsible };

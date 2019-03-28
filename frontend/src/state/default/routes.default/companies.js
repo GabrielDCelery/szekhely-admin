@@ -10,26 +10,26 @@ export default {
   path: null,
   component: 'Companies',
   icon: 'building',
-  labelName: 'companies',
+  label: 'companies',
   children: [{
-    labelName: 'addNew',
+    label: 'addNew',
     path: '/companies/addew',
     component: 'AddNew',
     rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
   }, {
-    labelName: 'contracts',
+    label: 'contracts',
     path: '/companies/contracts',
     rbacRule: STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT
   }, {
-    labelName: 'mails',
+    label: 'mails',
     path: '/companies/mails',
     rbacRule: STATIC_RBAC_RULE_MAILS_PAGE_VISIT
   }, {
-    labelName: 'inspections',
+    label: 'inspections',
     path: '/companies/inspections',
     rbacRule: STATIC_RBAC_RULE_INSPECTIONS_PAGE_VISIT
   }, {
-    labelName: 'invoices',
+    label: 'invoices',
     path: '/companies/invoices',
     rbacRule: STATIC_RBAC_RULE_INVOICES_PAGE_VISIT
   }]

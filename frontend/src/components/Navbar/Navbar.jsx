@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { AuthorizedComponent } from 'components';
-import { router } from 'services';
 import './Navbar.scss';
 import { NavbarItem } from './NavbarItem';
-
-const NAVBAR_CONFIG = router.createNavBarConfig();
 
 export class Navbar extends Component {
 	constructor(props) {
@@ -20,7 +17,7 @@ export class Navbar extends Component {
 	render() {
 		return (
 			<ul className="Navbar nav flex-column bg-gradient-primary shadow">
-				{NAVBAR_CONFIG.map((navbarItemConfig, index) => (
+				{this.props.navbarItemConfigs.map((navbarItemConfig, index) => (
 					<AuthorizedComponent
 						key={'navbar-item-' + index}
 						rbacRule={navbarItemConfig.rbacRule}

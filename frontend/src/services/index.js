@@ -1,2 +1,5 @@
-export * from './rbac';
-export * from './router';
+import authentication from './authentication';
+
+export {
+  authentication
+}
