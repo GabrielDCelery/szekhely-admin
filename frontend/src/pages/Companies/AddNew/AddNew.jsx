@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { labels } from 'state/selectors';
+import { capitalizedLabels } from 'state/selectors';
 
 class AddNew extends Component {
 	render() {
@@ -11,13 +11,13 @@ class AddNew extends Component {
 						<div className="col-md-9">
 							<div className="card shadow-sm">
 								<div className="card-header text-center text-light bg-dark">
-									<h5>{this.props.labels.clientCompanyDetails}</h5>
+									<h5>{this.props.capitalizedLabels.clientCompanyDetails}</h5>
 								</div>
 								<div className="card-body">
 									<form>
 										<div className="container">
 											<div className="form-group row">
-												<label htmlFor="companyName" className="col-md-3 col-form-label">{this.props.labels.companyName}</label>
+												<label htmlFor="companyName" className="col-md-3 col-form-label">{this.props.capitalizedLabels.companyName}</label>
 												<div className="col-md-9">
 													<input type="text" className="form-control" id="companyName" />
 												</div>
@@ -46,7 +46,7 @@ class AddNew extends Component {
 							</div>
 						</div>
 						<div className="col-md-3">
-							<button type="button" className="btn btn-primary btn-lg btn-block">{this.props.labels.clientCompanyDetails}</button>
+							<button type="button" className="btn btn-primary btn-lg btn-block">{this.props.capitalizedLabels.clientCompanyDetails}</button>
 							<button type="button" className="btn btn-secondary btn-lg btn-block">Client Signatory Details</button>
 						</div>
 					</div>
@@ -58,7 +58,7 @@ class AddNew extends Component {
 
 const mapStateToProps = state => {
 	return {
-		labels: labels(state)
+		capitalizedLabels: capitalizedLabels(state)
 	}
 }
 
