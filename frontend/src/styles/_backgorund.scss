@@ -16,3 +16,7 @@
 .bg-light-purple-gradient {
   background: linear-gradient(to right, $light-purple, lighten($light-purple, 5%));
 }
+
+.bg-teal-gradient {
+  background: linear-gradient(to right, $teal, lighten($teal, 5%));
+}

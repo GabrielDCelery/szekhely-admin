@@ -17,36 +17,20 @@
   @include button-outline-variant($secondary-color, #222222, lighten($secondary-color,5%), $secondary-color);
 }
 
-.btn-dark-red {
+.btn-action {
   @include button-variant($dark-red, darken($dark-red, 7.5%), darken($dark-red, 10%), lighten($dark-red,5%), lighten($dark-red, 10%), darken($dark-red,30%));
 }
 
-.btn-dark-red-secondary {
+.btn-outline-action {
   @include button-outline-variant($dark-red, #222222, lighten($dark-red,5%), $dark-red);
 }
 
-.btn-dark-yellow {
-  @include button-variant($dark-yellow, darken($dark-yellow, 7.5%), darken($dark-yellow, 10%), lighten($dark-yellow,5%), lighten($dark-yellow, 10%), darken($dark-yellow,30%));
+.btn-active {
+  @include button-variant($teal, darken($teal, 7.5%), darken($teal, 10%), lighten($teal, 5%), lighten($teal, 10%), darken($teal, 30%));
 }
 
-.btn-dark-yellow-secondary {
-  @include button-outline-variant($dark-yellow, #222222, lighten($dark-yellow,5%), $dark-yellow);
-}
-
-.btn-dark-green {
-  @include button-variant($dark-green, darken($dark-green, 7.5%), darken($dark-green, 10%), lighten($dark-green,5%), lighten($dark-green, 10%), darken($dark-green,30%));
-}
-
-.btn-dark-green-secondary {
-  @include button-outline-variant($dark-green, #222222, lighten($dark-green,5%), $dark-green);
-}
-
-.btn-dark-purple {
-  @include button-variant($dark-purple, darken($dark-purple, 7.5%), darken($dark-purple, 10%), lighten($dark-purple,5%), lighten($dark-purple, 10%), darken($dark-purple,30%));
-}
-
-.btn-dark-purple-secondary {
-  @include button-outline-variant($dark-purple, #222222, lighten($dark-purple,5%), $dark-purple);
+.btn-outline-active {
+  @include button-outline-variant($teal, #222222, lighten($teal,5%), $teal);
 }
 
 

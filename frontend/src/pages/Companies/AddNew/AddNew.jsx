@@ -1,7 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { capitalizedLabels } from 'state/selectors';
-import { ClientDetails } from './FormTabs';
+import { ClientDetails, ClientSignatoryDetails } from './FormTabs';
+
+function FormTabButton(props) {
+	return (
+		<button
+			type="button"
+			className={['btn', 'btn-block', props.bIsActive ? 'btn-active' : 'btn-secondary'].join(' ')}
+			onClick={props.changeActiveFormTab}
+		>
+			{props.label}
+		</button>
+	)
+}
 
 class AddNew extends Component {
 	constructor(props) {
@@ -16,6 +28,7 @@ class AddNew extends Component {
 		this.handleChange = this.handleChange.bind(this);
 		this.handleChangeWrapper = this.handleChangeWrapper.bind(this);
 		this.changeActiveFormTab = this.changeActiveFormTab.bind(this);
+		this.changeActiveFormTabWrapper = this.changeActiveFormTabWrapper.bind(this);
 	}
 
 	changeActiveFormTab(_pageIndex) {
@@ -23,6 +36,12 @@ class AddNew extends Component {
 			...this.state,
 			...{ activePageIndex: _pageIndex }
 		});
+	}
+
+	changeActiveFormTabWrapper(_pageIndex) {
+		return () => {
+			return this.changeActiveFormTab(_pageIndex);
+		}
 	}
 
 	handleChange(_stateName, _newVal) {
@@ -48,21 +67,48 @@ class AddNew extends Component {
 					<div className="row">
 						<div className="col-md-9">
 							<form>
-								<ClientDetails
-									passedState={this.state}
-									handleChangeWrapper={this.handleChangeWrapper}
-								/>
+								{[
+									<ClientDetails
+										passedState={this.state}
+										handleChangeWrapper={this.handleChangeWrapper}
+									/>,
+									<ClientSignatoryDetails
+										passedState={this.state}
+										handleChangeWrapper={this.handleChangeWrapper}
+									/>,
+									<ClientDetails
+										passedState={this.state}
+										handleChangeWrapper={this.handleChangeWrapper}
+									/>,
+									<ClientDetails
+										passedState={this.state}
+										handleChangeWrapper={this.handleChangeWrapper}
+									/>,
+									<ClientDetails
+										passedState={this.state}
+										handleChangeWrapper={this.handleChangeWrapper}
+									/>
+								][this.state.activePageIndex]}
 							</form>
 						</div>
 
 						<div className="col-md-3">
 							<div className="card shadow-sm mb-2">
 								<div className="card-body">
-									<button type="button" className="btn btn-dark-purple btn-block">{this.props.capitalizedLabels.clientCompanyDetails}</button>
-									<button type="button" className="btn btn-secondary btn-block">Client Signatory Details</button>
-									<button type="button" className="btn btn-secondary btn-block">Services</button>
-									<button type="button" className="btn btn-secondary btn-block">Contact Details</button>
-									<button type="button" className="btn btn-secondary btn-block">Payment Details</button>
+									{[
+										this.props.capitalizedLabels.clientDetails,
+										this.props.capitalizedLabels.clientSignatoryDetails,
+										this.props.capitalizedLabels.services,
+										this.props.capitalizedLabels.contactDetails,
+										this.props.capitalizedLabels.paymentDetails
+									].map((_label, _index) => (
+										<FormTabButton
+											key={`form-tab-button-${_index}`}
+											bIsActive={this.state.activePageIndex === _index}
+											label={_label}
+											changeActiveFormTab={this.changeActiveFormTabWrapper(_index)}
+										/>
+									))}
 								</div>
 							</div>
 						</div>

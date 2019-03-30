@@ -1,6 +1,8 @@
 export default {
   language: 'language',
+  clientDetails: 'client details',
   clientCompanyDetails: 'client company details',
+  clientSignatoryDetails: 'client signatory details',
   clientName: 'client name',
   companyName: 'company name',
   languageEnglish: 'english',
@@ -14,5 +16,8 @@ export default {
   contracts: 'contracts',
   mails: 'mails',
   inspections: 'inspections',
-  invoices: 'invoices'
+  invoices: 'invoices',
+  services: 'services',
+  contactDetails: 'contact details',
+  paymentDetails: 'payment details'
 }
