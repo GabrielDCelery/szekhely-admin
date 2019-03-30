@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import './MainLayout.scss';
 
 export class MainLayout extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="container-fluid">
+        <div className="MainLayout container-fluid">
           <div className="row">
             <div className="col-md-2 p-0">
               {this.props.Navbar}

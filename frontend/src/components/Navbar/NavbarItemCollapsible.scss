@@ -1,13 +1,16 @@
+@import 'styles/shared.scss';
+
 .NavbarItemCollapsible .nav-child-item {
+  background: darken($primary-color, 10%);
   padding: .5rem 1rem;
   display: block;
-  color: #3a3b45;
+  color: darken(#fff, 20%);
   text-decoration: none;
   white-space: nowrap;
 }
 
 .NavbarItemCollapsible .nav-child-item:hover {
-  background-color: #eee;
+  background-color: lighten($primary-color, 20%);
 }
 
 .NavbarItemCollapsible .nav-child-item.active {

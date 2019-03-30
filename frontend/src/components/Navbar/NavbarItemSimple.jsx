@@ -8,7 +8,7 @@ export class NavbarItemSimple extends Component {
 			<li className="NavbarItem NavbarItemSimple nav-item">
 				<Link
 					to={this.props.path}
-					className="nav-link"
+					className={this.props.bIsActive ? 'w-100 nav-link active' : 'w-100 nav-link'}
 					onClick={() => {
 						this.props.toggleActive(this.props.id)
 					}}

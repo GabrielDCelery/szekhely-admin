@@ -10,7 +10,7 @@ export class NavbarItemCollapsible extends Component {
 			<li className="NavbarItem NavbarItemCollapsible nav-item">
 				<a
 					href='#'
-					className="nav-link"
+					className={this.props.bIsActive ? 'w-100 nav-link active' : 'w-100 nav-link'}
 					onClick={() => {
 						this.props.toggleActive(this.props.id);
 					}}
@@ -19,7 +19,7 @@ export class NavbarItemCollapsible extends Component {
 					<span className="p-2">{this.props.label}</span>
 				</a>
 				{this.props.bIsActive ? (
-					<div className="bg-white py-2">
+					<div className="bg-white">
 						{this.props.children.map((child, index) => (
 							<AuthorizedComponent
 								key={index}

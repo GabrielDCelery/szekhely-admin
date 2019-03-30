@@ -1,5 +1,6 @@
+@import 'styles/shared.scss';
+
 .NavbarItem.nav-item .nav-link {
-  font-weight: bold;
   text-align: center;
   color: #fff;
   opacity: 0.8;
@@ -11,9 +12,13 @@
   opacity: 1;
 }
 
+.NavbarItem.nav-item .nav-link.active {
+  @include linear-gradient(to bottom, lighten($primary-color, 15%), darken($primary-color, 7%));
+}
+
 .NavbarItem hr {
-  border-top: 2px solid rgba(255, 255, 255, .15);
-  margin: 0 1rem 0rem;
+  border-top: 1px solid rgba(255, 255, 255, .15);
+  margin: 0;
 }
 
 .NavbarItem .nav-link {
