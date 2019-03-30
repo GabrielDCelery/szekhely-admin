@@ -1,53 +1,70 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { capitalizedLabels } from 'state/selectors';
+import { ClientDetails } from './FormTabs';
 
 class AddNew extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			clientName: '',
+			clientRegistrationId: '',
+			clientTaxId: '',
+			clientPostcode: '',
+			activePageIndex: 0
+		};
+		this.handleChange = this.handleChange.bind(this);
+		this.handleChangeWrapper = this.handleChangeWrapper.bind(this);
+		this.changeActiveFormTab = this.changeActiveFormTab.bind(this);
+	}
+
+	changeActiveFormTab(_pageIndex) {
+		this.setState({
+			...this.state,
+			...{ activePageIndex: _pageIndex }
+		});
+	}
+
+	handleChange(_stateName, _newVal) {
+		const _clonedState = { ...this.state };
+
+		_clonedState[_stateName] = _newVal;
+
+		this.setState(_clonedState);
+	}
+
+	handleChangeWrapper(_stateName) {
+		const _handleFunction = _event => {
+			return this.handleChange(_stateName, _event.target.value);
+		}
+
+		return _handleFunction.bind(this);
+	}
+
 	render() {
 		return (
 			<React.Fragment>
 				<div className="container mw-100">
 					<div className="row">
 						<div className="col-md-9">
-							<div className="card shadow-sm">
-								<div className="card-header text-center text-light bg-dark">
-									<h5>{this.props.capitalizedLabels.clientCompanyDetails}</h5>
-								</div>
+							<form>
+								<ClientDetails
+									passedState={this.state}
+									handleChangeWrapper={this.handleChangeWrapper}
+								/>
+							</form>
+						</div>
+
+						<div className="col-md-3">
+							<div className="card shadow-sm mb-2">
 								<div className="card-body">
-									<form>
-										<div className="container">
-											<div className="form-group row">
-												<label htmlFor="companyName" className="col-md-3 col-form-label">{this.props.capitalizedLabels.companyName}</label>
-												<div className="col-md-9">
-													<input type="text" className="form-control" id="companyName" />
-												</div>
-											</div>
-											<div className="form-group row">
-												<label htmlFor="companyRegistrationId" className="col-md-3 col-form-label">Registration ID</label>
-												<div className="col-md-9">
-													<input type="text" className="form-control" id="companyRegistrationId" />
-												</div>
-											</div>
-											<div className="form-group row">
-												<label htmlFor="companyTaxId" className="col-md-3 col-form-label">Tax ID</label>
-												<div className="col-md-9">
-													<input type="text" className="form-control" id="companyTaxId" />
-												</div>
-											</div>
-											<div className="form-group row">
-												<label htmlFor="companyPostcode" className="col-md-3 col-form-label">Postcode</label>
-												<div className="col-md-9">
-													<input type="text" className="form-control" id="companyPostcode" />
-												</div>
-											</div>
-										</div>
-									</form>
+									<button type="button" className="btn btn-dark-purple btn-block">{this.props.capitalizedLabels.clientCompanyDetails}</button>
+									<button type="button" className="btn btn-secondary btn-block">Client Signatory Details</button>
+									<button type="button" className="btn btn-secondary btn-block">Services</button>
+									<button type="button" className="btn btn-secondary btn-block">Contact Details</button>
+									<button type="button" className="btn btn-secondary btn-block">Payment Details</button>
 								</div>
 							</div>
-						</div>
-						<div className="col-md-3">
-							<button type="button" className="btn btn-primary btn-lg btn-block">{this.props.capitalizedLabels.clientCompanyDetails}</button>
-							<button type="button" className="btn btn-secondary btn-lg btn-block">Client Signatory Details</button>
 						</div>
 					</div>
 				</div>

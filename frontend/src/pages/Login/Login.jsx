@@ -82,7 +82,7 @@ class Login extends Component {
 													) : null}
 													<AjaxProcessButton
 														type="submit"
-														className="btn btn-block btn-secondary"
+														className="btn btn-block btn-dark-red"
 														bIsProcessing={this.props.isUserLoggingIn}
 														label='Login'
 													/>

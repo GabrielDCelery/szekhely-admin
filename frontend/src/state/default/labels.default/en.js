@@ -1,6 +1,7 @@
 export default {
   language: 'language',
   clientCompanyDetails: 'client company details',
+  clientName: 'client name',
   companyName: 'company name',
   languageEnglish: 'english',
   languageHungarian: 'hungarian',

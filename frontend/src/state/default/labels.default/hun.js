@@ -1,6 +1,7 @@
 export default {
   language: 'nyelv',
   clientCompanyDetails: 'ügyfél céges adatok',
+  clientName: 'client name',
   companyName: 'cég neve',
   languageEnglish: 'angol',
   languageHungarian: 'magyar',

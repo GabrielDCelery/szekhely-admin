@@ -19,7 +19,7 @@ export class NavbarItemCollapsible extends Component {
 					<span className="p-2">{this.props.label}</span>
 				</a>
 				{this.props.bIsActive ? (
-					<div className="bg-white">
+					<div>
 						{this.props.children.map((child, index) => (
 							<AuthorizedComponent
 								key={index}

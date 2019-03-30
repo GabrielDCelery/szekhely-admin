@@ -1,0 +1,18 @@
+@import './colors';
+@import './gradient';
+
+.bg-primary-gradient {
+  background: linear-gradient(to right, $primary-color, lighten($primary-color, 5%));
+}
+
+.bg-light-red-gradient {
+  background: linear-gradient(to right, $light-red, lighten($light-red, 5%));
+}
+
+.bg-light-green-gradient {
+  background: linear-gradient(to right, $light-green, lighten($light-green, 5%));
+}
+
+.bg-light-purple-gradient {
+  background: linear-gradient(to right, $light-purple, lighten($light-purple, 5%));
+}

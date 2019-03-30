@@ -1,0 +1,25 @@
+@import './colors';
+
+.border-1 {
+  border: 1px solid !important;
+}
+
+.border-2 {
+  border: 2px solid !important;
+}
+
+.border-left-2 {
+  border-left: 2px solid !important;
+}
+
+.border-right-2 {
+  border-right: 2px solid !important;
+}
+
+.border-bottom-2 {
+  border-bottom: 2px solid !important;
+}
+
+.border-black {
+  border-color: $black !important;
+}
