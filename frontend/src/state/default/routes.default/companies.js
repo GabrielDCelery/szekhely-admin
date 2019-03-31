@@ -8,29 +8,30 @@ import {
 
 export default {
   path: null,
-  component: 'Companies',
+  component: 'Clients',
   icon: 'building',
-  label: 'companies',
+  label: 'clients',
   children: [{
     label: 'addNew',
-    path: '/companies/addew',
+    path: '/clients/addew',
     component: 'AddNew',
     rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
   }, {
     label: 'contracts',
-    path: '/companies/contracts',
+    path: '/clients/contracts',
+    component: 'Contracts',
     rbacRule: STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT
   }, {
     label: 'mails',
-    path: '/companies/mails',
+    path: '/clients/mails',
     rbacRule: STATIC_RBAC_RULE_MAILS_PAGE_VISIT
   }, {
     label: 'inspections',
-    path: '/companies/inspections',
+    path: '/clients/inspections',
     rbacRule: STATIC_RBAC_RULE_INSPECTIONS_PAGE_VISIT
   }, {
     label: 'invoices',
-    path: '/companies/invoices',
+    path: '/clients/invoices',
     rbacRule: STATIC_RBAC_RULE_INVOICES_PAGE_VISIT
   }]
 }

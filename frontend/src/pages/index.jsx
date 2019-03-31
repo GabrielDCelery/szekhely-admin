@@ -1,4 +1,3 @@
-export * from './Contracts';
 export * from './Dashboard';
 export * from './Invoices';
 export * from './Mailing';
@@ -6,4 +5,5 @@ export * from './Settings';
 export * from './Statistics';
 export * from './Login';
 export * from './Logout';
-export * from './Companies/AddNew';
+export * from './Clients/AddNew';
+export * from './Clients/Contracts';

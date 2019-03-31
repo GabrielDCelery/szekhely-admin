@@ -11,12 +11,12 @@ const getLabels = _state => {
 
 export const labels = createSelector(
   [getUserLanguageSetting, getLabels], (_userLanguageSetting, _labels) => {
-    return _labels[_userLanguageSetting] || _labels['DEFAULT'];
+    return _.defaultsDeep({}, _labels[_userLanguageSetting], _labels['DEFAULT']);
   }
 )
 
 export const capitalizedLabels = createSelector(
   [getUserLanguageSetting, getLabels], (_userLanguageSetting, _labels) => {
-    return _.mapValues(_labels[_userLanguageSetting] || _labels['DEFAULT'], _.capitalize);
+    return _.mapValues(_.defaultsDeep({}, _labels[_userLanguageSetting], _labels['DEFAULT']), _.capitalize);
   }
 )

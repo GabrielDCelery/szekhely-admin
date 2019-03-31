@@ -12,6 +12,7 @@ export default {
   logout: 'logout',
   dashboard: 'dashboard',
   companies: 'companies',
+  clients: 'clients',
   addNew: 'add new',
   contracts: 'contracts',
   mails: 'mails',

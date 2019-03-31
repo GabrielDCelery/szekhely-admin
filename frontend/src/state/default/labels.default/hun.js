@@ -9,6 +9,7 @@ export default {
   settings: 'beállítások',
   logout: 'kijelentkezés',
   dashboard: 'nyitóoldal',
+  clients: 'ügyfelek',
   companies: 'cégek',
   addNew: 'új hozzáadása',
   contracts: 'szerződések',
