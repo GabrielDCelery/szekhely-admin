@@ -11,7 +11,8 @@ import {
   Settings,
   Login,
   Logout,
-  AddNew
+  AddNew,
+  QuickSearch
 } from 'pages';
 import { connect } from 'react-redux';
 import { routerConfig, navbarItemConfigs } from './state/selectors';
@@ -25,7 +26,8 @@ const Pages = {
   Settings,
   Login,
   Logout,
-  AddNew
+  AddNew,
+  QuickSearch
 }
 
 class App extends Component {

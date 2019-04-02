@@ -5,6 +5,7 @@ export default {
   clientSignatoryDetails: 'client signatory details',
   clientName: 'client name',
   companyName: 'company name',
+  quickSearch: 'quick search',
   languageEnglish: 'english',
   languageHungarian: 'hungarian',
   user: 'user',

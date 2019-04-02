@@ -4,3 +4,4 @@ export * from './AuthenticatedRoute';
 export * from './AuthenticatedComponent';
 export * from './AjaxProcessButton';
 export * from './MainLayout';
+export * from './TwoColMain';

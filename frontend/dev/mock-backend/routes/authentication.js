@@ -16,7 +16,8 @@ const authenticate = (_email, _password) => {
           'contracts-action:addnew',
           'dashboard-page:visit',
           'mails-page:visit',
-          'inspections-page:visit'
+          'inspections-page:visit',
+          'clients-quick-search-page:visit'
         ],
         jwt: null
       }

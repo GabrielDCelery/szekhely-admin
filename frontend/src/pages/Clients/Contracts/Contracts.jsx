@@ -24,27 +24,27 @@ class Contracts extends Component {
                 <div className="card-body">
 
                   <div className="form-group">
-                    <label for="clientName">Client Name</label>
+                    <label htmlFor="clientName">Client Name</label>
                     <input type="text" className="form-control form-control-sm" id="clientName" />
                   </div>
 
                   <div className="form-group">
-                    <label for="clientSignatoryName">Client Signatory Name</label>
+                    <label htmlFor="clientSignatoryName">Client Signatory Name</label>
                     <input type="text" className="form-control form-control-sm" id="clientSignatoryName" />
                   </div>
 
                   <div className="form-group">
-                    <label for="contractExpiryFrom">Contract Expiry From</label>
+                    <label htmlFor="contractExpiryFrom">Contract Expiry From</label>
                     <DatePicker id="contractExpiryFrom" className='form-control' />
                   </div>
 
                   <div className="form-group">
-                    <label for="contractExpiryTill">Contract Expiry Till</label>
+                    <label htmlFor="contractExpiryTill">Contract Expiry Till</label>
                     <DatePicker id="contractExpiryTill" className='form-control' />
                   </div>
 
                   <div className="form-group">
-                    <label for="bContractStatus">Contract Status</label>
+                    <label htmlFor="bContractStatus">Contract Status</label>
                     <select multiple className="form-control form-control-sm" id="bContractStatus">
                       <option>Live</option>
                       <option>Terminated</option>

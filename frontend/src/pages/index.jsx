@@ -7,3 +7,4 @@ export * from './Login';
 export * from './Logout';
 export * from './Clients/AddNew';
 export * from './Clients/Contracts';
+export * from './Clients/QuickSearch';
