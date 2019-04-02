@@ -5,3 +5,5 @@ export * from './AuthenticatedComponent';
 export * from './AjaxProcessButton';
 export * from './MainLayout';
 export * from './TwoColMain';
+export * from './OneColMain';
+export * from './DataTable';
