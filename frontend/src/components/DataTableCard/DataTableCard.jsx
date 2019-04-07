@@ -1,84 +1,201 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
+import { filterRowsUsingSearchTerm } from './dataTableMethods';
+import './DataTableCard.scss';
 
 export class DataTableCard extends Component {
 	constructor(props) {
 		super(props);
 
-		this.renderRows = this.renderRows.bind(this);
-		this.renderColumns = this.renderColumns.bind(this);
+		this.state = {
+			numOfRecordsPerPage: 10,
+			currentPageIndex: 0,
+			filterTerm: ''
+		};
+		this.renderTableBody = this.renderTableBody.bind(this);
+		this.renderTableHead = this.renderTableHead.bind(this);
+		this.renderPagination = this.renderPagination.bind(this);
+		this.changePageIndex = this.changePageIndex.bind(this);
+		this.changeFilterTerm = this.changeFilterTerm.bind(this);
+		this.changeNumOfRecordPerPage = this.changeNumOfRecordPerPage.bind(this);
 	}
 
-	renderRows(columnFields, rows) {
-		return rows.map((row, index) => (
-			<tr key={`tr-${index}`}>
-				{columnFields.map(columnField => (
-					<td key={`td-${index}`}>{row[columnField]}</td>
+	changeFilterTerm(event) {
+		this.setState({
+			...this.state,
+			...{
+				currentPageIndex: 0,
+				filterTerm: event.target.value
+			}
+		});
+	}
+
+	changeNumOfRecordPerPage(event) {
+		this.setState({
+			...this.state,
+			...{
+				currentPageIndex: 0,
+				numOfRecordsPerPage: parseInt(event.target.value, 10)
+			}
+		});
+	}
+
+	changePageIndex(index) {
+		this.setState({
+			...this.state,
+			...{ currentPageIndex: index }
+		});
+	}
+
+	renderTableBody(columnFields, rows) {
+		return (
+			<tbody>
+				{rows.map((row, rowIndex) => (
+					<tr key={`tr-${rowIndex}`}>
+						{columnFields.map((columnField, colIndex) => (
+							<td key={`td-${colIndex}`}>{row[columnField]}</td>
+						))}
+					</tr>
 				))}
-			</tr>
-		));
+			</tbody>
+		)
 	}
 
-	renderColumns(columns) {
-		return columns.map((column, index) => (
-			<th key={`th-head-${index}`} scope='col'>{column.label}</th>
-		));
+	renderTableHead(columns) {
+		return (
+			<thead>
+				<tr>
+					{columns.map((column, index) => (
+						<th key={`th-head-${index}`} scope='col'>{column.label}</th>
+					))}
+				</tr>
+			</thead>
+		)
+	}
+
+	renderPagination(numOfPages) {
+		const { currentPageIndex } = this.state;
+		const bIsFirstPage = currentPageIndex === 0;
+		const bLastPage = (currentPageIndex + 1) === numOfPages;
+
+		return (
+			<ul className="pagination justify-content-end m-0">
+				<li className={['page-item', bIsFirstPage === true ? 'disabled' : ''].join(' ')}>
+					<a
+						className="page-link"
+						href="#"
+						tabIndex="-1"
+						onClick={() => {
+							if (bIsFirstPage) {
+								return;
+							}
+
+							return this.changePageIndex(currentPageIndex - 1)
+						}}
+					>
+						Previous
+					</a>
+				</li>
+				{new Array(numOfPages).fill(null).map((elem, index) => (
+					<li
+						key={`pagination-${index}`}
+						className="page-item"
+					>
+						<a
+							className={['page-link', currentPageIndex === index ? 'active' : ''].join(' ')}
+							href="#"
+							onClick={() => {
+								this.changePageIndex(index)
+							}}
+						>{index + 1}
+						</a>
+					</li>
+				))}
+				<li className={['page-item', bLastPage === true ? 'disabled' : ''].join(' ')}>
+					<a
+						className="page-link"
+						href="#"
+						onClick={() => {
+							if (bLastPage) {
+								return;
+							}
+
+							return this.changePageIndex(currentPageIndex + 1)
+						}}
+					>
+						Next
+					</a>
+				</li>
+			</ul>
+		)
 	}
 
 	render() {
-		const columnFields = this.props.data.columns.map(column => {
+		const { columns, rows } = this.props.data;
+		const { currentPageIndex, numOfRecordsPerPage, filterTerm } = this.state;
+		const columnFields = columns.map(column => {
 			return column.field;
 		});
-		const columns = this.renderColumns(this.props.data.columns);
-		const rows = this.renderRows(columnFields, this.props.data.rows);
+		const renderedTableHead = this.renderTableHead(columns);
+		const filteredRows = filterRowsUsingSearchTerm(rows, filterTerm);
+		const slicedRows = _.slice(filteredRows, currentPageIndex * numOfRecordsPerPage, ((currentPageIndex + 1) * numOfRecordsPerPage));
+		const renderedTableBody = this.renderTableBody(columnFields, slicedRows);
+		const numOfPages = Math.ceil(filteredRows.length / numOfRecordsPerPage);
+		const renderedPagination = this.renderPagination(numOfPages);
 
 		return (
-			<div className="card shadow-sm">
+			<div className="DataTableCard card shadow-sm">
 				<div className="card-header text-center text-light bg-teal-gradient border-bottom-5 border-black">
 					<h5>{this.props.title}</h5>
 				</div>
 
-				<div className="card-body border-bottom-2">
+				<div className="card-body">
 					<div className="row">
 						<div className="col">
-							<div className="form-group">
-								<label for="exampleFormControlSelect1">Number of records per page</label>
-								<select className="form-control" id="exampleFormControlSelect1">
-									<option>10</option>
-									<option>25</option>
-									<option>50</option>
-									<option>100</option>
-								</select>
+							<div className="form-group row">
+								<label className="col-sm-8" htmlFor="numberOfRecords">Number of records per page</label>
+								<div className="col-sm-4">
+									<select
+										className="form-control"
+										id="numberOfRecords"
+										onChange={this.changeNumOfRecordPerPage}
+									>
+										<option>10</option>
+										<option>25</option>
+										<option>50</option>
+										<option>100</option>
+									</select>
+								</div>
 							</div>
 						</div>
 						<div className="col">
-							<input className="form-control" type="search" placeholder="Search" />
+							<div className="form-group row">
+								<label className="col-sm-2" htmlFor="search">Search</label>
+								<input
+									className="form-control col-sm-10"
+									id="search"
+									type="search"
+									value={this.state.filterTerm}
+									onChange={this.changeFilterTerm}
+								/>
+							</div>
 						</div>
 					</div>
+				</div>
 
+				<div className="card-footer border-bottom-2">
+					{renderedPagination}
+				</div>
+
+				<div className="card-body border-bottom-2">
 					<table className="table table-sm table-striped">
-						<thead>
-							<tr>
-								{columns}
-							</tr>
-						</thead>
-						<tbody>
-							{rows}
-						</tbody>
+						{renderedTableHead}
+						{renderedTableBody}
 					</table>
 				</div>
 
 				<div className="card-footer">
-					<ul className="pagination justify-content-end">
-						<li className="page-item disabled">
-							<a className="page-link" href="#" tabIndex="-1">Previous</a>
-						</li>
-						<li className="page-item"><a className="page-link" href="#">1</a></li>
-						<li className="page-item"><a className="page-link" href="#">2</a></li>
-						<li className="page-item"><a className="page-link" href="#">3</a></li>
-						<li className="page-item">
-							<a className="page-link" href="#">Next</a>
-						</li>
-					</ul>
+					{renderedPagination}
 				</div>
 
 			</div>

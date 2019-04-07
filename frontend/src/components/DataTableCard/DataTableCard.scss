@@ -1,0 +1,11 @@
+@import 'styles/shared.scss';
+
+.DataTableCard .page-link {
+  color: $teal;
+}
+
+.DataTableCard .page-link.active,
+.DataTableCard .page-link:hover {
+  font-weight: bold;
+  color: $light-red;
+}

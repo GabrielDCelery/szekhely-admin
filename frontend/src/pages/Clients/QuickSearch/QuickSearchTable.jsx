@@ -11,17 +11,228 @@ export class QuickSearchTable extends Component {
             label: 'Client Name',
             field: 'clientName'
           }, {
-            label: 'Status',
+            label: 'Constract Status',
             field: 'status'
-          }], rows: [{
+          }, {
+            label: 'Contract End Date',
+            field: 'contractEndDate'
+          }],
+          rows: [{
             clientName: 'Mark',
-            status: 'Otto'
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
           }, {
             clientName: 'Jacob',
-            status: 'Thornton'
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
           }, {
             clientName: 'Larry the Bird',
-            status: 'twitter'
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
+          }, {
+            clientName: 'Mark',
+            status: 'Otto',
+            contractEndDate: '2018-01-11'
+          }, {
+            clientName: 'Jacob',
+            status: 'Thornton',
+            contractEndDate: '2019-03-03'
+          }, {
+            clientName: 'Larry the Bird',
+            status: 'twitter',
+            contractEndDate: '2016-07-02'
           }]
         }}
       />
