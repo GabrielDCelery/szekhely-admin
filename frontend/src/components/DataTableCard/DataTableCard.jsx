@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { filterRowsUsingSearchTerm } from './dataTableMethods';
 import './DataTableCard.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class DataTableCard extends Component {
 	constructor(props) {
@@ -188,10 +189,14 @@ export class DataTableCard extends Component {
 				</div>
 
 				<div className="card-body border-bottom-2">
-					<table className="table table-sm table-striped">
-						{renderedTableHead}
-						{renderedTableBody}
-					</table>
+					{this.props.isAjaxRequestInProgress ?
+						(<div className="text-center">
+							<FontAwesomeIcon className="fas fa-spinner fa-spin fa-5x" icon='spinner' />
+						</div>) :
+						(<table className="table table-sm table-striped">
+							{renderedTableHead}
+							{renderedTableBody}
+						</table>)}
 				</div>
 
 				<div className="card-footer">

@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const timeout = require('../../utils/timeout');
 
-
 const authenticate = (_email, _password) => {
   if (_email === 'admin@admin.com' && _password === 'admin') {
     return {
