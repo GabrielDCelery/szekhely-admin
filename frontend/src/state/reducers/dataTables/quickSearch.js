@@ -2,18 +2,34 @@ import {
   GET_QUICK_CLIENT_LIST_REQUEST,
   GET_QUICK_CLIENT_LIST_SUCCCESS,
   GET_QUICK_CLIENT_LIST_FAIL
-} from '../constants';
+} from '../../constants';
 
 const initialState = {
   isAjaxRequestInProgress: false,
   hasAjaxRequestFailed: false,
-  data: {
-    columns: [],
-    rows: []
-  }
+  columnConfigs: [{
+    field: 'clientName',
+    visible: true,
+    type: 'string'
+  }, {
+    field: 'status',
+    visible: true,
+    type: 'string'
+  }, {
+    field: 'contractExpiryTill',
+    visible: true,
+    type: 'date'
+  }, {
+    field: 'clientDetails',
+    visible: true,
+    type: 'url',
+    value: _rowData => {
+    }
+  }],
+  dataRows: []
 };
 
-export default function clients(state = initialState, { type, payload }) {
+export default function quickSearch(state = initialState, { type, payload }) {
   switch (type) {
     case GET_QUICK_CLIENT_LIST_REQUEST:
       return {
@@ -23,9 +39,12 @@ export default function clients(state = initialState, { type, payload }) {
 
     case GET_QUICK_CLIENT_LIST_SUCCCESS:
       return {
-        isAjaxRequestInProgress: false,
-        hasAjaxRequestFailed: false,
-        data: payload
+        ...state,
+        ...{
+          isAjaxRequestInProgress: false,
+          hasAjaxRequestFailed: false,
+          dataRows: payload
+        }
       };
 
     case GET_QUICK_CLIENT_LIST_FAIL:

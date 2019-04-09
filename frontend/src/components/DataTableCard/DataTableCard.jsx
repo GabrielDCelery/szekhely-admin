@@ -62,12 +62,12 @@ export class DataTableCard extends Component {
 		)
 	}
 
-	renderTableHead(columns) {
+	renderTableHead(columnConfigs) {
 		return (
 			<thead>
 				<tr>
-					{columns.map((column, index) => (
-						<th key={`th-head-${index}`} scope='col'>{column.label}</th>
+					{columnConfigs.map((columnConfig, index) => (
+						<th key={`th-head-${index}`} scope='col'>{columnConfig.label}</th>
 					))}
 				</tr>
 			</thead>
@@ -132,13 +132,13 @@ export class DataTableCard extends Component {
 	}
 
 	render() {
-		const { columns, rows } = this.props.data;
+		const { columnConfigs, dataRows } = this.props;
 		const { currentPageIndex, numOfRecordsPerPage, filterTerm } = this.state;
-		const columnFields = columns.map(column => {
-			return column.field;
+		const columnFields = columnConfigs.map(columnConfig => {
+			return columnConfig.field;
 		});
-		const renderedTableHead = this.renderTableHead(columns);
-		const filteredRows = filterRowsUsingSearchTerm(rows, filterTerm);
+		const renderedTableHead = this.renderTableHead(columnConfigs);
+		const filteredRows = filterRowsUsingSearchTerm(dataRows, filterTerm);
 		const slicedRows = _.slice(filteredRows, currentPageIndex * numOfRecordsPerPage, ((currentPageIndex + 1) * numOfRecordsPerPage));
 		const renderedTableBody = this.renderTableBody(columnFields, slicedRows);
 		const numOfPages = Math.ceil(filteredRows.length / numOfRecordsPerPage);

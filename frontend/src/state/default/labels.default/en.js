@@ -21,5 +21,7 @@ export default {
   invoices: 'invoices',
   services: 'services',
   contactDetails: 'contact details',
-  paymentDetails: 'payment details'
+  paymentDetails: 'payment details',
+  status: 'status',
+  contractExpiryTill: 'contract expiry till'
 }
