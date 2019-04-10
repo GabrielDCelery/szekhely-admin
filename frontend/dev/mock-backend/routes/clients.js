@@ -3,30 +3,37 @@ const router = express.Router();
 const timeout = require('../../utils/timeout');
 
 const clients = [{
+  id: 1,
   clientName: 'Mark',
   status: 'Otto',
   contractExpiryTill: '2018-01-11'
 }, {
+  id: 2,
   clientName: 'Jacob',
   status: 'Thornton',
   contractExpiryTill: '2019-03-03'
 }, {
+  id: 3,
   clientName: 'Larry the Bird',
   status: 'twitter',
   contractExpiryTill: '2016-07-02'
 }, {
+  id: 4,
   clientName: 'Mark',
   status: 'Otto',
   contractExpiryTill: '2018-01-11'
 }, {
+  id: 5,
   clientName: 'Jacob',
   status: 'Thornton',
   contractExpiryTill: '2019-03-03'
 }, {
+  id: 6,
   clientName: 'Larry the Bird',
   status: 'twitter',
   contractExpiryTill: '2016-07-02'
 }, {
+  id: 7,
   clientName: 'Mark',
   status: 'Otto',
   contractExpiryTill: '2018-01-11'

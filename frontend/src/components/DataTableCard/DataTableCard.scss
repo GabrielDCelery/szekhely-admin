@@ -9,3 +9,14 @@
   font-weight: bold;
   color: $light-red;
 }
+
+.DataTableCard .external-url {
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.DataTableCard .external-url:hover {
+  cursor: pointer;
+  color: $light-red;
+  transform: scale(2);
+}

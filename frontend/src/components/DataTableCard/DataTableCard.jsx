@@ -3,8 +3,9 @@ import React, { Component } from 'react';
 import { filterRowsUsingSearchTerm } from './dataTableMethods';
 import './DataTableCard.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { withRouter } from 'react-router';
 
-export class DataTableCard extends Component {
+class DataTableCard extends Component {
 	constructor(props) {
 		super(props);
 
@@ -48,14 +49,31 @@ export class DataTableCard extends Component {
 		});
 	}
 
-	renderTableBody(columnFields, rows) {
+	renderTableBody(columnConfigs, rows) {
 		return (
 			<tbody>
 				{rows.map((row, rowIndex) => (
 					<tr key={`tr-${rowIndex}`}>
-						{columnFields.map((columnField, colIndex) => (
-							<td key={`td-${colIndex}`}>{row[columnField]}</td>
-						))}
+						{columnConfigs.map((columnConfig, colIndex) => {
+							let field = null;
+							if (columnConfig['type'] === 'url') {
+								return (
+									<td
+										key={`td-${colIndex}`}
+									>
+										<FontAwesomeIcon
+											className="fas fa-2x external-url w-100"
+											icon='ellipsis-h'
+											onClick={() => {
+												this.props.history.push(columnConfig['url'], columnConfig.value(row))
+											}}
+										/>
+									</td>
+								);
+							} else {
+								return (<td key={`td-${colIndex}`}>{row[columnConfig['field']]}</td>);
+							}
+						})}
 					</tr>
 				))}
 			</tbody>
@@ -134,13 +152,10 @@ export class DataTableCard extends Component {
 	render() {
 		const { columnConfigs, dataRows } = this.props;
 		const { currentPageIndex, numOfRecordsPerPage, filterTerm } = this.state;
-		const columnFields = columnConfigs.map(columnConfig => {
-			return columnConfig.field;
-		});
 		const renderedTableHead = this.renderTableHead(columnConfigs);
 		const filteredRows = filterRowsUsingSearchTerm(dataRows, filterTerm);
 		const slicedRows = _.slice(filteredRows, currentPageIndex * numOfRecordsPerPage, ((currentPageIndex + 1) * numOfRecordsPerPage));
-		const renderedTableBody = this.renderTableBody(columnFields, slicedRows);
+		const renderedTableBody = this.renderTableBody(columnConfigs, slicedRows);
 		const numOfPages = Math.ceil(filteredRows.length / numOfRecordsPerPage);
 		const renderedPagination = this.renderPagination(numOfPages);
 
@@ -207,3 +222,7 @@ export class DataTableCard extends Component {
 		);
 	}
 }
+
+const connected = withRouter(DataTableCard);
+
+export { connected as DataTableCard };

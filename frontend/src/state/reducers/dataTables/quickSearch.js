@@ -23,7 +23,11 @@ const initialState = {
     field: 'clientDetails',
     visible: true,
     type: 'url',
+    url: '/client',
     value: _rowData => {
+      return {
+        clientId: _rowData['id']
+      }
     }
   }],
   dataRows: []
