@@ -160,12 +160,12 @@ class DataTableCard extends Component {
 		const renderedPagination = this.renderPagination(numOfPages);
 
 		return (
-			<div className="DataTableCard card shadow-sm">
-				<div className="card-header text-center text-light bg-teal-gradient border-bottom-5 border-black">
+			<div className="DataTableCard card border-2 border-black shadow-sm">
+				<div className="card-header text-center text-light bg-teal-gradient border-bottom-3 border-black p-4">
 					<h5>{this.props.title}</h5>
 				</div>
 
-				<div className="card-body">
+				<div className="card-body border-bottom-2">
 					<div className="row">
 						<div className="col">
 							<div className="form-group row">
