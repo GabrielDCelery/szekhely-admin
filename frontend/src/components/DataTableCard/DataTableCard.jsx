@@ -98,7 +98,7 @@ class DataTableCard extends Component {
 		const bLastPage = (currentPageIndex + 1) === numOfPages;
 
 		return (
-			<ul className="pagination justify-content-end m-0">
+			<ul className="pagination justify-content-start m-0">
 				<li className={['page-item', bIsFirstPage === true ? 'disabled' : ''].join(' ')}>
 					<a
 						className="page-link"
@@ -199,7 +199,7 @@ class DataTableCard extends Component {
 					</div>
 				</div>
 
-				<div className="card-footer border-bottom-2">
+				<div className="card-footer border-bottom-2 p-1">
 					{renderedPagination}
 				</div>
 
@@ -214,7 +214,7 @@ class DataTableCard extends Component {
 						</table>)}
 				</div>
 
-				<div className="card-footer">
+				<div className="card-footer p-1">
 					{renderedPagination}
 				</div>
 
