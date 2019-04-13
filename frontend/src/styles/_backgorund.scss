@@ -20,3 +20,11 @@
 .bg-teal-gradient {
   background: linear-gradient(to right, $teal, lighten($teal, 5%));
 }
+
+.custom-bg-black {
+  background: $black;
+}
+
+.bg-custom-blue-gradient {
+  background: linear-gradient(to right, $custom-blue, lighten($custom-blue, 5%));
+}

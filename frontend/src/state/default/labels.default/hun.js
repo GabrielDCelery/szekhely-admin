@@ -15,5 +15,6 @@ export default {
   contracts: 'szerződések',
   mails: 'levelek',
   inspections: 'ellenőrzések',
-  invoices: 'számlák'
+  invoices: 'számlák',
+  quickSearch: 'gyors keresés'
 }

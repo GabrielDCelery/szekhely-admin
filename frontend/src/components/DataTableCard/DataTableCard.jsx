@@ -55,7 +55,6 @@ class DataTableCard extends Component {
 				{rows.map((row, rowIndex) => (
 					<tr key={`tr-${rowIndex}`}>
 						{columnConfigs.map((columnConfig, colIndex) => {
-							let field = null;
 							if (columnConfig['type'] === 'url') {
 								return (
 									<td
@@ -98,7 +97,7 @@ class DataTableCard extends Component {
 		const bLastPage = (currentPageIndex + 1) === numOfPages;
 
 		return (
-			<ul className="pagination justify-content-start m-0">
+			<ul className="pagination justify-content-end m-0">
 				<li className={['page-item', bIsFirstPage === true ? 'disabled' : ''].join(' ')}>
 					<a
 						className="page-link"
@@ -161,7 +160,7 @@ class DataTableCard extends Component {
 
 		return (
 			<div className="DataTableCard card border-2 border-black shadow-sm">
-				<div className="card-header text-center text-light bg-teal-gradient border-bottom-3 border-black p-4">
+				<div className="card-header text-center text-light bg-custom-blue-gradient border-bottom-3 border-black p-4 rounded-0 custom-box-shadow-lifted">
 					<h5>{this.props.title}</h5>
 				</div>
 
@@ -199,7 +198,7 @@ class DataTableCard extends Component {
 					</div>
 				</div>
 
-				<div className="card-footer border-bottom-2 p-1">
+				<div className="card-footer border-bottom-2 p-1 custom-bg-black custom-box-shadow-lifted">
 					{renderedPagination}
 				</div>
 
@@ -214,7 +213,7 @@ class DataTableCard extends Component {
 						</table>)}
 				</div>
 
-				<div className="card-footer p-1">
+				<div className="card-footer p-1 custom-bg-black custom-box-shadow-lifted">
 					{renderedPagination}
 				</div>
 

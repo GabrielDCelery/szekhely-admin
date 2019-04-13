@@ -16,6 +16,7 @@ import {
 } from 'pages';
 import { connect } from 'react-redux';
 import { routerConfig, navbarItemConfigs } from './state/selectors';
+import './App.scss';
 
 const Pages = {
   Dashboard,

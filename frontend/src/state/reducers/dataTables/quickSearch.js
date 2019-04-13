@@ -9,18 +9,22 @@ const initialState = {
   hasAjaxRequestFailed: false,
   columnConfigs: [{
     field: 'clientName',
+    label: 'Client name',
     visible: true,
     type: 'string'
   }, {
     field: 'status',
+    label: 'Status',
     visible: true,
     type: 'string'
   }, {
     field: 'contractExpiryTill',
+    label: 'Contract expiry till',
     visible: true,
     type: 'date'
   }, {
     field: 'clientDetails',
+    label: 'Client details',
     visible: true,
     type: 'url',
     url: '/client',
