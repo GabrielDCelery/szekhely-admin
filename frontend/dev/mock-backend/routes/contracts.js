@@ -436,7 +436,7 @@ const clients = [{
   contractExpiryTill: '2016-07-02'
 }];
 
-router.get('/quicksearch', async (_req, _res) => {
+router.post('/search', async (_req, _res) => {
   await timeout(1000);
 
   return _res.json({

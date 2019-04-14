@@ -7,13 +7,6 @@ import {
 const initialState = {
   isAjaxRequestInProgress: false,
   hasAjaxRequestFailed: false,
-  labels: {
-    title: 'Contracts',
-    numOfRecordsPerPage: 'Rows per page',
-    search: 'Search',
-    previous: 'Previous',
-    next: 'Next'
-  },
   columnConfigs: [{
     field: 'clientName',
     label: 'Client name',
@@ -25,13 +18,13 @@ const initialState = {
     visible: true,
     type: 'string'
   }, {
-    field: 'Email',
-    label: 'email',
+    field: 'email',
+    label: 'Email',
     visible: true,
     type: 'string'
   }, {
-    field: 'Phone',
-    label: 'phone',
+    field: 'phone',
+    label: 'Phone',
     visible: true,
     type: 'string'
   }, {
@@ -40,8 +33,8 @@ const initialState = {
     visible: true,
     type: 'date'
   }, {
-    field: 'Status',
-    label: 'status',
+    field: 'status',
+    label: 'Status',
     visible: true,
     type: 'string'
   }, {
@@ -49,10 +42,10 @@ const initialState = {
     label: 'Client details',
     visible: true,
     type: 'url',
-    url: '/client',
+    url: '/contract',
     value: _rowData => {
       return {
-        clientId: _rowData['id']
+        contractId: _rowData['id']
       }
     }
   }],

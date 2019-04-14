@@ -2,20 +2,34 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { ContractsTable } from './ContractsTable';
+import { TwoColMain, DataTable } from 'components';
+import { getContracts } from 'state/actions';
 
 class Contracts extends Component {
+  constructor(props) {
+    super(props);
+
+    this.getContracts = this.getContracts.bind(this);
+  }
+
+  getContracts() {
+    return this.props.getContracts();
+  }
+
   render() {
     return (
       <React.Fragment>
-        <div className="container mw-100">
-          <div className="row">
-            <div className="col-md-9">
-              <ContractsTable />
-            </div>
-
-            <div className="col-md-3">
-
+        <TwoColMain
+          Content={() => (
+            <DataTable
+              title='Contracts'
+              columnConfigs={this.props.columnConfigs}
+              dataRows={this.props.dataRows}
+              isAjaxRequestInProgress={this.props.isAjaxRequestInProgress}
+            />
+          )}
+          SideBar={() => (
+            <div>
               <div className="card shadow-sm mb-2">
                 <div className="card-header text-center text-light bg-teal-gradient border-bottom-5 border-black">
                   Search
@@ -23,27 +37,27 @@ class Contracts extends Component {
                 <div className="card-body">
 
                   <div className="form-group">
-                    <label htmlFor="clientName">Client Name</label>
+                    <label htmlFor="clientName">Client name</label>
                     <input type="text" className="form-control form-control-sm" id="clientName" />
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="clientSignatoryName">Client Signatory Name</label>
+                    <label htmlFor="clientSignatoryName">Client signatory name</label>
                     <input type="text" className="form-control form-control-sm" id="clientSignatoryName" />
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="contractExpiryFrom">Contract Expiry From</label>
+                    <label htmlFor="contractExpiryFrom">Contract expiry from</label>
                     <DatePicker id="contractExpiryFrom" className='form-control' />
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="contractExpiryTill">Contract Expiry Till</label>
+                    <label htmlFor="contractExpiryTill">Contract expiry till</label>
                     <DatePicker id="contractExpiryTill" className='form-control' />
                   </div>
 
                   <div className="form-group">
-                    <label htmlFor="bContractStatus">Contract Status</label>
+                    <label htmlFor="bContractStatus">Contract status</label>
                     <select multiple className="form-control form-control-sm" id="bContractStatus">
                       <option>Live</option>
                       <option>Terminated</option>
@@ -52,7 +66,15 @@ class Contracts extends Component {
 
 
 
-                  <button type="button" className="btn btn-primary btn-block">Search</button>
+                  <button
+                    type="button"
+                    className="btn btn-primary btn-block"
+                    onClick={() => {
+                      return this.getContracts();
+                    }}
+                  >
+                    Search
+                  </button>
                 </div>
               </div>
 
@@ -88,18 +110,23 @@ class Contracts extends Component {
 								</div>
               </div>
             </div>
-          </div>
-        </div>
+          )}
+        />
       </React.Fragment>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return state;
+  return {
+    columnConfigs: state.dataTablesContracts.columnConfigs,
+    dataRows: state.dataTablesContracts.dataRows,
+    isAjaxRequestInProgress: state.dataTablesContracts.isAjaxRequestInProgress
+  }
 }
 
 const mapActionsToProps = {
+  getContracts: getContracts
 };
 
 const connected = connect(mapStateToProps, mapActionsToProps)(Contracts);

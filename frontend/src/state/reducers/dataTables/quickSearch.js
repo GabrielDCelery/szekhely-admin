@@ -7,13 +7,6 @@ import {
 const initialState = {
   isAjaxRequestInProgress: false,
   hasAjaxRequestFailed: false,
-  labels: {
-    title: 'Quick search',
-    numOfRecordsPerPage: 'Rows per page',
-    search: 'Search',
-    previous: 'Previous',
-    next: 'Next'
-  },
   columnConfigs: [{
     field: 'clientName',
     label: 'Client name',

@@ -9,6 +9,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use('/authentication', require('./routes/authentication'));
 app.use('/clients', require('./routes/clients'));
+app.use('/contracts', require('./routes/contracts'));
 
 app.listen(3001, () => {
   console.log(`JSON Server is running on port ${3001}`);
