@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { DataTable } from 'components';
 import { connect } from 'react-redux';
 import { getQuickClientList } from 'state/actions';
-import { quickSearchLabels, quickSearchColumnConfigs } from 'state/selectors';
 
 class QuickSearchTable extends Component {
   componentDidMount() {
@@ -12,7 +11,7 @@ class QuickSearchTable extends Component {
   render() {
     return (
       <DataTable
-        labels={this.props.labels}
+        title='Quick search'
         columnConfigs={this.props.columnConfigs}
         dataRows={this.props.dataRows}
         isAjaxRequestInProgress={this.props.isAjaxRequestInProgress}
@@ -23,8 +22,7 @@ class QuickSearchTable extends Component {
 
 const mapStateToProps = state => {
   return {
-    labels: quickSearchLabels(state),
-    columnConfigs: quickSearchColumnConfigs(state),
+    columnConfigs: state.dataTablesQuickSearch.columnConfigs,
     dataRows: state.dataTablesQuickSearch.dataRows,
     isAjaxRequestInProgress: state.dataTablesQuickSearch.isAjaxRequestInProgress
   }

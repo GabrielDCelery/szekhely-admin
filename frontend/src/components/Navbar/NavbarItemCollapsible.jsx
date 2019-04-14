@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 import { AuthorizedComponent } from 'components';
 import './NavbarItemCollapsible.scss';
+import PropTypes from 'prop-types';
 
 export class NavbarItemCollapsible extends Component {
 	render() {
@@ -16,7 +17,7 @@ export class NavbarItemCollapsible extends Component {
 					}}
 				>
 					<FontAwesomeIcon className="fas fa-2x d-block mx-auto pt-1" icon={this.props.icon} />
-					<span className="d-block p-1">{this.props.label}</span>
+					<span className="d-block p-1">{this.context.t(this.props.label)}</span>
 				</a>
 				{this.props.bIsActive ? (
 					<div>
@@ -26,7 +27,7 @@ export class NavbarItemCollapsible extends Component {
 								rbacRule={child.rbacRule}
 								renderAuthorizedComponent={() => (
 									<Link to={child.path} className="nav-child-item">
-										{child.label}
+										{this.context.t(child.label)}
 									</Link>
 								)}
 								renderUnAuthorizedComponent={() => { }}
@@ -39,3 +40,7 @@ export class NavbarItemCollapsible extends Component {
 		);
 	}
 }
+
+NavbarItemCollapsible.contextTypes = {
+  t: PropTypes.func.isRequired
+};

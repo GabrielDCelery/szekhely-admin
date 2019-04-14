@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { capitalizedLabels } from 'state/selectors';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ContractsTable } from './ContractsTable';
@@ -97,9 +96,7 @@ class Contracts extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    capitalizedLabels: capitalizedLabels(state)
-  }
+  return state;
 }
 
 const mapActionsToProps = {

@@ -282,7 +282,7 @@ router.post('/search', async (_req, _res) => {
   return _res.json({
     success: true,
     payload: {
-      clients: sliceRows(filterRowsUsingSearchTerm(clients, _req.body.filterTerm), _req.body.currentPageIndex, _req.body.numOfRecordsPerPage),
+      clients: clients,
       numOfTotalRecords: clients.length
     }
   });

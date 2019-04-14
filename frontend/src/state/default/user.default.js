@@ -9,7 +9,7 @@ export default cachedUser ? {
     isLoggedIn: true,
     hasLoginFailed: false,
     settings: {
-      language: 'EN'
+      language: 'en'
     }
   }
 } : {
@@ -19,6 +19,6 @@ export default cachedUser ? {
     rules: [],
     jwt: null,
     settings: {
-      language: 'EN'
+      language: 'en'
     }
   };

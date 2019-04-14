@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { capitalizedLabels } from 'state/selectors';
 
 class ClientSignatoryDetails extends Component {
   render() {
     return (
       <div className="card shadow-sm">
         <div className="card-header text-center text-light bg-teal-gradient border-bottom-5 border-black">
-          <h5>{this.props.capitalizedLabels.clientSignatoryDetails}</h5>
+          <h5>Client Signatory Details</h5>
         </div>
 
         <div className="card-body border-bottom-2">
@@ -39,9 +38,7 @@ class ClientSignatoryDetails extends Component {
 }
 
 const mapStateToProps = state => {
-  return {
-    capitalizedLabels: capitalizedLabels(state)
-  }
+  return state;
 }
 
 const connected = connect(mapStateToProps)(ClientSignatoryDetails);

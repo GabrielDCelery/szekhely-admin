@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { labels, userSettings } from 'state/selectors';
-import { changeUserSettings } from 'state/actions';
+import { userSettings } from 'state/selectors';
+import { changeUserSettings, setLanguage } from 'state/actions';
+import PropTypes from 'prop-types';
 
 class Settings extends Component {
 	constructor(props) {
@@ -10,6 +11,7 @@ class Settings extends Component {
 	}
 
 	changeLanguage(event) {
+		this.props.setLanguage(event.target.value)
 		this.props.changeUserSettings({
 			...this.props.userSettings,
 			...{ language: event.target.value }
@@ -24,15 +26,15 @@ class Settings extends Component {
 						<div className="card-body">
 							<form>
 								<div className="form-group row">
-									<label htmlFor="language" className="col-sm-2">{this.props.labels.language}</label>
+									<label htmlFor="language" className="col-sm-2">{this.context.t('Language')}</label>
 									<select
 										className="form-control col-sm-10"
 										id="language"
 										value={this.props.userSettings.language}
 										onChange={this.changeLanguage}
 									>
-										<option value="EN">{this.props.labels.languageEnglish}</option>
-										<option value="HUN">{this.props.labels.languageHungarian}</option>
+										<option value="en">{this.context.t('English')}</option>
+										<option value="hun">{this.context.t('Hungarian')}</option>
 									</select>
 								</div>
 							</form>
@@ -44,15 +46,19 @@ class Settings extends Component {
 	}
 }
 
+Settings.contextTypes = {
+  t: PropTypes.func.isRequired
+};
+
 const mapStateToProps = state => {
 	return {
-		labels: labels(state),
 		userSettings: userSettings(state)
 	}
 }
 
 const mapActionsToProps = {
-	changeUserSettings: changeUserSettings
+	changeUserSettings: changeUserSettings,
+	setLanguage: setLanguage
 };
 
 const connected = connect(mapStateToProps, mapActionsToProps)(Settings);

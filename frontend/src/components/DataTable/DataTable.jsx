@@ -3,6 +3,7 @@ import { filterRowsUsingSearchTerm, sliceRows } from './dataTableMethods';
 import './DataTable.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router';
+import PropTypes from 'prop-types';
 
 class DataTable extends Component {
   constructor(props) {
@@ -83,14 +84,14 @@ class DataTable extends Component {
       <thead>
         <tr>
           {columnConfigs.map((columnConfig, index) => (
-            <th key={`th-head-${index}`} scope='col'>{columnConfig.label}</th>
+            <th key={`th-head-${index}`} scope='col'>{this.context.t(columnConfig.label)}</th>
           ))}
         </tr>
       </thead>
     )
   }
 
-  renderPagination(numOfPages, labels) {
+  renderPagination(numOfPages) {
     const { currentPageIndex } = this.state;
     const bIsFirstPage = currentPageIndex === 0;
     const bLastPage = (currentPageIndex + 1) === numOfPages;
@@ -110,7 +111,7 @@ class DataTable extends Component {
               return this.changePageIndex(currentPageIndex - 1)
             }}
           >
-            {labels.previous}
+            {this.context.t('Previous')}
 					</a>
         </li>
         {new Array(numOfPages).fill(null).map((elem, index) => (
@@ -140,7 +141,7 @@ class DataTable extends Component {
               return this.changePageIndex(currentPageIndex + 1)
             }}
           >
-            {labels.next}
+            {this.context.t('Next')}
 					</a>
         </li>
       </ul>
@@ -148,26 +149,26 @@ class DataTable extends Component {
   }
 
   render() {
-    const { columnConfigs, dataRows, labels } = this.props;
+    const { columnConfigs, dataRows } = this.props;
     const { currentPageIndex, numOfRecordsPerPage, filterTerm } = this.state;
     const filteredRows = filterRowsUsingSearchTerm(dataRows, filterTerm);
     const slicedRows = sliceRows(filteredRows, numOfRecordsPerPage, currentPageIndex);
     const renderedTableHead = this.renderTableHead(columnConfigs);
     const renderedTableBody = this.renderTableBody(columnConfigs, slicedRows);
     const numOfPages = Math.ceil(filteredRows.length / numOfRecordsPerPage);
-    const renderedPagination = this.renderPagination(numOfPages, labels);
+    const renderedPagination = this.renderPagination(numOfPages);
 
     return (
       <div className="DataTable card border-2 border-black shadow-sm">
         <div className="card-header text-center text-light bg-custom-blue-gradient border-bottom-3 border-black p-4 rounded-0 custom-box-shadow-lifted">
-          <h5>{labels.title}</h5>
+          <h5>{this.context.t(this.props.title)}</h5>
         </div>
 
         <div className="card-body border-bottom-2">
           <div className="row">
             <div className="col">
               <div className="form-group row">
-                <label className="col-sm-8" htmlFor="numberOfRecords">Number of records per page</label>
+                <label className="col-sm-8" htmlFor="numberOfRecords">{this.context.t('Rows per page')}</label>
                 <div className="col-sm-4">
                   <select
                     className="form-control"
@@ -184,7 +185,7 @@ class DataTable extends Component {
             </div>
             <div className="col">
               <div className="form-group row">
-                <label className="col-sm-2" htmlFor="search">Search</label>
+                <label className="col-sm-2" htmlFor="search">{this.context.t('Search')}</label>
                 <input
                   className="form-control col-sm-10"
                   id="search"
@@ -220,6 +221,10 @@ class DataTable extends Component {
     );
   }
 }
+
+DataTable.contextTypes = {
+  t: PropTypes.func.isRequired
+};
 
 const connected = withRouter(DataTable);
 

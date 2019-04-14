@@ -13,12 +13,12 @@ export default {
   icon: 'building',
   label: 'Clients',
   children: [{
-    label: 'Add New',
+    label: 'Add new',
     path: '/clients/addew',
     component: 'AddNew',
     rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
   }, {
-    label: 'Quick Search',
+    label: 'Quick search',
     path: '/clients/quicksearch',
     component: 'QuickSearch',
     rbacRule: STATIC_RBAC_RULE_CLIENTS_QUICK_SEARCH_PAGE_VISIT

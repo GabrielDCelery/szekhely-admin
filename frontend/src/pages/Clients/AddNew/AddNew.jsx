@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { capitalizedLabels } from 'state/selectors';
 import { ClientDetails, ClientSignatoryDetails } from './FormTabs';
 
 function FormTabButton(props) {
@@ -96,11 +95,11 @@ class AddNew extends Component {
 							<div className="card shadow-sm mb-2">
 								<div className="card-body">
 									{[
-										this.props.capitalizedLabels.clientDetails,
-										this.props.capitalizedLabels.clientSignatoryDetails,
-										this.props.capitalizedLabels.services,
-										this.props.capitalizedLabels.contactDetails,
-										this.props.capitalizedLabels.paymentDetails
+										'Client Details',
+										'Client Signatory Details',
+										'Services',
+										'Contact Details',
+										'Payment Details'
 									].map((_label, _index) => (
 										<FormTabButton
 											key={`form-tab-button-${_index}`}
@@ -120,9 +119,7 @@ class AddNew extends Component {
 }
 
 const mapStateToProps = state => {
-	return {
-		capitalizedLabels: capitalizedLabels(state)
-	}
+	return state;
 }
 
 const mapActionsToProps = {

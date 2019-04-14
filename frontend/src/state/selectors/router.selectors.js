@@ -19,7 +19,7 @@ const normalizeAndFlattenRoutes = (_routes, _final) => {
 }
 
 export const routerConfig = createSelector(
-  [getRoutes], (_routes) => {
+  [getRoutes], _routes => {
     const _final = [];
 
     normalizeAndFlattenRoutes(_routes, _final);
