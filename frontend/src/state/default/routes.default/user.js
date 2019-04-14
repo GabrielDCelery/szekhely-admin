@@ -2,15 +2,15 @@ export default {
   path: null,
   component: null,
   icon: 'user-circle',
-  label: 'user',
+  label: 'User',
   rbacRule: null,
   children: [{
-    label: 'settings',
+    label: 'Settings',
     path: '/user/settings',
     component: 'Settings',
     rbacRule: null
   }, {
-    label: 'logout',
+    label: 'Logout',
     path: '/logout',
     rbacRule: null
   }]

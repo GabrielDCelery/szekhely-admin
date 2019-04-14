@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
-import { DataTableCard } from 'components';
+import { DataTable } from 'components';
 import { connect } from 'react-redux';
 import { getQuickClientList } from 'state/actions';
-import { quickSearchColumnConfigs } from 'state/selectors';
+import { quickSearchLabels, quickSearchColumnConfigs } from 'state/selectors';
 
 class QuickSearchTable extends Component {
   componentDidMount() {
-    this.props.onGetQuickClientList();
+    this.props.getQuickClientList();
   }
 
   render() {
     return (
-      <DataTableCard
-        title='Quick Search'
-        columnConfigs={this.props.quickSearchColumnConfigs}
+      <DataTable
+        labels={this.props.labels}
+        columnConfigs={this.props.columnConfigs}
         dataRows={this.props.dataRows}
-        data={this.props.clients}
         isAjaxRequestInProgress={this.props.isAjaxRequestInProgress}
       />
     );
@@ -24,15 +23,15 @@ class QuickSearchTable extends Component {
 
 const mapStateToProps = state => {
   return {
-    quickSearchColumnConfigs: quickSearchColumnConfigs(state),
+    labels: quickSearchLabels(state),
+    columnConfigs: quickSearchColumnConfigs(state),
     dataRows: state.dataTablesQuickSearch.dataRows,
-    clients: state.dataTablesQuickSearch.data,
     isAjaxRequestInProgress: state.dataTablesQuickSearch.isAjaxRequestInProgress
   }
 }
 
 const mapActionsToProps = {
-  onGetQuickClientList: getQuickClientList
+  getQuickClientList: getQuickClientList
 };
 
 const connected = connect(mapStateToProps, mapActionsToProps)(QuickSearchTable);

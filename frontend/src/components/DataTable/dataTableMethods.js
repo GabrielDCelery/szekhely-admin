@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export function filterRowsUsingSearchTerm(_rows = [], _searchTerm = '') {
   if (_searchTerm === '') {
     return _rows;
@@ -19,4 +21,8 @@ export function filterRowsUsingSearchTerm(_rows = [], _searchTerm = '') {
 
     return false;
   });
+}
+
+export function sliceRows(_dataRows, _numOfRecordsPerPage, _currentPageIndex) {
+  return _.slice(_dataRows, _currentPageIndex * _numOfRecordsPerPage, ((_currentPageIndex + 1) * _numOfRecordsPerPage));
 }

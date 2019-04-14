@@ -6,6 +6,6 @@ export default {
   path: '/dashboard',
   component: 'Dashboard',
   icon: 'tachometer-alt',
-  label: 'dashboard',
+  label: 'Dashboard',
   rbacRule: STATIC_RBAC_RULE_DASHBOARD_PAGE_VISIT
 }

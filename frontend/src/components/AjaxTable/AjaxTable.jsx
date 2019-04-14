@@ -1,11 +1,10 @@
-import _ from 'lodash';
 import React, { Component } from 'react';
-import { filterRowsUsingSearchTerm } from './dataTableMethods';
-import './DataTableCard.scss';
+import './AjaxTable.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withRouter } from 'react-router';
+import { KeyupTimeout } from 'services';
 
-class DataTableCard extends Component {
+class AjaxTable extends Component {
 	constructor(props) {
 		super(props);
 
@@ -14,12 +13,17 @@ class DataTableCard extends Component {
 			currentPageIndex: 0,
 			filterTerm: ''
 		};
+		this.keyupTimeout = new KeyupTimeout();
 		this.renderTableBody = this.renderTableBody.bind(this);
 		this.renderTableHead = this.renderTableHead.bind(this);
 		this.renderPagination = this.renderPagination.bind(this);
 		this.changePageIndex = this.changePageIndex.bind(this);
 		this.changeFilterTerm = this.changeFilterTerm.bind(this);
 		this.changeNumOfRecordPerPage = this.changeNumOfRecordPerPage.bind(this);
+	}
+
+	componentDidMount() {
+		return this.props.requestNewDataRows(this.state);
 	}
 
 	changeFilterTerm(event) {
@@ -29,6 +33,10 @@ class DataTableCard extends Component {
 				currentPageIndex: 0,
 				filterTerm: event.target.value
 			}
+		}, () => {
+			this.keyupTimeout.waitAndExecuteCb(() => {
+				return this.props.requestNewDataRows(this.state);
+			});
 		});
 	}
 
@@ -39,6 +47,8 @@ class DataTableCard extends Component {
 				currentPageIndex: 0,
 				numOfRecordsPerPage: parseInt(event.target.value, 10)
 			}
+		}, () => {
+			return this.props.requestNewDataRows(this.state);
 		});
 	}
 
@@ -46,6 +56,8 @@ class DataTableCard extends Component {
 		this.setState({
 			...this.state,
 			...{ currentPageIndex: index }
+		}, () => {
+			return this.props.requestNewDataRows(this.state);
 		});
 	}
 
@@ -59,9 +71,10 @@ class DataTableCard extends Component {
 								return (
 									<td
 										key={`td-${colIndex}`}
+										scope='col'
 									>
 										<FontAwesomeIcon
-											className="fas fa-2x external-url w-100"
+											className="fas fa-2x external-url"
 											icon='ellipsis-h'
 											onClick={() => {
 												this.props.history.push(columnConfig['url'], columnConfig.value(row))
@@ -70,7 +83,7 @@ class DataTableCard extends Component {
 									</td>
 								);
 							} else {
-								return (<td key={`td-${colIndex}`}>{row[columnConfig['field']]}</td>);
+								return (<td key={`td-${colIndex}`} scope='col'>{row[columnConfig['field']]}</td>);
 							}
 						})}
 					</tr>
@@ -91,8 +104,9 @@ class DataTableCard extends Component {
 		)
 	}
 
-	renderPagination(numOfPages) {
-		const { currentPageIndex } = this.state;
+	renderPagination(numOfTotalRecords, labels) {
+		const { currentPageIndex, numOfRecordsPerPage } = this.state;
+		const numOfPages = Math.ceil(numOfTotalRecords / numOfRecordsPerPage);
 		const bIsFirstPage = currentPageIndex === 0;
 		const bLastPage = (currentPageIndex + 1) === numOfPages;
 
@@ -111,10 +125,10 @@ class DataTableCard extends Component {
 							return this.changePageIndex(currentPageIndex - 1)
 						}}
 					>
-						Previous
+						{labels.previous}
 					</a>
 				</li>
-				{new Array(numOfPages).fill(null).map((elem, index) => (
+				{numOfPages === 0 ? null : new Array(numOfPages).fill(null).map((elem, index) => (
 					<li
 						key={`pagination-${index}`}
 						className="page-item"
@@ -141,7 +155,7 @@ class DataTableCard extends Component {
 							return this.changePageIndex(currentPageIndex + 1)
 						}}
 					>
-						Next
+						{labels.next}
 					</a>
 				</li>
 			</ul>
@@ -149,26 +163,22 @@ class DataTableCard extends Component {
 	}
 
 	render() {
-		const { columnConfigs, dataRows } = this.props;
-		const { currentPageIndex, numOfRecordsPerPage, filterTerm } = this.state;
+		const { columnConfigs, dataRows, labels, numOfTotalRecords } = this.props;
 		const renderedTableHead = this.renderTableHead(columnConfigs);
-		const filteredRows = filterRowsUsingSearchTerm(dataRows, filterTerm);
-		const slicedRows = _.slice(filteredRows, currentPageIndex * numOfRecordsPerPage, ((currentPageIndex + 1) * numOfRecordsPerPage));
-		const renderedTableBody = this.renderTableBody(columnConfigs, slicedRows);
-		const numOfPages = Math.ceil(filteredRows.length / numOfRecordsPerPage);
-		const renderedPagination = this.renderPagination(numOfPages);
+		const renderedTableBody = this.renderTableBody(columnConfigs, dataRows);
+		const renderedPagination = this.renderPagination(numOfTotalRecords, labels);
 
 		return (
-			<div className="DataTableCard card border-2 border-black shadow-sm">
+			<div className="AjaxTable card border-2 border-black shadow-sm">
 				<div className="card-header text-center text-light bg-custom-blue-gradient border-bottom-3 border-black p-4 rounded-0 custom-box-shadow-lifted">
-					<h5>{this.props.title}</h5>
+					<h5>{labels.title}</h5>
 				</div>
 
 				<div className="card-body border-bottom-2">
 					<div className="row">
-						<div className="col">
+						<div className="col-5">
 							<div className="form-group row">
-								<label className="col-sm-8" htmlFor="numberOfRecords">Number of records per page</label>
+								<label className="col-sm-8" htmlFor="numberOfRecords">{labels.numOfRecordsPerPage}</label>
 								<div className="col-sm-4">
 									<select
 										className="form-control"
@@ -183,9 +193,9 @@ class DataTableCard extends Component {
 								</div>
 							</div>
 						</div>
-						<div className="col">
+						<div className="col-5">
 							<div className="form-group row">
-								<label className="col-sm-2" htmlFor="search">Search</label>
+								<label className="col-sm-2" htmlFor="search">{labels.search}</label>
 								<input
 									className="form-control col-sm-10"
 									id="search"
@@ -193,6 +203,17 @@ class DataTableCard extends Component {
 									value={this.state.filterTerm}
 									onChange={this.changeFilterTerm}
 								/>
+							</div>
+						</div>
+						<div className="col-2">
+							<div className="form-group row">
+								<div className="text-center w-100">
+									{this.props.isAjaxRequestInProgress ?
+										(<FontAwesomeIcon
+											className="fas fa-circle-notch fa-spin fa-2x"
+											icon='circle-notch' />
+										) : null}
+								</div>
 							</div>
 						</div>
 					</div>
@@ -203,14 +224,10 @@ class DataTableCard extends Component {
 				</div>
 
 				<div className="card-body border-bottom-2">
-					{this.props.isAjaxRequestInProgress ?
-						(<div className="text-center">
-							<FontAwesomeIcon className="fas fa-spinner fa-spin fa-5x" icon='spinner' />
-						</div>) :
-						(<table className="table table-sm table-striped">
-							{renderedTableHead}
-							{renderedTableBody}
-						</table>)}
+					{<table className="table table-sm table-striped">
+						{renderedTableHead}
+						{renderedTableBody}
+					</table>}
 				</div>
 
 				<div className="card-footer p-1 custom-bg-black custom-box-shadow-lifted">
@@ -222,6 +239,10 @@ class DataTableCard extends Component {
 	}
 }
 
-const connected = withRouter(DataTableCard);
+const connected = withRouter(AjaxTable);
 
-export { connected as DataTableCard };
+export { connected as AjaxTable };
+
+/*(<div className="text-center">
+			<FontAwesomeIcon className="fas fa-spinner fa-spin fa-5x" icon='spinner' />
+		</div>)*/

@@ -1,6 +1,6 @@
 @import 'styles/shared.scss';
 
-.DataTableCard {
+.DataTable {
   .page-link {
       //color: #DFF0D8;
     background-color: $black;
@@ -12,26 +12,35 @@
   }
 }
 
-.DataTableCard .page-link.active,
-.DataTableCard .page-link:hover {
+.DataTable .page-link.active,
+.DataTable .page-link:hover {
   background-color: $black;
   color: lighten($custom-red, 10);
   border-color: lighten($custom-red, 10);
 }
 
-.DataTableCard .page-item.disabled .page-link {
+.DataTable .page-item.disabled .page-link {
   background-color: $black;
   color: lighten($custom-red, 10);
   border-color: lighten($custom-red, 10);
 }
 
-.DataTableCard .external-url {
+.DataTable .external-url {
   overflow: hidden;
   transition: all 0.5s ease;
 }
 
-.DataTableCard .external-url:hover {
+.DataTable .external-url:hover {
   cursor: pointer;
   transform: scale(2);
   color: lighten($custom-red, 10);
+}
+
+.example-appear {
+  opacity: 0.01;
+}
+
+.example-appear.example-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }
