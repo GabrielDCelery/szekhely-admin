@@ -4,7 +4,7 @@
   text-align: center;
   color: $grey;
   opacity: 0.6;
-  transition: all 0.5s ease;
+  transition: all 0.5s ease-in-out;
   font-weight: bold;
   display: block;
   align-items: center;
@@ -12,12 +12,9 @@
 
 .NavbarItem.nav-item .nav-link:hover,
 .NavbarItem.nav-item .nav-link.active {
-  color: $grey;
+  color: $white;
+  background-color: lighten($custom-blue, 10);
   opacity: 1;
-}
-
-.NavbarItem.nav-item .nav-link.active {
-  @include linear-gradient(to bottom, darken($custom-blue, 0), darken($custom-blue, 25));
 }
 
 .NavbarItem hr {

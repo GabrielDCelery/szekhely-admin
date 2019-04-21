@@ -5,14 +5,14 @@ import {
   LOGOUT,
   CHANGE_USER_SETTINGS
 } from './user.constants';
-import { authentication } from 'services';
+import { userService } from 'services';
 import { setLanguage as setLanguageI18n } from 'redux-i18n';
 
 export function loginAction(email, password, successCallback = () => { }) {
   return async dispatch => {
     dispatch({ type: LOGIN_REQUEST, payload: null });
 
-    const { success, payload } = await authentication.login(email, password);
+    const { success, payload } = await userService.login(email, password);
 
     if (!success) {
       return dispatch({ type: LOGIN_FAILURE, payload: null });
@@ -20,7 +20,7 @@ export function loginAction(email, password, successCallback = () => { }) {
 
     const { rules, jwt } = payload;
 
-    authentication.setStoredLoginCredentials({ email, rules, jwt });
+    userService.setStoredLoginCredentials({ email, rules, jwt });
     dispatch({ type: LOGIN_SUCCESS, payload: { email, rules, jwt } });
 
     return successCallback();
@@ -29,11 +29,8 @@ export function loginAction(email, password, successCallback = () => { }) {
 
 export function logoutAction(successCallback = () => { }) {
   return dispatch => {
-    authentication.logout();
-    dispatch({
-      type: LOGOUT,
-      payload: null
-    });
+    userService.logout();
+    dispatch({ type: LOGOUT, payload: null });
 
     return successCallback();
   }

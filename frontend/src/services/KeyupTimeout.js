@@ -1,7 +1,8 @@
 const TIMEOUT_MS = 300;
 
-class KeyupTimeout {
-  constructor() {
+export class KeyupTimeout {
+  constructor(_timeOutMs) {
+    this.timeOutMs = _timeOutMs || TIMEOUT_MS;
     this.timeout = null;
     this.waitAndExecuteCb = this.waitAndExecuteCb.bind(this);
   }
@@ -14,8 +15,6 @@ class KeyupTimeout {
       this.timeout = null;  
   
       return _callback();
-    }, TIMEOUT_MS);
+    }, this.timeOutMs);
   }
 }
-
-export default KeyupTimeout;

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class Contracts {
+class ContractsService {
   async getContracts (searchConfig) {
     const { data } = await axios({
       method: 'POST',
@@ -13,4 +13,4 @@ class Contracts {
   }
 }
 
-export default new Contracts();
+export const contractsService = new ContractsService();

@@ -3,7 +3,7 @@ import {
   GET_CONTRACTS_SUCCESS,
   GET_CONTRACTS_FAIL
 } from './contracts.constants';
-import { contracts as contractsService } from 'services';
+import { contractsService } from 'services';
 
 export function getContractsAction() {
   return async dispatch => {
