@@ -9,3 +9,5 @@ export {
   contracts,
   KeyupTimeout
 }
+
+export * from './rbacRules';

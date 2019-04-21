@@ -4,7 +4,7 @@ import {
   LOGIN_FAILURE,
   LOGOUT,
   CHANGE_USER_SETTINGS
-} from '../constants';
+} from './user.constants';
 
 const initialState = {
   email: null,
@@ -13,12 +13,12 @@ const initialState = {
   hasLoginFailed: false,
   rules: [],
   settings: {
-    language: 'EN'
+    language: 'en'
   },
   jwt: null
 };
 
-export default function user(state = initialState, { type, payload }) {
+export function userReducer(state = initialState, { type, payload }) {
   switch (type) {
     case LOGIN_REQUEST:
       return {

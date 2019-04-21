@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { logout } from 'state/actions';
+import { logoutAction } from 'state';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 
 class Logout extends Component {
 	componentDidMount() {
-		this.props.onLogout(() => {
+		this.props.logout(() => {
 			return this.props.history.push('/login');
 		});
 	}
@@ -23,7 +23,7 @@ const mapStateToProps = state => {
 }
 
 const mapActionsToProps = {
-	onLogout: logout
+	logout: logoutAction
 };
 
 const connected = withRouter(connect(mapStateToProps, mapActionsToProps)(Logout));

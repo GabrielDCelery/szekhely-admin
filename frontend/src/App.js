@@ -15,7 +15,7 @@ import {
   QuickSearch
 } from 'pages';
 import { connect } from 'react-redux';
-import { routerConfig } from './state/selectors';
+import { routesConfigSelector } from 'state';
 import './App.scss';
 
 const Pages = {
@@ -62,7 +62,7 @@ class App extends Component {
 
 const mapStateToProps = state => {
 	return {
-    routerConfig: routerConfig(state),
+    routerConfig: routesConfigSelector(state),
     navbarItemConfigs: state.routes
   }
 }

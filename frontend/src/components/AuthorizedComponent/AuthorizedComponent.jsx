@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { isUserAuthorized } from 'state/selectors';
+import { isUserAuthorizedSelector } from 'state';
 
 class AuthorizedComponent extends Component {
   render() {
@@ -16,7 +16,7 @@ class AuthorizedComponent extends Component {
 
 const mapStateToProps = (state, props) => {
   return {
-    isUserAuthorized: isUserAuthorized(state, props)
+    isUserAuthorized: isUserAuthorizedSelector(state, props)
   }
 }
 

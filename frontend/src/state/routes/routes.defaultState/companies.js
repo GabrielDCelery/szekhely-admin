@@ -5,7 +5,7 @@ import {
   STATIC_RBAC_RULE_INVOICES_PAGE_VISIT,
   STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW,
   STATIC_RBAC_RULE_CLIENTS_QUICK_SEARCH_PAGE_VISIT
-} from 'state/constants';
+} from 'services';
 
 export default {
   path: null,

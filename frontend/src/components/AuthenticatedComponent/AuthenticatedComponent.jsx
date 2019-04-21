@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { isUserLoggedIn } from 'state/selectors';
+import { isUserLoggedInSelector } from 'state';
 
 class AuthenticatedComponent extends Component {
   render() {
@@ -14,7 +14,7 @@ class AuthenticatedComponent extends Component {
 
 const mapStateToProps = state => {
   return {
-    isUserLoggedIn: isUserLoggedIn(state)
+    isUserLoggedIn: isUserLoggedInSelector(state)
   }
 }
 

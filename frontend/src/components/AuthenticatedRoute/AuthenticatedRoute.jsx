@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { isUserLoggedIn } from 'state/selectors';
+import { isUserLoggedInSelector } from 'state';
 
 class AuthenticatedRoute extends Component {
   render() {
@@ -18,7 +18,7 @@ class AuthenticatedRoute extends Component {
 
 const mapStateToProps = state => {
   return {
-    isUserLoggedIn: isUserLoggedIn(state)
+    isUserLoggedIn: isUserLoggedInSelector(state)
   }
 }
 

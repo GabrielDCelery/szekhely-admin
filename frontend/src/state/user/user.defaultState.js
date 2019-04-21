@@ -1,8 +1,8 @@
-import { authentication as authenticationService } from 'services';
+import { authentication } from 'services';
 
-const cachedUser = authenticationService.getStoredLoginCredentials();
+const cachedUser = authentication.getStoredLoginCredentials();
 
-export default cachedUser ? {
+export const userDefaultState = cachedUser ? {
   ...cachedUser,
   ...{
     isLoggingIn: false,

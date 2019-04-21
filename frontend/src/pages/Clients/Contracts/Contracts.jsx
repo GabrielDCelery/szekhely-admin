@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { TwoColMain, DataTable } from 'components';
-import { getContracts } from 'state/actions';
+import { getContractsAction } from 'state';
 
 class Contracts extends Component {
   constructor(props) {
@@ -119,14 +119,14 @@ class Contracts extends Component {
 
 const mapStateToProps = state => {
   return {
-    columnConfigs: state.dataTablesContracts.columnConfigs,
-    dataRows: state.dataTablesContracts.dataRows,
-    isAjaxRequestInProgress: state.dataTablesContracts.isAjaxRequestInProgress
+    columnConfigs: state.dataTablesConfigs.contracts,
+    dataRows: state.contracts.records,
+    isAjaxRequestInProgress: state.contracts.isAjaxRequestInProgress
   }
 }
 
 const mapActionsToProps = {
-  getContracts: getContracts
+  getContracts: getContractsAction
 };
 
 const connected = connect(mapStateToProps, mapActionsToProps)(Contracts);

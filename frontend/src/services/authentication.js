@@ -10,17 +10,17 @@ class Authentication {
   }
 
   createAuthHeader() {
-    const _user = this.getStoredLoginCredentials();
+    const user = this.getStoredLoginCredentials();
 
-    if (_user && _user.token) {
-      return { 'Authorization': `Bearer ${_user.token}` };
+    if (user && user.token) {
+      return { 'Authorization': `Bearer ${user.token}` };
     }
 
     return {};
   }
 
   async login(_email, _password) {
-    const _config = {
+    const { data } = await axios({
       method: 'POST',
       url: `${process.env.REACT_APP_BACKEND_API_URL}/authentication/login`,
       responseType: 'json',
@@ -28,10 +28,9 @@ class Authentication {
         email: _email,
         password: _password
       }
-    };
-    const _result = await axios(_config);
+    });
 
-    return _result['data'];
+    return data;
   }
 
   logout() {

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { DataTable } from 'components';
 import { connect } from 'react-redux';
-import { getQuickClientList } from 'state/actions';
+import { getClientsAction } from 'state';
 
 class QuickSearchTable extends Component {
   componentDidMount() {
-    this.props.getQuickClientList();
+    this.props.getClients();
   }
 
   render() {
@@ -22,14 +22,14 @@ class QuickSearchTable extends Component {
 
 const mapStateToProps = state => {
   return {
-    columnConfigs: state.dataTablesQuickSearch.columnConfigs,
-    dataRows: state.dataTablesQuickSearch.dataRows,
-    isAjaxRequestInProgress: state.dataTablesQuickSearch.isAjaxRequestInProgress
+    columnConfigs: state.dataTablesConfigs.clients,
+    dataRows: state.clients.records,
+    isAjaxRequestInProgress: state.clients.isAjaxRequestInProgress
   }
 }
 
 const mapActionsToProps = {
-  getQuickClientList: getQuickClientList
+  getClients: getClientsAction
 };
 
 const connected = connect(mapStateToProps, mapActionsToProps)(QuickSearchTable);

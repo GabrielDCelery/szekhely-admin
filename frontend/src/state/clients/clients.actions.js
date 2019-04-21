@@ -2,10 +2,10 @@ import {
   GET_QUICK_CLIENT_LIST_REQUEST,
   GET_QUICK_CLIENT_LIST_SUCCCESS,
   GET_QUICK_CLIENT_LIST_FAIL
-} from '../constants';
+} from './clients.constants';
 import { clients as clientsService } from 'services';
 
-export function getQuickClientList() {
+export function getClientsAction() {
   return async dispatch => {
     dispatch({ type: GET_QUICK_CLIENT_LIST_REQUEST, payload: null });
 

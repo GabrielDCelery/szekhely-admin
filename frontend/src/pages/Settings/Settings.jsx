@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { userSettings } from 'state/selectors';
-import { changeUserSettings, setLanguage } from 'state/actions';
+import { 
+	changeUserSettingsAction, 
+	userSettingsSelector 
+} from 'state';
 import PropTypes from 'prop-types';
 
 class Settings extends Component {
@@ -11,7 +13,6 @@ class Settings extends Component {
 	}
 
 	changeLanguage(event) {
-		this.props.setLanguage(event.target.value)
 		this.props.changeUserSettings({
 			...this.props.userSettings,
 			...{ language: event.target.value }
@@ -52,13 +53,12 @@ Settings.contextTypes = {
 
 const mapStateToProps = state => {
 	return {
-		userSettings: userSettings(state)
+		userSettings: userSettingsSelector(state)
 	}
 }
 
 const mapActionsToProps = {
-	changeUserSettings: changeUserSettings,
-	setLanguage: setLanguage
+	changeUserSettings: changeUserSettingsAction
 };
 
 const connected = connect(mapStateToProps, mapActionsToProps)(Settings);

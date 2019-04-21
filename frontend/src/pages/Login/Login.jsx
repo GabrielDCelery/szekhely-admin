@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
-import './Login.scss';
-import { login } from 'state/actions';
+import {
+	loginAction,
+	isUserLoggingInSelector,
+	hasUserLoginFailedSelector
+} from 'state';
 import { withRouter } from 'react-router';
 import { AjaxProcessButton } from 'components';
 import { Redirect } from 'react-router-dom';
-import { isUserLoggingIn, hasUserLoginFailed } from 'state/selectors';
+import './Login.scss';
 
 class Login extends Component {
 	constructor(props) {
@@ -106,13 +109,13 @@ class Login extends Component {
 
 const mapStateToProps = state => {
 	return {
-		isUserLoggingIn: isUserLoggingIn(state),
-		hasUserLoginFailed: hasUserLoginFailed(state)
+		isUserLoggingIn: isUserLoggingInSelector(state),
+		hasUserLoginFailed: hasUserLoginFailedSelector(state)
 	}
 }
 
 const mapActionsToProps = {
-	login: login
+	login: loginAction
 };
 
 const connected = withRouter(connect(mapStateToProps, mapActionsToProps)(Login));

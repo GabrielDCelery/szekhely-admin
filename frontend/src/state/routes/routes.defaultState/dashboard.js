@@ -1,6 +1,6 @@
 import {
   STATIC_RBAC_RULE_DASHBOARD_PAGE_VISIT
-} from 'state/constants';
+} from 'services';
 
 export default {
   path: '/dashboard',

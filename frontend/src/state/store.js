@@ -1,8 +1,8 @@
 import { createStore, applyMiddleware } from 'redux';
 //import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
-import combinedReducers from './reducers';
-import combinedDefaultState from './default';
+import combinedReducers from './combinedReducers';
+import combinedDefaultState from './combinedDefaultState';
 
 //const loggerMiddleware = createLogger();
 
