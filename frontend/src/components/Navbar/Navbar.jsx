@@ -16,7 +16,7 @@ export class Navbar extends Component {
 
 	render() {
 		return (
-			<ul className="Navbar nav flex-column bg-gradient-primary shadow">
+			<ul className="Navbar nav flex-column bg-gradient-primary shadow border-right-2 border-black">
 				{this.props.navbarItemConfigs.map((navbarItemConfig, index) => (
 					<AuthorizedComponent
 						key={'navbar-item-' + index}

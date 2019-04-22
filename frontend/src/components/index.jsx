@@ -6,5 +6,6 @@ export * from './AjaxProcessButton';
 export * from './MainLayout';
 export * from './TwoColMain';
 export * from './OneColMain';
-export * from './AjaxTable';
+//export * from './AjaxTable';
 export * from './DataTable';
+export * from './Card';

@@ -15,14 +15,14 @@
 .AjaxTable .page-link.active,
 .AjaxTable .page-link:hover {
   background-color: $black;
-  color: lighten($custom-red, 10);
-  border-color: lighten($custom-red, 10);
+  color: lighten($primary-color, 10);
+  border-color: lighten($primary-color, 10);
 }
 
 .AjaxTable .page-item.disabled .page-link {
   background-color: $black;
-  color: lighten($custom-red, 10);
-  border-color: lighten($custom-red, 10);
+  color: lighten($primary-color, 10);
+  border-color: lighten($primary-color, 10);
 }
 
 .AjaxTable .external-url {
@@ -33,7 +33,7 @@
 .AjaxTable .external-url:hover {
   cursor: pointer;
   transform: scale(2);
-  color: lighten($custom-red, 10);
+  color: lighten($primary-color, 10);
 }
 
 .example-appear {

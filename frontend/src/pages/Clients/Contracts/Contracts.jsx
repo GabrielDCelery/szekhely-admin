@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import { TwoColMain, DataTable } from 'components';
+import { TwoColMain, DataTable, Card, AjaxProcessButton } from 'components';
 import { getContractsAction } from 'state';
 
 class Contracts extends Component {
@@ -30,12 +30,11 @@ class Contracts extends Component {
           )}
           SideBar={() => (
             <div>
-              <div className="card shadow-sm mb-2">
-                <div className="card-header text-center text-light bg-teal-gradient border-bottom-5 border-black">
-                  Search
+              <div className="Card card border-2 border-black shadow-sm mb-3">
+                <div className="card-header text-center text-light bg-custom-secondary-gradient border-bottom-2 border-black p-2 rounded-0 custom-box-shadow-lifted">
+                  <h6>Search</h6>
                 </div>
                 <div className="card-body">
-
                   <div className="form-group">
                     <label htmlFor="clientName">Client name</label>
                     <input type="text" className="form-control form-control-sm" id="clientName" />
@@ -48,12 +47,12 @@ class Contracts extends Component {
 
                   <div className="form-group">
                     <label htmlFor="contractExpiryFrom">Contract expiry from</label>
-                    <DatePicker id="contractExpiryFrom" className='form-control' />
+                    <DatePicker id="contractExpiryFrom" className='form-control form-control-sm' />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="contractExpiryTill">Contract expiry till</label>
-                    <DatePicker id="contractExpiryTill" className='form-control' />
+                    <DatePicker id="contractExpiryTill" className='form-control form-control-sm' />
                   </div>
 
                   <div className="form-group">
@@ -64,23 +63,18 @@ class Contracts extends Component {
                     </select>
                   </div>
 
-
-
-                  <button
-                    type="button"
-                    className="btn btn-primary btn-block"
-                    onClick={() => {
-                      return this.getContracts();
-                    }}
-                  >
-                    Search
-                  </button>
+                  <AjaxProcessButton
+                    className="btn btn-tertiary-color btn-block custom-box-shadow-lifted border-2 border-black"
+                    label='Search'
+                    bIsProcessing={this.props.isAjaxRequestInProgress}
+                    onClick={this.getContracts}
+                  />
                 </div>
               </div>
 
-              <div className="card shadow-sm mb-2">
-                <div className="card-header text-center text-light bg-teal-gradient border-bottom-5 border-black">
-                  Saved Views
+              <div className="card border-2 border-black shadow-sm mb-3">
+                <div className="card-header text-center text-light bg-custom-secondary-gradient border-bottom-2 border-black p-2 rounded-0 custom-box-shadow-lifted">
+                  <h6>Saved Views</h6>
                 </div>
                 <div className="card-body">
                   <div className="form-group">
@@ -92,23 +86,19 @@ class Contracts extends Component {
                       <option>5</option>
                     </select>
                   </div>
-                  <button type="button" className="btn btn-primary btn-block">Remove View</button>
+                  <button type="button" className="btn btn-tertiary-color btn-block custom-box-shadow-lifted border-2 border-black">
+                    Remove View
+                  </button>
                   <hr />
                   <div className="form-group">
                     <input type="text" className="form-control" id="" />
                   </div>
-                  <button type="button" className="btn btn-primary btn-block">Save New View</button>
+                  <button type="button" className="btn btn-tertiary-color btn-block custom-box-shadow-lifted border-2 border-black">
+                    Add New View
+                  </button>
                 </div>
               </div>
 
-              <div className="card shadow-sm mb-2">
-                <div className="card-header text-center text-light bg-teal-gradient border-bottom-5 border-black">
-                  Fields
-                </div>
-                <div className="card-body">
-                  test
-								</div>
-              </div>
             </div>
           )}
         />

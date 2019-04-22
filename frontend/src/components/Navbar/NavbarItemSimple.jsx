@@ -17,7 +17,6 @@ export class NavbarItemSimple extends Component {
 					<FontAwesomeIcon className="fas fa-2x d-block mx-auto pt-1" icon={this.props.icon} />
 					<span className="d-block p-1">{this.context.t(this.props.label)}</span>
 				</Link>
-				<hr />
 			</li>
 		);
 	}

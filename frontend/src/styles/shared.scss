@@ -5,3 +5,8 @@
 @import './backgorund';
 @import './border';
 @import './shadows';
+
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}

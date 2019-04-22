@@ -17,22 +17,13 @@
   @include button-outline-variant($secondary-color, #222222, lighten($secondary-color,5%), $secondary-color);
 }
 
-.btn-action {
-  @include button-variant($dark-red, darken($dark-red, 7.5%), darken($dark-red, 10%), lighten($dark-red,5%), lighten($dark-red, 10%), darken($dark-red,30%));
+.btn-tertiary-color {
+  @include button-variant($tertiary-color, darken($tertiary-color, 7.5%), darken($tertiary-color, 10%), lighten($tertiary-color,5%), lighten($tertiary-color, 10%), darken($tertiary-color,30%));
 }
 
-.btn-outline-action {
-  @include button-outline-variant($dark-red, #222222, lighten($dark-red,5%), $dark-red);
+.btn-outline-tertiary-color {
+  @include button-outline-variant($tertiary-color, #222222, lighten($tertiary-color,5%), $tertiary-color);
 }
-
-.btn-active {
-  @include button-variant($teal, darken($teal, 7.5%), darken($teal, 10%), lighten($teal, 5%), lighten($teal, 10%), darken($teal, 30%));
-}
-
-.btn-outline-active {
-  @include button-outline-variant($teal, #222222, lighten($teal,5%), $teal);
-}
-
 
 
 

@@ -6,7 +6,7 @@ function FormTabButton(props) {
 	return (
 		<button
 			type="button"
-			className={['btn', 'btn-block', props.bIsActive ? 'btn-active' : 'btn-secondary'].join(' ')}
+			className={['btn', 'btn-block', 'custom-box-shadow-lifted', 'border-2', 'border-black', props.bIsActive ? 'btn-primary' : 'btn-secondary'].join(' ')}
 			onClick={props.changeActiveFormTab}
 		>
 			{props.label}
@@ -92,7 +92,7 @@ class AddNew extends Component {
 						</div>
 
 						<div className="col-md-3">
-							<div className="card shadow-sm mb-2">
+							<div className="card border-2 border-black shadow-sm mb-3">
 								<div className="card-body">
 									{[
 										'Client Details',

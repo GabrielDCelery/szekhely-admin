@@ -7,7 +7,7 @@ import {
 	hasUserLoginFailedSelector
 } from 'state';
 import { withRouter } from 'react-router';
-import { AjaxProcessButton } from 'components';
+import { AjaxProcessButton, Card } from 'components';
 import { Redirect } from 'react-router-dom';
 import './Login.scss';
 
@@ -16,8 +16,8 @@ class Login extends Component {
 		super(props);
 
 		this.state = {
-			loginEmail: null,
-			loginPassword: null
+			loginEmail: '',
+			loginPassword: ''
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -44,14 +44,18 @@ class Login extends Component {
 		return (
 			<React.Fragment>
 				{this.props.isUserLoggedIn ? (<Redirect to='/' />) : (
-					<React.Fragment>
-						<div className="Login d-flex justify-content-center align-items-center w-100">
-							<div className="card bg-light w-25">
-								<div className="card-header text-center">
-									<FontAwesomeIcon className="fas fa-8x" icon='user-circle' />
+					<div className="Login d-flex justify-content-center align-items-center w-100">
+						<div className="w-25">
+							<div className="Card card border-2 border-black shadow-sm mb-3">
+								<div className="card-header text-center text-light bg-custom-primary-gradient border-bottom-2 border-black p-4 rounded-0 custom-box-shadow-lifted">
+									<h5>Login</h5>
 								</div>
 								<div className="card-body">
 									<div className="container rounded">
+										<div className="mb-3 text-center">
+											<FontAwesomeIcon className="fas fa-8x" icon='user-circle' />
+										</div>
+										<hr />
 										<div className="row justify-content-center">
 											<div className="col">
 												<form onSubmit={this.handleSubmit}>
@@ -63,6 +67,7 @@ class Login extends Component {
 																id="loginEmail"
 																placeholder="Enter email"
 																onChange={this.handleChange}
+																value={this.state.loginEmail}
 															/>
 														</div>
 													</div>
@@ -74,18 +79,19 @@ class Login extends Component {
 																id="loginPassword"
 																placeholder="Password"
 																onChange={this.handleChange}
-																autoComplete="on	"
+																autoComplete="on"
+																value={this.state.loginPassword}
 															/>
 														</div>
 													</div>
 													{this.props.hasUserLoginFailed ? (
 														<div className="alert alert-danger">
 															Sorry, but this email and password combination does not appear to be in our database!
-														</div>
+															</div>
 													) : null}
 													<AjaxProcessButton
 														type="submit"
-														className="btn btn-block btn-dark-red"
+														className="btn btn-tertiary-color btn-block custom-box-shadow-lifted border-2 border-black"
 														bIsProcessing={this.props.isUserLoggingIn}
 														label='Login'
 													/>
@@ -100,7 +106,7 @@ class Login extends Component {
 								</div>
 							</div>
 						</div>
-					</React.Fragment>
+					</div>
 				)}
 			</React.Fragment>
 		);

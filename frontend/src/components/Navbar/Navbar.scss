@@ -3,8 +3,7 @@
 .Navbar {
     height: 100%;
     min-height: 100vh;
-    background-color: $primary-color;
     font-size: 14px;
-    background-color: darken($custom-blue, 20);
+    background-color: darken($primary-color, 20);
     overflow: auto;
 }

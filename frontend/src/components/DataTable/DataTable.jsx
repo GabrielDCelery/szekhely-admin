@@ -160,7 +160,7 @@ class DataTable extends Component {
 
     return (
       <div className="DataTable card border-2 border-black shadow-sm">
-        <div className="card-header text-center text-light bg-custom-blue-gradient border-bottom-3 border-black p-4 rounded-0 custom-box-shadow-lifted">
+        <div className="card-header text-center text-light bg-custom-primary-gradient border-bottom-3 border-black p-4 rounded-0 custom-box-shadow-lifted">
           <h5>{this.context.t(this.props.title)}</h5>
         </div>
 

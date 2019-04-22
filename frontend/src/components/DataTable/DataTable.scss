@@ -2,38 +2,37 @@
 
 .DataTable {
   .page-link {
-      //color: #DFF0D8;
     background-color: $black;
-    color: $grey;
+    color: $white;
     border-color: $black;
     box-shadow: none !important;
-    font-weight: bold;
+    //font-weight: bold;
     margin: 1px;
+
+    &.active,
+    &:hover {
+      color: $white;
+      border-color: lighten($primary-color, 10);
+      background-color: $primary-color;
+    }
   }
 }
 
-.DataTable .page-link.active,
-.DataTable .page-link:hover {
-  background-color: $black;
-  color: lighten($custom-red, 10);
-  border-color: lighten($custom-red, 10);
-}
-
 .DataTable .page-item.disabled .page-link {
-  background-color: $black;
-  color: lighten($custom-red, 10);
-  border-color: lighten($custom-red, 10);
+  color: $white;
+  border-color: lighten($primary-color, 10);
+  background-color: $primary-color;
 }
 
 .DataTable .external-url {
   overflow: hidden;
-  transition: all 0.5s ease;
+  transition: all 0.3s ease;
 }
 
 .DataTable .external-url:hover {
   cursor: pointer;
-  transform: scale(2);
-  color: lighten($custom-red, 10);
+  transform: scale(2.5);
+  color: lighten($tertiary-color, 10);
 }
 
 .example-appear {

@@ -35,7 +35,6 @@ export class NavbarItemCollapsible extends Component {
 						))}
 					</div>
 				) : null}
-				<hr />
 			</li>
 		);
 	}

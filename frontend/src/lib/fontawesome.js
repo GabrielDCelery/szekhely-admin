@@ -16,7 +16,8 @@ import {
     faBuilding,
     faExternalLinkAlt,
     faEllipsisH,
-    faCircleNotch
+    faCircleNotch,
+    faAngleDoubleRight
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -35,5 +36,6 @@ library.add(
     faBuilding,
     faExternalLinkAlt,
     faEllipsisH,
-    faCircleNotch
+    faCircleNotch,
+    faAngleDoubleRight
 );

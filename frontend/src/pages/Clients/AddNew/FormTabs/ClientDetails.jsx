@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 class ClientDetails extends Component {
   render() {
     return (
-      <div className="card shadow-sm">
-        <div className="card-header text-center text-light bg-teal-gradient border-bottom-5 border-black">
+      <div className="card border-2 border-black shadow-sm mb-3">
+        <div className="card-header text-center text-light bg-custom-primary-gradient border-bottom-3 border-black p-4 rounded-0 custom-box-shadow-lifted">
           <h5>Client details</h5>
         </div>
 
@@ -65,9 +65,9 @@ class ClientDetails extends Component {
         </div>
 
         <div className="card-footer clearfix">
-          <button type="button" className="btn btn-action float-left">Print Contract</button>
-          <button type="button" className="btn btn-action float-right">Save Into Database</button>
-          <button type="button" className="btn btn-primary float-right mr-3">Preview</button>
+          <button type="button" className="btn btn-tertiary-color custom-box-shadow-lifted border-2 border-black float-left">Print Contract</button>
+          <button type="button" className="btn btn-tertiary-color custom-box-shadow-lifted border-2 border-black float-right">Save Into Database</button>
+          <button type="button" className="btn btn-primary custom-box-shadow-lifted border-2 border-black float-right mr-3">Preview</button>
         </div>
 
       </div>
