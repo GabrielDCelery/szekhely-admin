@@ -3,13 +3,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export class AjaxProcessButton extends Component {
   render() {
+    const {
+      type,
+      className,
+      bIsProcessing,
+      onClick,
+      label
+    } = this.props;
+
     return (
       <button
-        {...{ type: this.props.type, className: this.props.className }}
-        disabled={this.props.bIsProcessing}
-        onClick={this.props.onClick || (() => {})}
+        {...{ type: type, className: className }}
+        disabled={bIsProcessing}
+        onClick={onClick || (() => { })}
       >
-        {this.props.bIsProcessing ? (<FontAwesomeIcon className="fas fa-spinner fa-spin" icon='spinner' />) : this.props.label}
+        {bIsProcessing ? (<FontAwesomeIcon className="fas fa-spinner fa-spin" icon="spinner" />) : label}
       </button>
     );
   }

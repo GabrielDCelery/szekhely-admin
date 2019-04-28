@@ -40,7 +40,11 @@ class App extends Component {
           <Route exact path='/login' component={Login} />
           <MainLayout
             Navbar={
-              <AuthenticatedComponent Component={<Navbar navbarItemConfigs={this.props.navbarItemConfigs} />} />
+              <AuthenticatedComponent
+                AuthenticatedComponent={
+                  <Navbar navbarItemConfigs={this.props.navbarItemConfigs} />
+                }
+              />
             }
             Content={
               <Switch>
@@ -49,7 +53,7 @@ class App extends Component {
                   <AuthenticatedRoute
                     key={'page-' + index}
                     path={routerConfig.path}
-                    Component={Pages[routerConfig.component]}
+                    AuthenticatedComponent={Pages[routerConfig.component]}
                     redirectUnauthorizedUserTo='/login'
                   />
                 ))}

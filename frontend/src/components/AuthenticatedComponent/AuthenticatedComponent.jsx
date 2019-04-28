@@ -4,9 +4,14 @@ import { isUserLoggedInSelector } from 'state';
 
 class AuthenticatedComponent extends Component {
   render() {
+    const {
+      isUserLoggedIn,
+      AuthenticatedComponent
+    } = this.props;
+
     return (
       <React.Fragment>
-        {this.props.isUserLoggedIn ? this.props.Component : null}
+        {isUserLoggedIn ? AuthenticatedComponent : null}
       </React.Fragment>
     );
   }

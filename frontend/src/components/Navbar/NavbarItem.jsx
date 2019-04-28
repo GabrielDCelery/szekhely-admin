@@ -1,33 +1,60 @@
-import React from 'react';
-
+import React, { Component } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { AuthorizedComponent } from 'components';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './NavbarItem.scss';
 
-import { NavbarItemCollapsible } from './NavbarItemCollapsible';
-import { NavbarItemSimple } from './NavbarItemSimple';
+export class NavbarItem extends Component {
+  render() {
+    const NavbarItemParent = this.props.children ?
+      <div
+        className={this.props.bIsActive ? 'd-block w-100 nav-link active' : 'w-100 nav-link'}
+        onClick={() => {
+          this.props.toggleActive(this.props.id);
+        }}
+      >
+        <FontAwesomeIcon className="fas fa-2x d-block mx-auto pt-1" icon={this.props.icon} />
+        <span className="d-block p-1">{this.context.t(this.props.label)}</span>
+      </div> 
+      :
+      <Link
+        to={this.props.path}
+        className={this.props.bIsActive ? 'd-block w-100 nav-link active' : 'w-100 nav-link'}
+        onClick={() => {
+          this.props.toggleActive(this.props.id)
+        }}
+      >
+        <FontAwesomeIcon className="fas fa-2x d-block mx-auto pt-1" icon={this.props.icon} />
+        <span className="d-block p-1">{this.context.t(this.props.label)}</span>
+      </Link>
 
-export function NavbarItem(props) {
-  if (props.children) {
+    const NavbarItemChildren = this.props.bIsActive && this.props.children ?
+      this.props.children.map((child, index) => (
+        <AuthorizedComponent
+          key={index}
+          rbacRule={child.rbacRule}
+          AuthorizedComponent={
+            <Link to={child.path} className="nav-child-item">
+              {this.context.t(child.label)}
+            </Link>
+          }
+          UnAuthorizedComponent={null}
+        />
+      ))
+      : null;
+
     return (
-      <NavbarItemCollapsible
-        id={props.id}
-        icon={props.icon}
-        label={props.label}
-        path={props.path}
-        children={props.children}
-        bIsActive={props.bIsActive}
-        toggleActive={props.toggleActive}
-      />
+      <React.Fragment>
+        <li className="NavbarItem nav-item">
+          {NavbarItemParent}
+          {NavbarItemChildren}
+        </li>
+      </React.Fragment>
     )
   }
-
-  return (
-    <NavbarItemSimple
-      id={props.id}
-      icon={props.icon}
-      label={props.label}
-      path={props.path}
-      bIsActive={props.bIsActive}
-      toggleActive={props.toggleActive}
-    />
-  )
 }
+
+NavbarItem.contextTypes = {
+  t: PropTypes.func.isRequired
+};

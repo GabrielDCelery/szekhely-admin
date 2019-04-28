@@ -5,11 +5,18 @@ import { isUserLoggedInSelector } from 'state';
 
 class AuthenticatedRoute extends Component {
   render() {
+    const {
+      isUserLoggedIn,
+      AuthenticatedComponent,
+      redirectUnauthorizedUserTo,
+      path
+    } = this.props;
+
     return (
       <Route
-        path={this.props.path}
+        path={path}
         render={() => (
-          this.props.isUserLoggedIn ? (<this.props.Component />) : (<Redirect to={this.props.redirectUnauthorizedUserTo} />)
+          isUserLoggedIn ? <AuthenticatedComponent /> : <Redirect to={redirectUnauthorizedUserTo} />
         )}
       />
     );
