@@ -4,11 +4,15 @@ import { isUserAuthorizedSelector } from 'state';
 
 class AuthorizedComponent extends Component {
   render() {
-    const renderedComponent = this.props.isUserAuthorized === true ? this.props.renderAuthorizedComponent() : this.props.renderUnAuthorizedComponent();
+    const {
+      isUserAuthorized,
+      AuthorizedComponent,
+      UnAuthorizedComponent
+    } = this.props;
 
     return (
       <React.Fragment>
-        {renderedComponent}
+        {isUserAuthorized ? AuthorizedComponent : UnAuthorizedComponent || null}
       </React.Fragment>
     );
   }

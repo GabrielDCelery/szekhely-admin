@@ -39,7 +39,9 @@ class App extends Component {
           <Route exact path='/logout' component={Logout} />
           <Route exact path='/login' component={Login} />
           <MainLayout
-            Navbar={<AuthenticatedComponent Component={() => (<Navbar navbarItemConfigs={this.props.navbarItemConfigs}/>)} />}
+            Navbar={
+              <AuthenticatedComponent Component={<Navbar navbarItemConfigs={this.props.navbarItemConfigs} />} />
+            }
             Content={
               <Switch>
                 <Redirect exact from='/' to='/dashboard' />
@@ -61,7 +63,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-	return {
+  return {
     routerConfig: routesConfigSelector(state),
     navbarItemConfigs: state.routes
   }

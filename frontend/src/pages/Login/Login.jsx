@@ -7,7 +7,7 @@ import {
 	hasUserLoginFailedSelector
 } from 'state';
 import { withRouter } from 'react-router';
-import { AjaxProcessButton, Card } from 'components';
+import { AjaxProcessButton } from 'components';
 import { Redirect } from 'react-router-dom';
 import './Login.scss';
 

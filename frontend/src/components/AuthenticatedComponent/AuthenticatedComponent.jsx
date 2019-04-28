@@ -6,7 +6,7 @@ class AuthenticatedComponent extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.props.isUserLoggedIn ? (<this.props.Component />) : null}
+        {this.props.isUserLoggedIn ? this.props.Component : null}
       </React.Fragment>
     );
   }

@@ -7,7 +7,38 @@ import {
 const initialState = {
   isAjaxRequestInProgress: false,
   hasAjaxRequestFailed: false,
-  records: []
+  records: [],
+  dataTableColumnConfigs: [{
+    field: 'clientName',
+    label: 'Client name',
+    visible: true,
+    type: 'string'
+  }, {
+    field: 'clientSignatoryName',
+    label: 'Client Signatory Name',
+    visible: true,
+    type: 'string'
+  }, {
+    field: 'email',
+    label: 'Email',
+    visible: true,
+    type: 'string'
+  }, {
+    field: 'phone',
+    label: 'Phone',
+    visible: true,
+    type: 'string'
+  }, {
+    field: 'contractExpiryTill',
+    label: 'Contract expiry till',
+    visible: true,
+    type: 'date'
+  }, {
+    field: 'status',
+    label: 'Status',
+    visible: true,
+    type: 'string'
+  }]
 };
 
 export function contractsReducer(state = initialState, { type, payload }) {

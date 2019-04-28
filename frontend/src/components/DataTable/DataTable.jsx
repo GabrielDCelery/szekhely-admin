@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import { filterRowsUsingSearchTerm, sliceRows } from './dataTableMethods';
 import './DataTable.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
 
-class DataTable extends Component {
+export class DataTable extends Component {
   constructor(props) {
     super(props);
 
@@ -53,26 +52,18 @@ class DataTable extends Component {
     return (
       <tbody>
         {rows.map((row, rowIndex) => (
-          <tr key={`tr-${rowIndex}`}>
-            {columnConfigs.map((columnConfig, colIndex) => {
-              if (columnConfig['type'] === 'url') {
-                return (
-                  <td
-                    key={`td-${colIndex}`}
-                  >
-                    <FontAwesomeIcon
-                      className="fas fa-2x external-url w-100"
-                      icon='ellipsis-h'
-                      onClick={() => {
-                        this.props.history.push(columnConfig['url'], columnConfig.value(row))
-                      }}
-                    />
-                  </td>
-                );
-              } else {
-                return (<td key={`td-${colIndex}`}>{row[columnConfig['field']]}</td>);
-              }
-            })}
+          <tr
+            key={`tr-${rowIndex}`}
+            onClick={() => {
+              this.props.dataRowOnClick ? this.props.dataRowOnClick(row) : (() => { })();
+            }}
+          >
+            {columnConfigs.map((columnConfig, colIndex) => (
+              <td key={`td-${colIndex}`}>{row[columnConfig['field']]}</td>)
+            )}
+            {this.props.dataRowOnClick ? (
+              <td><FontAwesomeIcon className="fas fa-1x" icon='angle-double-right' /></td>
+            ) : null}
           </tr>
         ))}
       </tbody>
@@ -86,6 +77,9 @@ class DataTable extends Component {
           {columnConfigs.map((columnConfig, index) => (
             <th key={`th-head-${index}`} scope='col'>{this.context.t(columnConfig.label)}</th>
           ))}
+          {this.props.dataRowOnClick ? (
+            <th></th>
+          ) : null}
         </tr>
       </thead>
     )
@@ -112,7 +106,7 @@ class DataTable extends Component {
             }}
           >
             {this.context.t('Previous')}
-					</a>
+          </a>
         </li>
         {new Array(numOfPages).fill(null).map((elem, index) => (
           <li
@@ -142,7 +136,7 @@ class DataTable extends Component {
             }}
           >
             {this.context.t('Next')}
-					</a>
+          </a>
         </li>
       </ul>
     )
@@ -159,7 +153,13 @@ class DataTable extends Component {
     const renderedPagination = this.renderPagination(numOfPages);
 
     return (
-      <div className="DataTable card border-2 border-black shadow-sm">
+      <div className={[
+        'DataTable',
+        'card', 'border-2',
+        'border-black',
+        'shadow-sm',
+        this.props.dataRowOnClick ? 'custom-data-table-clickable' : ''].join(' ')}
+      >
         <div className="card-header text-center text-light bg-custom-primary-gradient border-bottom-3 border-black p-4 rounded-0 custom-box-shadow-lifted">
           <h5>{this.context.t(this.props.title)}</h5>
         </div>
@@ -207,7 +207,7 @@ class DataTable extends Component {
             (<div className="text-center">
               <FontAwesomeIcon className="fas fa-spinner fa-spin fa-5x" icon='spinner' />
             </div>) :
-            (<table className="table table-sm table-striped">
+            (<table className="table  table-striped">
               {renderedTableHead}
               {renderedTableBody}
             </table>)}
@@ -225,7 +225,3 @@ class DataTable extends Component {
 DataTable.contextTypes = {
   t: PropTypes.func.isRequired
 };
-
-const connected = withRouter(DataTable);
-
-export { connected as DataTable };

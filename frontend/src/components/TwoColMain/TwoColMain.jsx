@@ -6,10 +6,10 @@ export class TwoColMain extends Component {
 			<div className="container mw-100">
 				<div className="row">
 					<div className="col-md-9">
-						<this.props.Content />
+						{this.props.Content}
 					</div>
 					<div className="col-md-3">
-						<this.props.SideBar />
+						{this.props.SideBar}
 					</div>
 				</div>
 			</div>

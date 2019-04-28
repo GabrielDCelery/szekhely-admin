@@ -35,11 +35,12 @@
   color: lighten($tertiary-color, 10);
 }
 
-.example-appear {
-  opacity: 0.01;
+.DataTable.custom-data-table-clickable tbody tr {
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.example-appear.example-appear-active {
-  opacity: 1;
-  transition: opacity .5s ease-in;
+.DataTable.custom-data-table-clickable tbody tr:hover {
+  color: $white;
+  background-color: $primary-color;
 }

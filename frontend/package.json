@@ -24,6 +24,7 @@
     "react-slidedown": "^2.0.9",
     "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
+    "redux-form": "^8.2.0",
     "redux-i18n": "^1.5.17",
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0"

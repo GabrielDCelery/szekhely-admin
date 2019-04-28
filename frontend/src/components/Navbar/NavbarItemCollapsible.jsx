@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 
 export class NavbarItemCollapsible extends Component {
 	render() {
+		console.log(this.context.router.route.location.pathname)
 		return (
 			<li className="NavbarItem NavbarItemCollapsible nav-item">
 				<a
@@ -25,12 +26,12 @@ export class NavbarItemCollapsible extends Component {
 							<AuthorizedComponent
 								key={index}
 								rbacRule={child.rbacRule}
-								renderAuthorizedComponent={() => (
+								AuthorizedComponent={
 									<Link to={child.path} className="nav-child-item">
 										{this.context.t(child.label)}
 									</Link>
-								)}
-								renderUnAuthorizedComponent={() => { }}
+								}
+								UnAuthorizedComponent={null}
 							/>
 						))}
 					</div>
@@ -41,5 +42,6 @@ export class NavbarItemCollapsible extends Component {
 }
 
 NavbarItemCollapsible.contextTypes = {
-  t: PropTypes.func.isRequired
+	t: PropTypes.func.isRequired,
+	router: PropTypes.object
 };

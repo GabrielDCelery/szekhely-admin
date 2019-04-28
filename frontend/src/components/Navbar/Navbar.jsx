@@ -21,7 +21,7 @@ export class Navbar extends Component {
 					<AuthorizedComponent
 						key={'navbar-item-' + index}
 						rbacRule={navbarItemConfig.rbacRule}
-						renderAuthorizedComponent={() => (
+						AuthorizedComponent={
 							<NavbarItem
 								id={index}
 								label={navbarItemConfig.label}
@@ -30,9 +30,8 @@ export class Navbar extends Component {
 								children={navbarItemConfig.children}
 								toggleActive={this.toggleActive}
 								bIsActive={this.state.activeIndex === index}
-							/>
-						)}
-						renderUnAuthorizedComponent={() => { }}
+							/>}
+						UnAuthorizedComponent={null}
 					/>
 				))}
 			</ul>
