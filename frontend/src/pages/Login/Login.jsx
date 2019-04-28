@@ -97,7 +97,7 @@ class Login extends Component {
 													/>
 													<hr />
 													<div className="text-center">
-														<a href="">Forgot password?</a>
+														{/* <a href="">Forgot password?</a> */}
 													</div>
 												</form>
 											</div>

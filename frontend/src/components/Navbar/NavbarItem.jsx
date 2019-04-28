@@ -7,16 +7,37 @@ import './NavbarItem.scss';
 
 export class NavbarItem extends Component {
   render() {
-    const NavbarItemParent = this.props.children ?
+    const {
+      bIsActive,
+      children/*,
+      activeUrl*/
+    } = this.props;
+
+    const NavbarItemChildren = bIsActive && children ?
+    children.map((child, index) => (
+      <AuthorizedComponent
+        key={index}
+        rbacRule={child.rbacRule}
+        AuthorizedComponent={
+          <Link to={child.path} className="nav-child-item">
+            {this.context.t(child.label)}
+          </Link>
+        }
+        UnAuthorizedComponent={null}
+      />
+    ))
+    : null;
+
+    const NavbarItemParent = children ?
       <div
-        className={this.props.bIsActive ? 'd-block w-100 nav-link active' : 'w-100 nav-link'}
+        className={bIsActive ? 'd-block w-100 nav-link active' : 'w-100 nav-link'}
         onClick={() => {
           this.props.toggleActive(this.props.id);
         }}
       >
         <FontAwesomeIcon className="fas fa-2x d-block mx-auto pt-1" icon={this.props.icon} />
         <span className="d-block p-1">{this.context.t(this.props.label)}</span>
-      </div> 
+      </div>
       :
       <Link
         to={this.props.path}
@@ -28,21 +49,6 @@ export class NavbarItem extends Component {
         <FontAwesomeIcon className="fas fa-2x d-block mx-auto pt-1" icon={this.props.icon} />
         <span className="d-block p-1">{this.context.t(this.props.label)}</span>
       </Link>
-
-    const NavbarItemChildren = this.props.bIsActive && this.props.children ?
-      this.props.children.map((child, index) => (
-        <AuthorizedComponent
-          key={index}
-          rbacRule={child.rbacRule}
-          AuthorizedComponent={
-            <Link to={child.path} className="nav-child-item">
-              {this.context.t(child.label)}
-            </Link>
-          }
-          UnAuthorizedComponent={null}
-        />
-      ))
-      : null;
 
     return (
       <React.Fragment>

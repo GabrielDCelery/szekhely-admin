@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { filterRowsUsingSearchTerm, sliceRows } from './dataTableMethods';
-import './DataTable.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
+import './DataTable.scss';
 
 export class DataTable extends Component {
   constructor(props) {
@@ -93,9 +93,8 @@ export class DataTable extends Component {
     return (
       <ul className="pagination justify-content-end m-0">
         <li className={['page-item', bIsFirstPage === true ? 'disabled' : ''].join(' ')}>
-          <a
+          <div
             className="page-link"
-            href="#"
             tabIndex="-1"
             onClick={() => {
               if (bIsFirstPage) {
@@ -106,27 +105,25 @@ export class DataTable extends Component {
             }}
           >
             {this.context.t('Previous')}
-          </a>
+          </div>
         </li>
         {new Array(numOfPages).fill(null).map((elem, index) => (
           <li
             key={`pagination-${index}`}
             className="page-item"
           >
-            <a
+            <div
               className={['page-link', currentPageIndex === index ? 'active' : ''].join(' ')}
-              href="#"
               onClick={() => {
                 this.changePageIndex(index)
               }}
             >{index + 1}
-            </a>
+            </div>
           </li>
         ))}
         <li className={['page-item', bLastPage === true ? 'disabled' : ''].join(' ')}>
-          <a
+          <div
             className="page-link"
-            href="#"
             onClick={() => {
               if (bLastPage) {
                 return;
@@ -136,7 +133,7 @@ export class DataTable extends Component {
             }}
           >
             {this.context.t('Next')}
-          </a>
+          </div>
         </li>
       </ul>
     )
@@ -153,70 +150,72 @@ export class DataTable extends Component {
     const renderedPagination = this.renderPagination(numOfPages);
 
     return (
-      <div className={[
-        'DataTable',
-        'card', 'border-2',
-        'border-black',
-        'shadow-sm',
-        this.props.dataRowOnClick ? 'custom-data-table-clickable' : ''].join(' ')}
-      >
-        <div className="card-header text-center text-light bg-custom-primary-gradient border-bottom-3 border-black p-4 rounded-0 custom-box-shadow-lifted">
-          <h5>{this.context.t(this.props.title)}</h5>
-        </div>
+      <div className="DataTable">
+        <div className={[
+          'card', 'border-2',
+          'border-black',
+          'shadow-sm',
+          this.props.dataRowOnClick ? 'custom-data-table-clickable' : ''].join(' ')}
+        >
+          <div className="card-header text-center text-light bg-custom-primary-gradient border-bottom-3 border-black p-4 rounded-0 custom-box-shadow-lifted">
+            <h5>{this.context.t(this.props.title)}</h5>
+          </div>
 
-        <div className="card-body border-bottom-2">
-          <div className="row">
-            <div className="col">
-              <div className="form-group row">
-                <label className="col-sm-8" htmlFor="numberOfRecords">{this.context.t('Rows per page')}</label>
-                <div className="col-sm-4">
-                  <select
-                    className="form-control"
-                    id="numberOfRecords"
-                    onChange={this.changeNumOfRecordPerPage}
-                  >
-                    <option>10</option>
-                    <option>25</option>
-                    <option>50</option>
-                    <option>100</option>
-                  </select>
+          <div className="card-body border-bottom-2">
+            <div className="row">
+              <div className="col">
+                <div className="form-group row">
+                  <label className="col-sm-8" htmlFor="numberOfRecords">{this.context.t('Rows per page')}</label>
+                  <div className="col-sm-4">
+                    <select
+                      className="form-control"
+                      id="numberOfRecords"
+                      onChange={this.changeNumOfRecordPerPage}
+                    >
+                      <option>10</option>
+                      <option>25</option>
+                      <option>50</option>
+                      <option>100</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="col">
+                <div className="form-group row">
+                  <label className="col-sm-2" htmlFor="search">{this.context.t('Search')}</label>
+                  <input
+                    className="form-control col-sm-10"
+                    id="search"
+                    type="search"
+                    value={this.state.filterTerm}
+                    onChange={this.changeFilterTerm}
+                  />
                 </div>
               </div>
             </div>
-            <div className="col">
-              <div className="form-group row">
-                <label className="col-sm-2" htmlFor="search">{this.context.t('Search')}</label>
-                <input
-                  className="form-control col-sm-10"
-                  id="search"
-                  type="search"
-                  value={this.state.filterTerm}
-                  onChange={this.changeFilterTerm}
-                />
-              </div>
-            </div>
           </div>
-        </div>
 
-        <div className="card-footer border-bottom-2 p-1 custom-bg-black custom-box-shadow-lifted">
-          {renderedPagination}
-        </div>
+          <div className="card-footer border-bottom-2 p-1 custom-bg-black custom-box-shadow-lifted">
+            {renderedPagination}
+          </div>
 
-        <div className="card-body border-bottom-2">
-          {this.props.isAjaxRequestInProgress ?
-            (<div className="text-center">
-              <FontAwesomeIcon className="fas fa-spinner fa-spin fa-5x" icon='spinner' />
-            </div>) :
-            (<table className="table  table-striped">
-              {renderedTableHead}
-              {renderedTableBody}
-            </table>)}
-        </div>
+          <div className="card-body border-bottom-2">
+            {this.props.isAjaxRequestInProgress ?
+              <div className="text-center">
+                <FontAwesomeIcon className="fas fa-spinner fa-spin fa-5x" icon='spinner' />
+              </div>
+              :
+              <table className="table  table-striped">
+                {renderedTableHead}
+                {renderedTableBody}
+              </table>}
+          </div>
 
-        <div className="card-footer p-1 custom-bg-black custom-box-shadow-lifted">
-          {renderedPagination}
-        </div>
+          <div className="card-footer p-1 custom-bg-black custom-box-shadow-lifted">
+            {renderedPagination}
+          </div>
 
+        </div>
       </div>
     );
   }

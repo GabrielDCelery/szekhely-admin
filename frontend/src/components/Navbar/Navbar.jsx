@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { AuthorizedComponent } from 'components';
 import './Navbar.scss';
 import { NavbarItem } from './NavbarItem';
+import PropTypes from 'prop-types';
 
 export class Navbar extends Component {
 	constructor(props) {
@@ -30,6 +31,7 @@ export class Navbar extends Component {
 								children={navbarItemConfig.children}
 								toggleActive={this.toggleActive}
 								bIsActive={this.state.activeIndex === index}
+								activeUrl={this.context.router.route.location.pathname}
 							/>}
 						UnAuthorizedComponent={null}
 					/>
@@ -38,3 +40,7 @@ export class Navbar extends Component {
 		);
 	}
 }
+
+Navbar.contextTypes = {
+	router: PropTypes.object
+};

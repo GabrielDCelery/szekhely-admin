@@ -5,11 +5,11 @@ import {
 } from './contracts.constants';
 import { contractsService } from 'services';
 
-export function getContractsAction() {
+export function getContractsAction(searchConfig) {
   return async dispatch => {
     dispatch({ type: GET_CONTRACTS_REQUEST, payload: null });
 
-    const { success, payload } = await contractsService.getContracts();
+    const { success, payload } = await contractsService.getContracts(searchConfig);
 
     if (!success) {
       return dispatch({ type: GET_CONTRACTS_FAIL, payload: null });

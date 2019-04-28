@@ -1,13 +1,16 @@
 import {
   GET_CONTRACTS_REQUEST,
   GET_CONTRACTS_SUCCESS,
-  GET_CONTRACTS_FAIL
+  GET_CONTRACTS_FAIL,
+  SET_ACTIVE_CONTRACT_RECORD,
+  UNSET_ACTIVE_CONTRACT_RECORD
 } from './contracts.constants';
 
 const initialState = {
   isAjaxRequestInProgress: false,
   hasAjaxRequestFailed: false,
   records: [],
+  activeRecord: null,
   dataTableColumnConfigs: [{
     field: 'clientName',
     label: 'Client name',
@@ -29,8 +32,8 @@ const initialState = {
     visible: true,
     type: 'string'
   }, {
-    field: 'contractExpiryTill',
-    label: 'Contract expiry till',
+    field: 'contractExpiry',
+    label: 'Contract expiry',
     visible: true,
     type: 'date'
   }, {
@@ -64,6 +67,22 @@ export function contractsReducer(state = initialState, { type, payload }) {
         ...state,
         ...{ isAjaxRequestInProgress: false, hasAjaxRequestFailed: true }
       };
+
+    case SET_ACTIVE_CONTRACT_RECORD:
+      return {
+        ...state,
+        ...{
+          activeRecord: payload
+        }
+      }
+
+    case UNSET_ACTIVE_CONTRACT_RECORD:
+      return {
+        ...state,
+        ...{
+          activeRecord: null
+        }
+      }
 
     default:
       return state;

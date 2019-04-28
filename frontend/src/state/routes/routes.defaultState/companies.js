@@ -3,8 +3,8 @@ import {
   STATIC_RBAC_RULE_MAILS_PAGE_VISIT,
   STATIC_RBAC_RULE_INSPECTIONS_PAGE_VISIT,
   STATIC_RBAC_RULE_INVOICES_PAGE_VISIT,
-  STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW,
-  STATIC_RBAC_RULE_CLIENTS_QUICK_SEARCH_PAGE_VISIT
+  STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW/*,
+  STATIC_RBAC_RULE_CLIENTS_QUICK_SEARCH_PAGE_VISIT*/
 } from 'services';
 
 export default {
@@ -18,10 +18,10 @@ export default {
     component: 'AddNew',
     rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
   }, /*{
-    label: 'Quick search',
-    path: '/clients/quicksearch',
+    label: 'Client details',
+    path: '/clients/clientdetails',
     component: 'QuickSearch',
-    rbacRule: STATIC_RBAC_RULE_CLIENTS_QUICK_SEARCH_PAGE_VISIT
+    rbacRule: null
   }, */{
     label: 'Contracts',
     path: '/clients/contracts',

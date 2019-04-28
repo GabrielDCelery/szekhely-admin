@@ -16,6 +16,10 @@
       background-color: $primary-color;
     }
   }
+
+  .pagination {
+    cursor: pointer;
+  }
 }
 
 .DataTable .page-item.disabled .page-link {
@@ -24,23 +28,12 @@
   background-color: $primary-color;
 }
 
-.DataTable .external-url {
-  overflow: hidden;
-  transition: all 0.3s ease;
-}
-
-.DataTable .external-url:hover {
-  cursor: pointer;
-  transform: scale(2.5);
-  color: lighten($tertiary-color, 10);
-}
-
-.DataTable.custom-data-table-clickable tbody tr {
+.DataTable .custom-data-table-clickable tbody tr {
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.DataTable.custom-data-table-clickable tbody tr:hover {
+.DataTable .custom-data-table-clickable tbody tr:hover {
   color: $white;
   background-color: $primary-color;
 }

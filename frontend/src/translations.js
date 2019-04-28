@@ -8,7 +8,7 @@ export const translations = {
     'Clients': 'Ügyfelek',
     'Companies': 'Cégek',
     'Company name': 'Cég neve',
-    'Contract expiry till': 'Szerződés lejárta',
+    'Contract expiry': 'Szerződés lejárta',
     'Contracts': 'Szerződések',
     'Dashboard': 'Nyitóoldal',
     'Email': 'Email',

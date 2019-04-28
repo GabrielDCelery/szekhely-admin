@@ -11,7 +11,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   id: 2,
   clientName: 'Jacob',
@@ -20,7 +20,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   id: 3,
   clientName: 'Larry the Bird',
@@ -29,7 +29,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   id: 4,
   clientName: 'Mark',
@@ -38,7 +38,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   id: 5,
   clientName: 'Jacob',
@@ -47,7 +47,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   id: 6,
   clientName: 'Larry the Bird',
@@ -56,7 +56,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   id: 7,
   clientName: 'Mark',
@@ -65,7 +65,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -73,7 +73,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -81,7 +81,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -89,7 +89,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -97,11 +97,11 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -109,7 +109,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -117,7 +117,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -125,7 +125,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -133,7 +133,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -141,7 +141,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -149,7 +149,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -157,7 +157,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -165,7 +165,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -173,7 +173,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -181,7 +181,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -189,7 +189,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -197,7 +197,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -205,7 +205,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -213,7 +213,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -221,7 +221,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -229,7 +229,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -237,11 +237,11 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -249,7 +249,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -257,7 +257,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -265,7 +265,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -273,7 +273,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -281,7 +281,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -289,7 +289,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -297,7 +297,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -305,7 +305,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -313,7 +313,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -321,7 +321,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -329,7 +329,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -337,7 +337,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -345,7 +345,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -353,7 +353,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -361,7 +361,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -369,7 +369,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -377,7 +377,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -385,7 +385,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -393,7 +393,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -401,7 +401,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -409,7 +409,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }, {
   clientName: 'Mark',
   clientSignatoryName: 'Mark',
@@ -417,7 +417,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Otto',
-  contractExpiryTill: '2018-01-11'
+  contractExpiry: '2018-01-11'
 }, {
   clientName: 'Jacob',
   clientSignatoryName: 'Mark',
@@ -425,7 +425,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'Thornton',
-  contractExpiryTill: '2019-03-03'
+  contractExpiry: '2019-03-03'
 }, {
   clientName: 'Larry the Bird',
   clientSignatoryName: 'Mark',
@@ -433,7 +433,7 @@ const clients = [{
   phone: 'phone',
   field: 'someStatus',
   status: 'twitter',
-  contractExpiryTill: '2016-07-02'
+  contractExpiry: '2016-07-02'
 }];
 
 router.post('/search', async (_req, _res) => {
