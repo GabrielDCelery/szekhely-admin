@@ -9,35 +9,25 @@ import {
 
 export default {
   path: null,
-  component: 'Clients',
-  icon: 'building',
-  label: 'Clients',
+  component: 'Search',
+  icon: 'search',
+  label: 'Search',
   children: [{
-    label: 'Add new',
-    path: '/clients/addew',
-    component: 'AddNew',
-    rbacRule: STATIC_RBAC_RULE_CONTRACTS_ACTION_ADD_NEW
-  }, /*{
-    label: 'Client details',
-    path: '/clients/clientdetails',
-    component: 'QuickSearch',
-    rbacRule: null
-  }, */{
     label: 'Contracts',
-    path: '/clients/contracts',
+    path: '/search/contracts',
     component: 'Contracts',
     rbacRule: STATIC_RBAC_RULE_CONTRACTS_PAGE_VISIT
   }, {
     label: 'Mails',
-    path: '/clients/mails',
+    path: '/search/mails',
     rbacRule: STATIC_RBAC_RULE_MAILS_PAGE_VISIT
   }, {
     label: 'Inspections',
-    path: '/clients/inspections',
+    path: '/search/inspections',
     rbacRule: STATIC_RBAC_RULE_INSPECTIONS_PAGE_VISIT
   }, {
     label: 'Invoices',
-    path: '/clients/invoices',
+    path: '/search/invoices',
     rbacRule: STATIC_RBAC_RULE_INVOICES_PAGE_VISIT
   }]
 }

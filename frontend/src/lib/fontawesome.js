@@ -18,7 +18,8 @@ import {
     faEllipsisH,
     faCircleNotch,
     faAngleDoubleRight,
-    faHandPointer
+    faHandPointer,
+    faSearch
 } from '@fortawesome/free-solid-svg-icons';
 
 library.add(
@@ -39,5 +40,6 @@ library.add(
     faEllipsisH,
     faCircleNotch,
     faAngleDoubleRight,
-    faHandPointer
+    faHandPointer,
+    faSearch
 );

@@ -11,7 +11,8 @@ import {
   Settings,
   Login,
   Logout,
-  AddNew
+  AddNew,
+  ClientDetails
 } from 'pages';
 import { connect } from 'react-redux';
 import { routesConfigSelector } from 'state';
@@ -26,7 +27,8 @@ const Pages = {
   Settings,
   Login,
   Logout,
-  AddNew
+  AddNew,
+  ClientDetails
 }
 
 class App extends Component {

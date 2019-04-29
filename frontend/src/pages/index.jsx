@@ -5,5 +5,6 @@ export * from './Settings';
 export * from './Statistics';
 export * from './Login';
 export * from './Logout';
-export * from './Clients/AddNew';
-export * from './Clients/Contracts';
+export * from './Search/AddNew';
+export * from './Search/Contracts';
+export * from './Search/ClientDetails';

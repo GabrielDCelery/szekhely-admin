@@ -1,9 +1,11 @@
 import user from './user';
 import dashboard from './dashboard';
-import companies from './companies';
+import search from './search';
+import client from './client';
 
 export const routesDefaultState = [
-  user,
   dashboard,
-  companies
+  search,
+  client,
+  user
 ];

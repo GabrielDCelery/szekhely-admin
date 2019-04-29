@@ -4,3 +4,4 @@ export * from './mails';
 export * from './inspections';
 export * from './invoices';
 export * from './clients';
+export * from './clientDetails';
