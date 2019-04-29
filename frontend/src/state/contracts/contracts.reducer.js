@@ -10,7 +10,6 @@ const initialState = {
   isAjaxRequestInProgress: false,
   hasAjaxRequestFailed: false,
   records: [],
-  activeRecord: null,
   dataTableColumnConfigs: [{
     field: 'clientName',
     label: 'Client name',
