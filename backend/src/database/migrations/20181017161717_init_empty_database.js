@@ -1,120 +1,130 @@
 'use strict';
 
-exports.up = async _knex => {
-    await _knex.schema.createTable('natural_people', _table => {
-        _table.increments('id').primary();
-        _table.string('first_name');
-        _table.string('last_name');
-        _table.boolean('is_service_provider');
-        _table.integer('id_document_id').references('id').inTable('id_documents');
-        _table.integer('permanent_residence_id').references('id').inTable('addresses');
-        _table.timestamps();
+exports.up = async knex => {
+    await knex.schema.createTable('mail_sender_names', table => {
+        table.increments('id').primary();
+        table.string('name');
+        table.timestamps();
+        table.unique(['name']);
+    });
+    /*
+    await knex.schema.createTable('natural_people', table => {
+        table.increments('id').primary();
+        table.string('first_name');
+        table.string('last_name');
+        table.boolean('is_service_provider');
+        table.integer('id_document_id').references('id').inTable('id_documents');
+        table.integer('permanent_residence_id').references('id').inTable('addresses');
+        table.timestamps();
+    });
+    
+    await knex.schema.createTable('id_documents', table => {
+        table.increments('id').primary();
+        table.integer('type');
+        table.string('number');
+        table.json('external_storage_metadata');
+        table.date('expiry_date');
+        table.timestamps();
     });
 
-    await _knex.schema.createTable('id_documents', _table => {
-        _table.increments('id').primary();
-        _table.integer('type');
-        _table.string('number');
-        _table.json('external_storage_metadata');
-        _table.date('expiry_date');
-        _table.timestamps();
+    await knex.schema.createTable('legal_entities', table => {
+        table.increments('id').primary();
+        table.string('name');
+        table.integer('type');
+        table.string('registration_id');
+        table.string('tax_id');
+        table.boolean('is_service_provider');
+        table.integer('permanent_residence_id').references('id').inTable('addresses');
+        table.timestamps();
+        table.unique('tax_id');
     });
 
-    await _knex.schema.createTable('legal_entities', _table => {
-        _table.increments('id').primary();
-        _table.string('name');
-        _table.integer('type');
-        _table.string('registration_id');
-        _table.string('tax_id');
-        _table.boolean('is_service_provider');
-        _table.integer('permanent_residence_id').references('id').inTable('addresses');
-        _table.timestamps();
-        _table.unique('tax_id');
+    await knex.schema.createTable('emails', table => {
+        table.increments('id').primary();
+        table.string('address');
+        table.integer('status');
+        table.timestamps();
     });
 
-    await _knex.schema.createTable('emails', _table => {
-        _table.increments('id').primary();
-        _table.string('address');
-        _table.integer('status');
-        _table.timestamps();
+    await knex.schema.createTable('phones', table => {
+        table.increments('id').primary();
+        table.string('number');
+        table.integer('status');
+        table.timestamps();
     });
 
-    await _knex.schema.createTable('phones', _table => {
-        _table.increments('id').primary();
-        _table.string('number');
-        _table.integer('status');
-        _table.timestamps();
+    await knex.schema.createTable('addresses', table => {
+        table.increments('id').primary();
+        table.string('postcode');
+        table.string('country', 2);
+        table.string('city');
+        table.string('address_line_1');
+        table.string('address_line_2');
+        table.timestamps();
+        table.unique(['postcode', 'country', 'city', 'address_line_1', 'address_line_2'])
     });
 
-    await _knex.schema.createTable('addresses', _table => {
-        _table.increments('id').primary();
-        _table.string('postcode');
-        _table.string('country', 2);
-        _table.string('city');
-        _table.string('address_line_1');
-        _table.string('address_line_2');
-        _table.timestamps();
-        _table.unique(['postcode', 'country', 'city', 'address_line_1', 'address_line_2'])
+    await knex.schema.createTable('invoices', table => {
+        table.increments('id').primary();
+        table.timestamps();
     });
 
-    await _knex.schema.createTable('invoices', _table => {
-        _table.increments('id').primary();
-        _table.timestamps();
+    await knex.schema.createTable('services', table => {
+        table.increments('id').primary();
+        table.string('name');
+        table.boolean('is_active');
+        table.timestamps();
     });
 
-    await _knex.schema.createTable('services', _table => {
-        _table.increments('id').primary();
-        _table.string('name');
-        _table.boolean('is_active');
-        _table.timestamps();
+    await knex.schema.createTable('contracts_services', table => {
+        table.integer('contract_id').references('id').inTable('contracts');
+        table.integer('service_id').references('id').inTable('services');
+        table.unique(['contract_id', 'service_id']);
     });
 
-    await _knex.schema.createTable('contracts_services', _table => {
-        _table.integer('contract_id').references('id').inTable('contracts');
-        _table.integer('service_id').references('id').inTable('services');
-        _table.unique(['contract_id', 'service_id']);
+    await knex.schema.createTable('contracts', table => {
+        table.increments('id').primary();
+        table.integer('client_id').references('id').inTable('legal_entities');
+        table.integer('client_signatory_id').references('id').inTable('natural_people');
+        table.integer('client_signatory_type');
+        table.integer('service_provider_id').references('id').inTable('legal_entities');
+        table.integer('service_provider_signatory_id').references('id').inTable('natural_people');
+        table.integer('service_provider_signatory_type');
+        table.string('documents_holder_name');
+        table.integer('documents_holder_address').references('id').inTable('addresses');
+        table.integer('invoice_id').references('id').inTable('invoices');
+        table.date('start_date');
+        table.date('end_date');
+        table.timestamps();
     });
 
-    await _knex.schema.createTable('contracts', _table => {
-        _table.increments('id').primary();
-        _table.integer('client_id').references('id').inTable('legal_entities');
-        _table.integer('client_signatory_id').references('id').inTable('natural_people');
-        _table.integer('client_signatory_type');
-        _table.integer('service_provider_id').references('id').inTable('legal_entities');
-        _table.integer('service_provider_signatory_id').references('id').inTable('natural_people');
-        _table.integer('service_provider_signatory_type');
-        _table.string('documents_holder_name');
-        _table.integer('documents_holder_address').references('id').inTable('addresses');
-        //_table.json('external_storage_metadata');
-        _table.integer('invoice_id').references('id').inTable('invoices');
-        _table.date('start_date');
-        _table.date('end_date');
-        _table.timestamps();
+    await knex.schema.createTable('contracts_contact_emails', table => {
+        table.integer('contract_id').references('id').inTable('contracts');
+        table.integer('email_id').references('id').inTable('emails');
+        table.unique(['contract_id', 'email_id']);
     });
 
-    await _knex.schema.createTable('contracts_contact_emails', _table => {
-        _table.integer('contract_id').references('id').inTable('contracts');
-        _table.integer('email_id').references('id').inTable('emails');
-        _table.unique(['contract_id', 'email_id']);
+    await knex.schema.createTable('contracts_contact_phones', table => {
+        table.integer('contract_id').references('id').inTable('contracts');
+        table.integer('phone_id').references('id').inTable('phones');
+        table.unique(['contract_id', 'phone_id']);
     });
-
-    await _knex.schema.createTable('contracts_contact_phones', _table => {
-        _table.integer('contract_id').references('id').inTable('contracts');
-        _table.integer('phone_id').references('id').inTable('phones');
-        _table.unique(['contract_id', 'phone_id']);
-    });
+    */
 };
 
-exports.down = async _knex => {
-    await _knex.schema.dropTableIfExists('natural_people');
-    await _knex.schema.dropTableIfExists('id_documents');
-    await _knex.schema.dropTableIfExists('legal_entities');
-    await _knex.schema.dropTableIfExists('emails');
-    await _knex.schema.dropTableIfExists('phones');
-    await _knex.schema.dropTableIfExists('addresses');
-    await _knex.schema.dropTableIfExists('services');
-    await _knex.schema.dropTableIfExists('contracts');
-    await _knex.schema.dropTableIfExists('contracts_services');
-    await _knex.schema.dropTableIfExists('contracts_contact_emails');
-    await _knex.schema.dropTableIfExists('contracts_contact_phones');
+exports.down = async knex => {
+    await knex.schema.dropTableIfExists('mail_sender_names');
+    /*
+    await knex.schema.dropTableIfExists('natural_people');
+    await knex.schema.dropTableIfExists('id_documents');
+    await knex.schema.dropTableIfExists('legal_entities');
+    await knex.schema.dropTableIfExists('emails');
+    await knex.schema.dropTableIfExists('phones');
+    await knex.schema.dropTableIfExists('addresses');
+    await knex.schema.dropTableIfExists('services');
+    await knex.schema.dropTableIfExists('contracts');
+    await knex.schema.dropTableIfExists('contracts_services');
+    await knex.schema.dropTableIfExists('contracts_contact_emails');
+    await knex.schema.dropTableIfExists('contracts_contact_phones');
+    */
 };

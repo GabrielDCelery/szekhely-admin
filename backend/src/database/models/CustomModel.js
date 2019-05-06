@@ -1,21 +1,27 @@
 'use strict';
 
+const _ = require('lodash');
 const { Model, QueryBuilder } = require('objection');
 
-class MyQueryBuilder extends QueryBuilder {
-    insertDuplicateUpdate (_model) {
-        const _insert = this.insert(_model).toString();
-        const _update = this.update(_model).toString().replace(/^update .* set /i, '');
-console.log(`${_insert} ON DUPLICATE KEY UPDATE ${_update}`)
-        return this.execute(`${_insert} ON DUPLICATE KEY UPDATE ${_update}`);
+class CustomQueryBuilder extends QueryBuilder {
+    async upsert(model = {}) {
+        if (!model.id) {
+            return this.insert(_.omit(model, 'id'));
+        }
 
-        return this.execute(this.insert(_model).toString().replace(/^insert/i, 'insert or ignore'));
+        const record = await this.updateAndFetchById(model.id, JSON.parse(JSON.stringify(_.omit(model, 'id'))));
+
+        if (!record) {
+            throw new Error('Could not find record!');
+        }
+
+        return record;
     }
 }
 
 class CustomModel extends Model {
     static get QueryBuilder() {
-        return MyQueryBuilder;
+        return CustomQueryBuilder;
     }
 }
 

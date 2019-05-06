@@ -11,14 +11,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^3.0.1",
-    "knex": "^0.16.3",
-    "objection": "^1.5.3",
-    "objection-graphql": "^0.4.4"
+    "config": "^3.1.0",
+    "dotenv": "^8.0.0",
+    "knex": "^0.16.5",
+    "objection": "^1.6.8",
+    "objection-db-errors": "^1.1.1",
+    "objection-graphql": "^0.4.4",
+    "typedi": "^0.8.0"
   },
   "devDependencies": {
     "cross-env": "^5.2.0",
-    "jest": "^24.0.0",
+    "jest": "^24.8.0",
     "randomstring": "^1.1.5",
     "sqlite3": "^4.0.6"
   }
