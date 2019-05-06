@@ -7,14 +7,11 @@ const {
 } = require('objection-db-errors');
 
 const customDBErrorHandler = error => {
-    console.log('!!!!!!!!!!')
-    console.log(!(error instanceof ValidationError))
-    if (!(error instanceof ValidationError)) {
-        throw new Error(error);
-    }
-
+    throw new Error('Database error!');
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    console.log(error)
     if (error instanceof UniqueViolationError) {
-        throw new Error('Duplicate record!');
+        throw new Error('Database error!');
         /*
         return {
             message: error.message,
@@ -27,6 +24,8 @@ const customDBErrorHandler = error => {
         }
         */
     }
+
+    throw error;
 }
 
 module.exports = customDBErrorHandler;

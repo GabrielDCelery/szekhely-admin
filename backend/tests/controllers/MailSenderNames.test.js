@@ -35,25 +35,25 @@ describe('MailSenderNames', () => {
             try {
                 await execDBAction('MailSenderNames', 'upsert')({ id: 99999 });
             } catch ({ message }) {
-                expect(message).toEqual('Could not find record!');
+                expect(message).toEqual('Database error!');
 
                 return;
             }
 
             throw new Error('Expected to throw!');
         });
-        /*
+        
         it('throws an error if record with given "name" already exists', async () => {
             try {
                 await execDBAction('MailSenderNames', 'upsert')({ name: 'John Doe' });
             } catch ({ message }) {
-                expect(message).toEqual('Duplicate record!');
+                expect(message).toEqual('Database error!');
 
                 return;
             }
 
             throw new Error('Expected to throw!');
         });
-        */
+        
     });
 });

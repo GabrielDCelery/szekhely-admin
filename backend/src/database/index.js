@@ -4,6 +4,7 @@ const { Container } = require('typedi');
 const { Model, transaction } = require('objection');
 const Knex = require('knex');
 const knex = Knex(config.get(['knex', config.get('env')]));
+const { customDBErrorHandler } = require('./helpers');
 
 Model.knex(knex);
 
@@ -22,7 +23,7 @@ module.exports = {
 
         return (...args) => {
             return transaction(Model.knex(), async transaction => {
-                return methodToExecute(...args, transaction);
+                return methodToExecute(...args, transaction).catch(customDBErrorHandler);
             });
         }
     }
