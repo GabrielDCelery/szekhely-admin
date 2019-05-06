@@ -1,0 +1,39 @@
+@import 'styles/shared.scss';
+
+.DataTable {
+  .page-link {
+    background-color: $black;
+    color: $white;
+    border-color: $black;
+    box-shadow: none !important;
+    //font-weight: bold;
+    margin: 1px;
+
+    &.active,
+    &:hover {
+      color: $white;
+      border-color: lighten($primary-color, 10);
+      background-color: $primary-color;
+    }
+  }
+
+  .pagination {
+    cursor: pointer;
+  }
+}
+
+.DataTable .page-item.disabled .page-link {
+  color: $white;
+  border-color: lighten($primary-color, 10);
+  background-color: $primary-color;
+}
+
+.DataTable .custom-data-table-clickable tbody tr {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.DataTable .custom-data-table-clickable tbody tr:hover {
+  color: $white;
+  background-color: $primary-color;
+}

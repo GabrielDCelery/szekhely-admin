@@ -1,0 +1,32 @@
+export const translations = {
+  'hun': {
+    'Add new': 'Új hozzáadása',
+    'Client company details': 'Ügyfél céges adatok',
+    'Client name': 'Ügyfél neve',
+    'Client details': 'Ügyfél részletes',
+    'Client Signatory Name': 'Ügyfél aláíró neve',
+    'Clients': 'Ügyfelek',
+    'Companies': 'Cégek',
+    'Company name': 'Cég neve',
+    'Contract expiry': 'Szerződés lejárta',
+    'Contracts': 'Szerződések',
+    'Dashboard': 'Nyitóoldal',
+    'Email': 'Email',
+    'English': 'Angol',
+    'Hungarian': 'Magyar',
+    'Inspections': 'Ellenőrzések',
+    'Invoices': 'Számlák',
+    'Language': 'Nyelv',
+    'Logout': 'Kijelentkezés',
+    'Mails': 'Levelek',
+    'Next': 'Következő',
+    'Phone': 'Telefon',
+    'Previous': 'Előző',
+    'Rows per page': 'Sor per oldal',
+    'Quick search': 'Gyors keresés',
+    'Search': 'Keresés',
+    'Settings': 'Beállítások',
+    'Status': 'Státusz',
+    'User': 'Felhasznaló'
+  }
+}

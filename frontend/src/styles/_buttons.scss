@@ -1,0 +1,29 @@
+
+@import 'bootstrap/scss/bootstrap.scss';
+
+.btn-primary {
+    @include button-variant($primary-color, darken($primary-color, 7.5%), darken($primary-color, 10%), lighten($primary-color,5%), lighten($primary-color, 10%), darken($primary-color,30%));
+}
+
+.btn-outline-primary {
+    @include button-outline-variant($primary-color, #222222, lighten($primary-color,5%), $primary-color);
+}
+
+.btn-secondary {
+  @include button-variant($secondary-color, darken($secondary-color, 7.5%), darken($secondary-color, 10%), lighten($secondary-color,5%), lighten($secondary-color, 10%), darken($secondary-color,30%));
+}
+
+.btn-outline-secondary {
+  @include button-outline-variant($secondary-color, #222222, lighten($secondary-color,5%), $secondary-color);
+}
+
+.btn-tertiary-color {
+  @include button-variant($tertiary-color, darken($tertiary-color, 7.5%), darken($tertiary-color, 10%), lighten($tertiary-color,5%), lighten($tertiary-color, 10%), darken($tertiary-color,30%));
+}
+
+.btn-outline-tertiary-color {
+  @include button-outline-variant($tertiary-color, #222222, lighten($tertiary-color,5%), $tertiary-color);
+}
+
+
+

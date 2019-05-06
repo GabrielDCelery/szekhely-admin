@@ -1,0 +1,448 @@
+const _ = require('lodash');
+const express = require('express');
+const router = express.Router();
+const timeout = require('../../utils/timeout');
+
+const clients = [{
+  id: 1,
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  id: 2,
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  id: 3,
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  id: 4,
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  id: 5,
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  id: 6,
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  id: 7,
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}, {
+  clientName: 'Mark',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Otto',
+  contractExpiry: '2018-01-11'
+}, {
+  clientName: 'Jacob',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'Thornton',
+  contractExpiry: '2019-03-03'
+}, {
+  clientName: 'Larry the Bird',
+  clientSignatoryName: 'Mark',
+  email: 'email',
+  phone: 'phone',
+  field: 'someStatus',
+  status: 'twitter',
+  contractExpiry: '2016-07-02'
+}];
+
+router.post('/search', async (_req, _res) => {
+  await timeout(1000);
+
+  return _res.json({
+    success: true,
+    payload: clients
+  });
+});
+
+module.exports = router;
