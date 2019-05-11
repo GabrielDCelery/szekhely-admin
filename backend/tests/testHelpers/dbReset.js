@@ -9,15 +9,13 @@ module.exports = {
             await knex.raw(`TRUNCATE TABLE "${tableName}" RESTART IDENTITY;`);
         });
 
-        await Promise.all(promises);
-        console.log('---------------------truncateDB')
+        return Promise.all(promises);
     },
     seedDB: async (knex) => {
         const promises = tableNames.map(async tableName => {
             return knex(tableName).insert(require(`./seeds/${tableName}`));
         });
 
-        await Promise.all(promises);
-        console.log('---------------------seedDB')
+        return Promise.all(promises);
     }
 }

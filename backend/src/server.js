@@ -5,6 +5,7 @@ global.globalRequire = path => {
 const express = require('express');
 const loaders = require('./loaders');
 const config = require('./config');
+const database = require('./database');
 
 let server = null;
 
@@ -25,7 +26,8 @@ const start = async (callback = () => { }) => {
 }
 
 const stop = async (callback = () => { }) => {
-    await server.close();
+    database.destroyConnection();
+    server.close();
     callback();
 }
 
