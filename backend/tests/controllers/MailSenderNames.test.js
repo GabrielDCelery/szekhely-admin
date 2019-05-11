@@ -1,13 +1,21 @@
-require('../../initGlobalExtensions');
-
-const { execDBAction } = requireWrapper('src/database');
-const { truncateDB, seedDB } = requireWrapper('tests/testHelpers');
+const server = require('../../src/server');
+const { getKnex, execDBAction } = globalRequire('database');
+const { truncateDB, seedDB } = require('../testHelpers');
 
 describe('MailSenderNames', () => {
+    beforeAll(async done => {
+        await server.start(done);
+    });
+
+    afterAll(async done => {
+        await server.stop(done);
+    });
+
     describe('upsert', () => {
-        beforeEach(async () => {
-            await truncateDB();
-            await seedDB();
+        beforeEach(async (done) => {
+            await truncateDB(getKnex());
+            await seedDB(getKnex());
+            done()
         });
 
         it('creates a new record if "id" is not specified and record does not exist', async () => {
@@ -42,7 +50,7 @@ describe('MailSenderNames', () => {
 
             throw new Error('Expected to throw!');
         });
-        
+
         it('throws an error if record with given "name" already exists', async () => {
             try {
                 await execDBAction('MailSenderNames', 'upsert')({ name: 'John Doe' });
@@ -54,6 +62,5 @@ describe('MailSenderNames', () => {
 
             throw new Error('Expected to throw!');
         });
-        
     });
 });

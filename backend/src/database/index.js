@@ -1,30 +1,42 @@
-const _ = require('lodash');
-const config = require('config');
-const { Container } = require('typedi');
-const { Model, transaction } = require('objection');
 const Knex = require('knex');
-const knex = Knex(config.get(['knex', config.get('env')]));
+const { Model, transaction } = require('objection');
+const { Container } = require('typedi');
+const controllers = require('./controllers');
 const { customDBErrorHandler } = require('./helpers');
 
-Model.knex(knex);
+class DB {
+  constructor() {
+    this.knex = null;
+    this.initialized = false;
+    this.initDB = this.initDB.bind(this);
+    this.getKnex = this.getKnex.bind(this);
+    this.execDBAction = this.execDBAction.bind(this);
+  }
 
-const controllers = {
-    Mails: Container.get(require('./controllers/mails/Mails')),
-    MailSenderNames: Container.get(require('./controllers/mails/MailSenderNames'))
-};
-
-module.exports = {
-    getKnex: () => {
-        return knex;
-    },
-    execDBAction: (controllerName, methodName) => {
-        const controller = controllers[controllerName];
-        const methodToExecute = controller[methodName];
-
-        return (...args) => {
-            return transaction(Model.knex(), async transaction => {
-                return methodToExecute(...args, transaction).catch(customDBErrorHandler);
-            });
-        }
+  initDB(config) {
+    if (this.initialized) {
+      throw new Error('Tried to initialize the database twice!');
     }
+
+    this.knex = Knex(config);
+    Model.knex(this.knex);
+    this.initialized = true;
+  }
+
+  getKnex() {
+    return this.knex;
+  }
+
+  execDBAction(controllerName, methodName) {
+    const controller = Container.get(controllers[controllerName]);
+    const methodToExecute = controller[methodName];
+
+    return (...args) => {
+      return transaction(Model.knex(), async transaction => {
+        return methodToExecute(...args, transaction).catch(customDBErrorHandler);
+      });
+    }
+  }
 }
+
+module.exports = new DB();

@@ -4,19 +4,24 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "pretest": "rm -f ./temp/test.sqlite3 && knex migrate:latest",
-    "test": "cross-env JWT_SECRET=myjwtsecret node ./node_modules/jest/bin/jest.js --verbose --maxWorkers=1",
+    "pretest": "rm -f ./temp/test.sqlite3 && NODE_ENV=test knex migrate:latest",
+    "test": "node ./node_modules/jest/bin/jest.js --verbose --maxWorkers=1",
     "start": "node ./app.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "config": "^3.1.0",
+    "db-errors": "^0.2.2",
     "dotenv": "^8.0.0",
+    "express": "^4.16.4",
     "knex": "^0.16.5",
+    "lodash": "^4.17.11",
     "objection": "^1.6.8",
     "objection-db-errors": "^1.1.1",
     "objection-graphql": "^0.4.4",
+    "objection-unique": "^1.0.1",
+    "pg": "^7.11.0",
     "typedi": "^0.8.0"
   },
   "devDependencies": {

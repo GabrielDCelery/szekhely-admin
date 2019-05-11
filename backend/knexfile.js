@@ -1,5 +1,5 @@
 'use strict';
 
-const config = require('config');
+const { database } = require('./src/config');
 
-module.exports = config.get('knex');
+module.exports = database;

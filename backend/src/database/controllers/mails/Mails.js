@@ -2,7 +2,7 @@
 
 const MailSenderNames = require('./MailSenderNames');
 
-class MailsController {
+class Mails {
     constructor(container) {
         this.mailSenderNames = container.get(MailSenderNames);
     }
@@ -12,4 +12,4 @@ class MailsController {
     }
 }
 
-module.exports = MailsController;
+module.exports = Mails;

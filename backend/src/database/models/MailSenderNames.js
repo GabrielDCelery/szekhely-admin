@@ -3,38 +3,38 @@
 const CustomModel = require('./CustomModel');
 
 class MailSenderNames extends CustomModel {
-    static get tableName () {
+    static get tableName() {
         return 'mail_sender_names';
     }
 
-    static get jsonSchema () {
+    static get jsonSchema() {
         return {
             type: 'object',
             required: [],
             properties: {
                 id: { type: 'integer' },
                 name: { type: 'string' },
-                created_at: { 
-                    type: 'string', 
-                    format: 'date-time', 
-                    readOnly: true 
+                created_at: {
+                    type: 'string',
+                    format: 'date-time',
+                    readOnly: true
                 },
-                updated_at: { 
-                    type: 'string', 
-                    format: 'date-time' 
+                updated_at: {
+                    type: 'string',
+                    format: 'date-time'
                 }
             }
         };
     }
 
-    $beforeInsert () {
+    $beforeInsert() {
         const date = new Date().toISOString();
 
         this.created_at = date;
         this.updated_at = date;
     }
 
-    $beforeUpdate () {
+    $beforeUpdate() {
         this.updated_at = new Date().toISOString();
     }
 }

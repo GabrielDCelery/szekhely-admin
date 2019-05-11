@@ -1,29 +1,23 @@
-require('../../initGlobalExtensions');
-
-const { getKnex } = requireWrapper('src/database');
-
 const tableNames = [
     'mail_sender_names'
 ];
 
 module.exports = {
-    truncateDB: async () => {
-        const knex = getKnex();
-
+    truncateDB: async (knex) => {
         const promises = tableNames.map(async tableName => {
-            await knex.raw(`DELETE FROM "${tableName}";`);
-            await knex.raw(`DELETE FROM sqlite_sequence WHERE name="${tableName}";`);
+            //await knex.raw(`DELETE FROM "${tableName}";`);
+            await knex.raw(`TRUNCATE TABLE "${tableName}" RESTART IDENTITY;`);
         });
 
-        return Promise.all(promises);
+        await Promise.all(promises);
+        console.log('---------------------truncateDB')
     },
-    seedDB: async () => {
-        const knex = getKnex();
-
+    seedDB: async (knex) => {
         const promises = tableNames.map(async tableName => {
             return knex(tableName).insert(require(`./seeds/${tableName}`));
         });
 
-        return Promise.all(promises);
+        await Promise.all(promises);
+        console.log('---------------------seedDB')
     }
 }
