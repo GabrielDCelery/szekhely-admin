@@ -27,7 +27,7 @@ class LegalEntity extends Model {
 
     static get relationMappings () {
         const Contract = require('./Contract');
-        const Address = require('./Address');
+        const Address = require('./address/Addresses');
 
         return {
             contract_client: {

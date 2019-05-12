@@ -5,14 +5,13 @@ global.globalRequire = path => {
 const express = require('express');
 const loaders = require('./loaders');
 const config = require('./config');
-const database = require('./database');
 
 let server = null;
 
 const start = async (callback = () => { }) => {
     const app = express();
 
-    await loaders(app);
+    await loaders.start(app);
 
     server = app.listen(config.host.port, error => {
         if (error) {
@@ -23,13 +22,13 @@ const start = async (callback = () => { }) => {
 
         console.log(`Running app on PORT:${config.host.port}`);
     });
-}
+};
 
 const stop = async (callback = () => { }) => {
-    database.destroyConnection();
-    server.close();
+    await loaders.stop();
+    await server.close();
     callback();
-}
+};
 
 module.exports = {
     start: start,

@@ -25,7 +25,7 @@ class NatualPeople extends Model {
     }
 
     static get relationMappings () {
-        const Address = require('./Address');
+        const Address = require('./address/Addresses');
         const Contract = require('./Contract');
 
         return {

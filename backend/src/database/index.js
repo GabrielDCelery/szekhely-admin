@@ -8,13 +8,13 @@ class DB {
   constructor() {
     this.knex = null;
     this.initialized = false;
-    this.initConnection = this.initConnection.bind(this);
-    this.destroyConnection = this.destroyConnection.bind(this);
+    this.start = this.start.bind(this);
+    this.stop = this.stop.bind(this);
     this.getKnex = this.getKnex.bind(this);
     this.execDBAction = this.execDBAction.bind(this);
   }
 
-  initConnection(config) {
+  start(config) {
     if (this.initialized) {
       throw new Error('Tried to initialize the database twice!');
     }
@@ -24,7 +24,7 @@ class DB {
     this.initialized = true;
   }
 
-  destroyConnection() {
+  stop() {
     this.knex.destroy();
     this.initialized = false;
   }

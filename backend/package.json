@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "pretest": "rm -f ./temp/test.sqlite3 && NODE_ENV=test knex migrate:latest",
+    "pretest": "NODE_ENV=test knex migrate:rollback && NODE_ENV=test knex migrate:latest && NODE_ENV=test knex seed:run",
     "test": "node ./node_modules/jest/bin/jest.js --verbose --maxWorkers=1",
     "start": "node ./app.js"
   },

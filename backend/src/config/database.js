@@ -12,10 +12,10 @@ module.exports = ({ DB_CLIENT, DB_USER, DB_HOST, DB_PASSWORD, DB_NAME, DB_CHARSE
         },
         migrations: {
             directory: path.join(__dirname + '../../database/migrations'),
-        }/*,
-    seeds: {
-      directory: __dirname + '/knex/seeds'
-    }*/
+        },
+        seeds: {
+            directory: path.join(__dirname + '../../database/seeds')
+        }
     },
     development: {
         client: DB_CLIENT,

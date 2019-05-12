@@ -1,6 +1,37 @@
 'use strict';
 
 exports.up = async knex => {
+    await knex.schema.createTable('address_countries', table => {
+        table.increments('id').primary();
+        table.string('long_name');
+        table.string('short_name');
+        table.unique('long_name');
+        table.unique('short_name');
+    });
+
+    await knex.schema.createTable('address_cities', table => {
+        table.increments('id').primary();
+        table.string('long_name');
+        table.string('short_name');
+        table.unique(['long_name']);
+        table.unique(['short_name']);
+    });
+
+    await knex.schema.createTable('address_locations', table => {
+        table.increments('id').primary();
+        table.string('postcode');
+        table.integer('city_id').references('id').inTable('address_cities');
+        table.integer('country_id').references('id').inTable('address_countries');
+    });
+
+    await knex.schema.createTable('addresses', table => {
+        table.increments('id').primary();
+        table.integer('location_id').references('id').inTable('address_locations');
+        table.string('address_line_1');
+        table.string('address_line_2');
+        table.timestamps();
+    });
+
     await knex.schema.createTable('mail_sender_names', table => {
         table.increments('id').primary();
         table.string('name');
@@ -113,6 +144,10 @@ exports.up = async knex => {
 };
 
 exports.down = async knex => {
+    await knex.schema.dropTableIfExists('addresses');
+    await knex.schema.dropTableIfExists('address_locations');
+    await knex.schema.dropTableIfExists('address_countries');
+    await knex.schema.dropTableIfExists('address_cities');
     await knex.schema.dropTableIfExists('mail_sender_names');
     /*
     await knex.schema.dropTableIfExists('natural_people');
