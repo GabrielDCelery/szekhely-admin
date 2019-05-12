@@ -12,10 +12,9 @@ describe('MailSenderNames', () => {
     });
 
     describe('upsert', () => {
-        beforeEach(async (done) => {
+        beforeEach(async () => {
             await truncateDB(getKnex());
             await seedDB(getKnex());
-            done()
         });
 
         it('creates a new record if "id" is not specified and record does not exist', async () => {
