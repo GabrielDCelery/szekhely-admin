@@ -26,8 +26,8 @@ class Addresses extends CustomModel {
         const AddressLocations = require('./AddressLocations');
 
         return {
-            address_location_city: {
-                relation: Model.BelongsToOneRelation,
+            location: {
+                relation: CustomModel.BelongsToOneRelation,
                 modelClass: AddressLocations,
                 join: {
                     from: 'addresses.location_id',

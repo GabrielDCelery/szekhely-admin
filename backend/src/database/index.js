@@ -2,7 +2,7 @@ const Knex = require('knex');
 const { Model, transaction } = require('objection');
 const { Container } = require('typedi');
 const controllers = require('./controllers');
-const { customDBErrorHandler } = require('./helpers');
+const { CustomDBError } = require('./helpers');
 
 class DB {
   constructor() {
@@ -33,14 +33,27 @@ class DB {
     return this.knex;
   }
 
-  execDBAction(controllerName, methodName) {
-    const controller = Container.get(controllers[controllerName]);
-    const methodToExecute = controller[methodName];
+  execDBAction(controllerName) {
+    const controller = controllers[controllerName];
 
-    return (...args) => {
-      return transaction(Model.knex(), async transaction => {
-        return methodToExecute(...args, transaction).catch(customDBErrorHandler);
-      });
+    if (!controller) {
+      throw new Error(`Could not find controller -> ${controllerName}`);
+    }
+
+    return methodName => {
+      const methodToExecute = Container.get(controller)[methodName];
+
+      if (!methodToExecute) {
+        throw new Error(`Could not find method for controller ${controllerName} -> ${methodToExecute}`);
+      }
+
+      return (fields = {}, config = {}) => {
+        return transaction(Model.knex(), async transaction => {
+          return methodToExecute(fields, { ...config, transaction }).catch(({ message }) => {
+            throw new CustomDBError(message);
+          });
+        });
+      }
     }
   }
 }

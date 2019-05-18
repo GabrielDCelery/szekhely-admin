@@ -1,3 +1,3 @@
 module.exports = {
-    customDBErrorHandler: require('./customDBErrorHandler')
+    CustomDBError: require('./CustomDBError')
 }

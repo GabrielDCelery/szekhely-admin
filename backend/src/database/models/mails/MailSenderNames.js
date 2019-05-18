@@ -1,6 +1,6 @@
 'use strict';
 
-const CustomModel = require('./CustomModel');
+const CustomModel = require('../CustomModel');
 
 class MailSenderNames extends CustomModel {
     static get tableName() {

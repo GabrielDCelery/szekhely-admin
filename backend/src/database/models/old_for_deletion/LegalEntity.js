@@ -2,21 +2,22 @@
 
 const { Model } = require('objection');
 
-class NatualPeople extends Model {
+class LegalEntity extends Model {
     static get tableName () {
-        return 'natural_people';
+        return 'legal_entities';
     }
-    
+
     static get jsonSchema () {
         return {
             type: 'object',
             required: [],
             properties: {
                 id: { type: 'integer' },
-                first_name: { type: 'string' },
-                last_name: { type: 'string' },
+                name: { type: 'string' },
+                type: { type: 'integer' },
+                registration_id: { type: 'string' },
+                tax_id: { type: 'string' },
                 is_service_provider: { type: 'boolean' },
-                id_document_id: { type: 'integer' },
                 official_address_id: { type: 'integer' },
                 created_at: { type: 'string', format: 'date-time', readOnly: true },
                 updated_at: { type: 'string', format: 'date-time' }
@@ -25,31 +26,31 @@ class NatualPeople extends Model {
     }
 
     static get relationMappings () {
-        const Address = require('./address/Addresses');
         const Contract = require('./Contract');
+        const Address = require('../address/Addresses');
 
         return {
-            contract_client_signatory: {
+            contract_client: {
                 relation: Model.HasManyRelation,
                 modelClass: Contract,
                 join: {
-                    from: 'natural_people.id',
-                    to: 'contracts.client_signatory_id'
+                    from: 'legal_entities.id',
+                    to: 'contracts.client_id'
                 }
             },
-            contract_service_provider_signatory: {
+            contract_service_provider: {
                 relation: Model.HasManyRelation,
                 modelClass: Contract,
                 join: {
-                    from: 'natural_people.id',
-                    to: 'contracts.service_provider_signatory_id'
+                    from: 'legal_entities.id',
+                    to: 'contracts.service_provider_id'
                 }
             },
             permanent_residence: {
                 relation: Model.BelongsToOneRelation,
                 modelClass: Address,
                 join: {
-                    from: 'natural_people.permanent_residence_id',
+                    from: 'legal_entities.permanent_residence_id',
                     to: 'addresses.id'
                 }
             }
@@ -68,4 +69,4 @@ class NatualPeople extends Model {
     }
 }
 
-module.exports = NatualPeople;
+module.exports = LegalEntity;

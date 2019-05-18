@@ -3,8 +3,10 @@
 const models = globalRequire('database/models');
 
 class MailSenderNames {
-    async upsert({ id, name }, transaction) {
-        return models.MailSenderNames.query(transaction).upsert({ id, name });
+    async upsert({ id, name }, { transaction }) {
+        return models.MailSenderNames
+            .query(transaction)
+            .upsert({ id, name });
     }
 }
 

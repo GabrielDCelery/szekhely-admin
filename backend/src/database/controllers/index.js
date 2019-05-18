@@ -1,4 +1,21 @@
+const {
+    Addresses,
+    AddressCities,
+    AddressCountries,
+    AddressLocations
+} = require('./addresses');
+
+const {
+    Mails,
+    MailSenderNames
+} = require('./mails');
+
+
 module.exports = {
-    Mails: require('./mails/Mails'),
-    MailSenderNames: require('./mails/MailSenderNames')
+    Addresses,
+    AddressCities,
+    AddressCountries,
+    AddressLocations,
+    Mails,
+    MailSenderNames
 };

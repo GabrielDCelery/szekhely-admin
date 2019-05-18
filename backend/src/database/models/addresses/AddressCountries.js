@@ -4,7 +4,7 @@ const CustomModel = require('../CustomModel');
 
 class AddressCountries extends CustomModel {
     static get tableName () {
-        return 'address_cities';
+        return 'address_countries';
     }
 
     static get jsonSchema () {
@@ -13,7 +13,7 @@ class AddressCountries extends CustomModel {
             required: [],
             properties: {
                 id: { type: 'integer' },
-                long_name: { type: 'string' },
+                name: { type: 'string' },
                 short_name: { type: 'string' }
             }
         };
@@ -23,12 +23,12 @@ class AddressCountries extends CustomModel {
         const AddressLocations = require('./AddressLocations');
 
         return {
-            address_location_city: {
-                relation: Model.HasManyRelation,
+            cities: {
+                relation: CustomModel.HasManyRelation,
                 modelClass: AddressLocations,
                 join: {
-                    from: 'address_cities.id',
-                    to: 'address_locations.city_id'
+                    from: 'address_countries.id',
+                    to: 'address_locations.country_id'
                 }
             }
         };
