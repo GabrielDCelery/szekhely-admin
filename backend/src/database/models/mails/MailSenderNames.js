@@ -13,15 +13,21 @@ class MailSenderNames extends CustomModel {
             required: [],
             properties: {
                 id: { type: 'integer' },
-                name: { type: 'string' },
-                created_at: {
-                    type: 'string',
-                    format: 'date-time',
-                    readOnly: true
-                },
-                updated_at: {
-                    type: 'string',
-                    format: 'date-time'
+                name: { type: 'string' }
+            }
+        };
+    }
+
+    static get relationMappings() {
+        const MailSenders = require('./MailSenders');
+
+        return {
+            mail_senders: {
+                relation: CustomModel.HasManyRelation,
+                modelClass: MailSenders,
+                join: {
+                    from: 'mail_sender_names.id',
+                    to: 'mail_senders.name_id'
                 }
             }
         };

@@ -1,4 +1,4 @@
 module.exports = {
-    Mails: require('./Mails'),
+    MailSenders: require('./MailSenders'),
     MailSenderNames: require('./MailSenderNames')
 };

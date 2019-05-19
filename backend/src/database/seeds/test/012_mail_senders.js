@@ -17,6 +17,10 @@ exports.seed = async knex => {
         "id": 4,
         "address_id": 3,
         "name_id": 9
+    }, {
+        "id": 5,
+        "address_id": 4,
+        "name_id": 4
     }]);
 
     await knex.raw(`select setval(\'${dbName}_id_seq\', max(id)) from ${dbName}`);

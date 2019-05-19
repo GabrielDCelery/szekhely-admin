@@ -3,11 +3,11 @@
 const CustomModel = require('../CustomModel');
 
 class Addresses extends CustomModel {
-    static get tableName () {
+    static get tableName() {
         return 'addresses';
     }
 
-    static get jsonSchema () {
+    static get jsonSchema() {
         return {
             type: 'object',
             required: [],
@@ -22,8 +22,9 @@ class Addresses extends CustomModel {
         };
     }
 
-    static get relationMappings () {
+    static get relationMappings() {
         const AddressLocations = require('./AddressLocations');
+        const { MailSenders } = require('../mails');
 
         return {
             location: {
@@ -33,18 +34,26 @@ class Addresses extends CustomModel {
                     from: 'addresses.location_id',
                     to: 'address_locations.id'
                 }
+            },
+            mail_senders: {
+                relation: CustomModel.HasManyRelation,
+                modelClass: MailSenders,
+                join: {
+                    from: 'addresses.id',
+                    to: 'mail_senders.address_id'
+                }
             }
         };
     }
 
-    $beforeInsert () {
+    $beforeInsert() {
         const date = new Date().toISOString();
 
         this.created_at = date;
         this.updated_at = date;
     }
 
-    $beforeUpdate () {
+    $beforeUpdate() {
         this.updated_at = new Date().toISOString();
     }
 }
