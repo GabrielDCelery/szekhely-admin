@@ -26,17 +26,6 @@ class MailSenderNames extends CustomModel {
             }
         };
     }
-
-    $beforeInsert() {
-        const date = new Date().toISOString();
-
-        this.created_at = date;
-        this.updated_at = date;
-    }
-
-    $beforeUpdate() {
-        this.updated_at = new Date().toISOString();
-    }
 }
 
 module.exports = MailSenderNames;

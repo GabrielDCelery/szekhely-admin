@@ -74,9 +74,8 @@ describe('AddressCountries', () => {
         it('throws an error if trying to create a new country with impartial data', async () => {
             try {
                 await execDBAction('AddressCountries')('findOrCreate')({ name: 'India' });
-            } catch ({ message, originalMessage }) {
-                expect(message).toEqual('Sorry, something unexpected happened!');
-                return expect(originalMessage).toEqual('insert into "address_countries" ("name") values ($1) returning "id" - null value in column "short_name" violates not-null constraint');
+            } catch ({ message }) {
+                return expect(message).toEqual('insert into "address_countries" ("name") values ($1) returning "id" - null value in column "short_name" violates not-null constraint');
             }
 
             throw new Error('Expected to throw!');
@@ -85,9 +84,8 @@ describe('AddressCountries', () => {
         it('throws an error if trying to find a country where te id does not exist', async () => {
             try {
                 await execDBAction('AddressCountries')('findOrCreate')({ id: 22 });
-            } catch ({ message, originalMessage }) {
-                expect(message).toEqual('Sorry, something unexpected happened!');
-                return expect(originalMessage).toEqual('Could not find record in table address_countries -> {"id":22}');
+            } catch ({ message }) {
+                return expect(message).toEqual('Could not find record in table address_countries -> {"id":22}');
             }
 
             throw new Error('Expected to throw!');

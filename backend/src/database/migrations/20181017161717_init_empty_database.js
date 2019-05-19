@@ -33,9 +33,16 @@ exports.up = async knex => {
     await knex.schema.createTable('mail_sender_names', table => {
         table.increments('id').primary();
         table.string('name');
-        table.timestamps();
         table.unique(['name']);
     });
+    /*
+    await knex.schema.createTable('mails_senders', table => {
+        table.increments('id').primary();
+        table.integer('address_id').references('id').inTable('addresses');
+        table.integer('name_id').references('id').inTable('mail_sender_names');
+        table.unique(['address_id', 'name_id']);
+    });
+    */
     /*
     await knex.schema.createTable('natural_people', table => {
         table.increments('id').primary();
@@ -142,11 +149,12 @@ exports.up = async knex => {
 };
 
 exports.down = async knex => {
+    //await knex.schema.dropTableIfExists('mail_senders');
+    await knex.schema.dropTableIfExists('mail_sender_names');
     await knex.schema.dropTableIfExists('addresses');
     await knex.schema.dropTableIfExists('address_locations');
     await knex.schema.dropTableIfExists('address_cities');
     await knex.schema.dropTableIfExists('address_countries');
-    await knex.schema.dropTableIfExists('mail_sender_names');
     /*
     await knex.schema.dropTableIfExists('natural_people');
     await knex.schema.dropTableIfExists('id_documents');

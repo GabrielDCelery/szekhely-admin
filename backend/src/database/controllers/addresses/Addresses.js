@@ -1,9 +1,10 @@
 'use strict';
 
+const _ = require('lodash');
 const models = globalRequire('database/models');
 const AddressCountries = require('./AddressCountries');
-const AddressCities = require('./AddressCountries');
-const AddressLocations = require('./AddressCountries');
+const AddressCities = require('./AddressCities');
+const AddressLocations = require('./AddressLocations');
 
 class Addresses {
     constructor(container) {
@@ -29,34 +30,34 @@ class Addresses {
         transaction
     }) {
         if (id) {
-            const record = await models.Addresses.query(transaction).findById(id).eager('location.city.country');
+            const address = await models.Addresses.query(transaction).findById(id).eager('location.city.country');
 
-            if (!record) {
+            if (!address) {
                 throw new Error(`Could not find record in table ${models.Address.tableName} -> ${JSON.stringify({ id })}`);
             }
 
-            return bFlattenRecord ? Addresses.flattenRecord(record) : record;
+            return bFlattenRecord ? Addresses.flattenRecord(address) : address;
         }
 
         const country = await this.addressCountries.findOrCreate({
             id: country_id,
             name: country_name,
             short_name: country_short_name
-        }, transaction);
+        }, { transaction });
 
         const city = await this.addressCities.findOrCreate({
             id: city_id,
             name: city_name,
             country_id: country.id
-        }, transaction);
+        }, { transaction });
 
         const location = await this.addressLocations.findOrCreate({
             id: location_id,
             postcode: postcode,
             city_id: city.id
-        }, transaction);
+        }, { transaction });
 
-        return models.Addresses
+        const address = await models.Addresses
             .query(transaction)
             .findOrCreate(_.pickBy({
                 id: id,
@@ -64,6 +65,8 @@ class Addresses {
                 address_line_1: address_line_1,
                 address_line_2: address_line_2
             }));
+
+        return Addresses.flattenRecord(await models.Addresses.query(transaction).findById(address.id).eager('location.city.country'));
     }
 
     static flattenRecord(record) {

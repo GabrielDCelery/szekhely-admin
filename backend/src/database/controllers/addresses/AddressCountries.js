@@ -4,15 +4,19 @@ const _ = require('lodash');
 const models = globalRequire('database/models');
 
 class AddressCountries {
+    constructor() {
+        this.findOrCreate = this.findOrCreate.bind(this);
+    }
+
     async findOrCreate({ id, name, short_name }, { transaction }) {
         if (id) {
-            const record = await models.AddressCountries.query(transaction).findById(id);
+            const country = await models.AddressCountries.query(transaction).findById(id);
 
-            if (!record) {
+            if (!country) {
                 throw new Error(`Could not find record in table ${models.AddressCountries.tableName} -> ${JSON.stringify({ id })}`);
             }
 
-            return record;
+            return country;
         }
 
         return models.AddressCountries.query(transaction).findOrCreate(_.pickBy({ name, short_name }));

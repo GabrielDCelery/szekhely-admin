@@ -54,9 +54,8 @@ describe('AddressLocations', () => {
         it('throws an error if finds more than one records', async () => {
             try {
                 await execDBAction('AddressLocations')('findOrCreate')({ city_id: 1 });
-            } catch ({ message, originalMessage }) {
-                expect(message).toEqual('Sorry, something unexpected happened!');
-                return expect(originalMessage).toEqual('Found more than one records in table address_locations -> {"city_id":1}');
+            } catch ({ message }) {
+                return expect(message).toEqual('Found more than one records in table address_locations -> {"city_id":1}');
             }
 
             throw new Error('Expected to throw!');
@@ -65,16 +64,14 @@ describe('AddressLocations', () => {
         it('throws an error if trying to create a new location with impartial data', async () => {
             try {
                 await execDBAction('AddressLocations')('findOrCreate')({ postcode: '2335' });
-            } catch ({ message, originalMessage }) {
-                expect(message).toEqual('Sorry, something unexpected happened!');
-                expect(originalMessage).toEqual('insert into "address_locations" ("postcode") values ($1) returning "id" - null value in column "city_id" violates not-null constraint');
+            } catch ({ message }) {
+                expect(message).toEqual('insert into "address_locations" ("postcode") values ($1) returning "id" - null value in column "city_id" violates not-null constraint');
             }
 
             try {
                 await execDBAction('AddressLocations')('findOrCreate')({ city_id: 5 });
-            } catch ({ message, originalMessage }) {
-                expect(message).toEqual('Sorry, something unexpected happened!');
-                return expect(originalMessage).toEqual('insert into "address_locations" ("city_id") values ($1) returning "id" - null value in column "postcode" violates not-null constraint');
+            } catch ({ message }) {
+                return expect(message).toEqual('insert into "address_locations" ("city_id") values ($1) returning "id" - null value in column "postcode" violates not-null constraint');
             }
 
             throw new Error('Expected to throw!');
@@ -86,9 +83,8 @@ describe('AddressLocations', () => {
                     postcode: '2335',
                     city_id: 22
                 });
-            } catch ({ message, originalMessage }) {
-                expect(message).toEqual('Sorry, something unexpected happened!');
-                return expect(originalMessage).toEqual('insert into "address_locations" ("city_id", "postcode") values ($1, $2) returning "id" - insert or update on table "address_locations" violates foreign key constraint "address_locations_city_id_foreign"');
+            } catch ({ message }) {
+                return expect(message).toEqual('insert into "address_locations" ("city_id", "postcode") values ($1, $2) returning "id" - insert or update on table "address_locations" violates foreign key constraint "address_locations_city_id_foreign"');
             }
 
             throw new Error('Expected to throw!');
@@ -97,9 +93,8 @@ describe('AddressLocations', () => {
         it('throws an error if trying to find a location where the id does not exist', async () => {
             try {
                 await execDBAction('AddressLocations')('findOrCreate')({ id: 22 });
-            } catch ({ message, originalMessage }) {
-                expect(message).toEqual('Sorry, something unexpected happened!');
-                return expect(originalMessage).toEqual('Could not find record in table address_locations -> {"id":22}');
+            } catch ({ message }) {
+                return expect(message).toEqual('Could not find record in table address_locations -> {"id":22}');
             }
 
             throw new Error('Expected to throw!');

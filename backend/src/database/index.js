@@ -3,6 +3,7 @@ const { Model, transaction } = require('objection');
 const { Container } = require('typedi');
 const controllers = require('./controllers');
 const { CustomDBError } = require('./helpers');
+const { isProductionEnv } = globalRequire('config');
 
 class DB {
   constructor() {
@@ -49,8 +50,12 @@ class DB {
 
       return (fields = {}, config = {}) => {
         return transaction(Model.knex(), async transaction => {
-          return methodToExecute(fields, { ...config, transaction }).catch(({ message }) => {
-            throw new CustomDBError(message);
+          return methodToExecute(fields, { ...config, transaction }).catch(error => {
+            if (isProductionEnv()) {
+              throw new CustomDBError(error.message);
+            }
+
+            throw error;
           });
         });
       }

@@ -7,9 +7,18 @@ dotenv.config();
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-module.exports = {
-    nodeEnv: process.env.NODE_ENV,
-    host: host(process.env),
-    api: api(process.env),
-    database: database(process.env)
-};
+class Config {
+	constructor() {
+		this.nodeEnv = process.env.NODE_ENV;
+		this.host = host(process.env);
+		this.api = api(process.env);
+		this.database = database(process.env);
+		this.isProductionEnv = this.isProductionEnv.bind(this);
+	}
+
+	isProductionEnv() {
+		return this.nodeEnv === 'production';
+	}
+}
+
+module.exports = new Config();

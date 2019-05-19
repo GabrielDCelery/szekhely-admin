@@ -10,20 +10,13 @@ class CustomQueryBuilder extends QueryBuilder {
         }
 
         const queryByString = JSON.stringify(_.omit(model, 'id'));
-        const record = await this.updateAndFetchById(model.id, JSON.parse(queryByString));
+        const toUpdate = JSON.parse(queryByString);
+        const record = _.size(toUpdate) === 0 ?
+            await this.findById(model.id) :
+            await this.updateAndFetchById(model.id, JSON.parse(queryByString));
 
         if (!record) {
             throw new Error(`Could not find record in table ${this.tableName()} -> ${queryByString}`);
-        }
-
-        return record;
-    }
-
-    async finByIdOrThrow(id) {
-        const record = await this.findById(id);
-
-        if (!record) {
-            throw new Error(`Could not find record in table ${this.tableName()} -> ${JSON.stringify({ id })}`);
         }
 
         return record;
